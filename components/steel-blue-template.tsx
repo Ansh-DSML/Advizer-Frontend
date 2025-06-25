@@ -490,20 +490,21 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       <img
                         src="/images/Ad-Visuals-3.png"
                         alt="Ad Visual Table"
-                        className="h-[350px] w-[380px] max-w-none rounded-xl shadow-2xl -mt-12 mb-8 ml-20 scale-120"
+                        className="h-[350px] w-[380px] max-w-none rounded-xl shadow-2xl -mt-12 mb-8 -ml-70 scale-120 translate-x-20"
                       />
-                      <div className="w-full flex justify-end">
+                      <div className="w-full flex justify-center">
                         <img
                           src="/images/Ad-Messaging (1).png"
                           alt="Ad Messaging Table"
-                          className="h-[380px] w-[380px] max-w-none rounded-xl shadow-2xl mt-17 object-cover ml-20"
+                          className="h-[340px] w-[320px] max-w-none rounded-xl shadow-2xl mt-17 object-cover -ml-70 translate-x-20"
                         />
                       </div>
                     </div>
                     <img
-                      src="/images/couple-ad-full-3.png"
-                      alt="Couple Ad Full"
-                      className="max-w-full h-auto rounded-xl shadow-2xl scale-122 mt-16"
+                      src="/images/Girl-2.png"
+                      alt="Girl-2"
+                      className="h-[550px] rounded-xl shadow-2xl scale-120 transform translate-y-20 translate-x-20"
+                      style={{ width: '400px', maxWidth: 'none', minWidth: '400px' }}
                     />
                   </div>
                 </div>
@@ -571,9 +572,9 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                   {/* Image - Right Side */}
                   <div className="flex justify-center items-center">
                     <img
-                      src="/images/Improve.png"
+                      src="/images/Improve-2.png"
                       alt="Improve section image"
-                      className="w-[800px] max-w-none h-[500px] rounded-xl shadow-2xl"
+                      className="w-[800px] max-w-none h-[350px] rounded-xl shadow-2xl"
                     />
                   </div>
                 </div>
