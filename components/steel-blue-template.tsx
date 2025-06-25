@@ -15,20 +15,23 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
   const [typewriterText, setTypewriterText] = useState("")
   const [showCursor, setShowCursor] = useState(true)
   const [isPageLoaded, setIsPageLoaded] = useState(false)
+  const [visualizeAnimationPhase, setVisualizeAnimationPhase] = useState('normal')
+  const [visualizeSectionRef, setVisualizeSectionRef] = useState<HTMLDivElement | null>(null)
+  const [visualizeAnimationTriggered, setVisualizeAnimationTriggered] = useState(false)
+  const lastScrollY = useRef(0)
+  const [showBlurOverlay, setShowBlurOverlay] = useState(false)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const observerRef = useRef<IntersectionObserver | null>(null)
+  const [improveAnimationPhase, setImproveAnimationPhase] = useState('normal')
+  const [improveSectionRef, setImproveSectionRef] = useState<HTMLDivElement | null>(null)
+  const [improveImageRef, setImproveImageRef] = useState<HTMLImageElement | null>(null)
+  const [improveAnimationTriggered, setImproveAnimationTriggered] = useState(false)
 
   const clientLogos = [
-    "Meta",
-    "Nike",
-    "Adidas",
-    "Coca-Cola",
-    "McDonald's",
-    "Apple",
-    "Google",
-    "Microsoft",
-    "Amazon",
-    "Spotify",
+    "Metro",
+    "Mochi",
+    "Armaf India",
+    "NueGo",
   ]
 
   const features = [
@@ -118,6 +121,138 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
     }
   }, [isPageLoaded])
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!visualizeSectionRef) return
+      
+      const rect = visualizeSectionRef.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+      const sectionTop = rect.top
+      const sectionHeight = rect.height
+      const sectionBottom = rect.bottom
+      const currentScrollY = window.scrollY
+      const scrollingDown = currentScrollY > lastScrollY.current
+      lastScrollY.current = currentScrollY
+      
+      // Trigger when 90% of the image is visible
+      const visibleHeight = Math.min(windowHeight, sectionBottom) - Math.max(0, sectionTop)
+      const percentVisible = visibleHeight / sectionHeight
+      if (
+        percentVisible >= 0.9 &&
+        visualizeAnimationPhase === 'normal' &&
+        !visualizeAnimationTriggered &&
+        scrollingDown
+      ) {
+        setVisualizeAnimationPhase('expanding')
+        setTimeout(() => setVisualizeAnimationPhase('expanded'), 1500)
+        setVisualizeAnimationTriggered(true)
+      }
+    }
+    
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [visualizeSectionRef, visualizeAnimationPhase, visualizeAnimationTriggered])
+
+  // Lock scroll while the effect is active
+  useEffect(() => {
+    if (
+      visualizeAnimationPhase === 'expanding' ||
+      visualizeAnimationPhase === 'expanded' ||
+      visualizeAnimationPhase === 'collapsing'
+    ) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [visualizeAnimationPhase])
+
+  // Effect always lasts 6 seconds, then collapses and scrolls to center
+  useEffect(() => {
+    if (visualizeAnimationPhase === 'expanded') {
+      if (visualizeSectionRef) {
+        visualizeSectionRef.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
+      const timer = setTimeout(() => {
+        setVisualizeAnimationPhase('collapsing')
+        setTimeout(() => {
+          setVisualizeAnimationPhase('normal')
+          // Scroll to center after collapse animation, when section is back in flow
+          if (visualizeSectionRef) {
+            visualizeSectionRef.scrollIntoView({ behavior: 'smooth', block: 'center' })
+          }
+        }, 1500)
+      }, 6000)
+      return () => clearTimeout(timer)
+    }
+  }, [visualizeAnimationPhase, visualizeSectionRef])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!improveImageRef) return
+      const rect = improveImageRef.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+      const imageTop = rect.top
+      const imageHeight = rect.height
+      const imageBottom = rect.bottom
+      const currentScrollY = window.scrollY
+      const scrollingDown = currentScrollY > lastScrollY.current
+      lastScrollY.current = currentScrollY
+      // Trigger when 90% of the image is visible
+      const visibleHeight = Math.min(windowHeight, imageBottom) - Math.max(0, imageTop)
+      const percentVisible = visibleHeight / imageHeight
+      if (
+        percentVisible >= 0.9 &&
+        improveAnimationPhase === 'normal' &&
+        !improveAnimationTriggered &&
+        scrollingDown
+      ) {
+        setImproveAnimationPhase('expanding')
+        setTimeout(() => setImproveAnimationPhase('expanded'), 1500)
+        setImproveAnimationTriggered(true)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [improveImageRef, improveAnimationPhase, improveAnimationTriggered])
+
+  // Lock scroll while the effect is active for Improve
+  useEffect(() => {
+    if (
+      improveAnimationPhase === 'expanding' ||
+      improveAnimationPhase === 'expanded' ||
+      improveAnimationPhase === 'collapsing'
+    ) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [improveAnimationPhase])
+
+  // Effect always lasts 6 seconds, then collapses and scrolls to center for Improve
+  useEffect(() => {
+    if (improveAnimationPhase === 'expanded') {
+      if (improveSectionRef) {
+        improveSectionRef.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
+      const timer = setTimeout(() => {
+        setImproveAnimationPhase('collapsing')
+        setTimeout(() => {
+          setImproveAnimationPhase('normal')
+          if (improveSectionRef) {
+            improveSectionRef.scrollIntoView({ behavior: 'smooth', block: 'center' })
+          }
+        }, 1500)
+      }, 6000)
+      return () => clearTimeout(timer)
+    }
+  }, [improveAnimationPhase, improveSectionRef])
+
   return (
     <div className="min-h-screen relative overflow-hidden bg-black">
       {/* Hero Section */}
@@ -127,7 +262,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
             <span className="font-medium gradient-text">Creative Analytics Platform</span>
           </div>
 
-          <h1 className="text-8xl md:text-9xl font-light mb-8 tracking-tight">
+          <h1 className="text-8xl md:text-9xl font-light mb-8 tracking-tight font-clash">
             <span className="font-bold gradient-text">
               {typewriterText}
               {showCursor && <span className="animate-pulse">|</span>}
@@ -162,18 +297,19 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
             onClick={() => setShowClients(!showClients)}
           >
             <Users className="mr-2 w-4 h-4" />
-            Clients
+            Companies we worked with
           </Button>
         </div>
 
         {showClients && (
-          <div className="mt-20 overflow-hidden rounded-3xl py-12 border border-gray-300 bg-white animate-elasticIn">
-            <div className="client-logos-container">
+          <div className="mt-20 overflow-hidden rounded-3xl py-3 bg-black animate-elasticIn">
+            <div className="client-logos-container" style={{ background: 'black', padding: '16px 0' }}>
               <div className="client-logos-slider">
-                {[...clientLogos, ...clientLogos].map((logo, index) => (
+                {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, index) => (
                   <div
                     key={index}
-                    className="flex-shrink-0 text-black font-light text-2xl whitespace-nowrap transition-all duration-500 transform hover:scale-110 hover:rotate-3 px-10 hover:text-blue-600"
+                    className="flex-shrink-0 text-white font-bold text-3xl whitespace-nowrap transition-all duration-500 transform hover:scale-110 hover:rotate-3 mr-8"
+                    style={{ fontFamily: 'Wasted Windey OpenType', letterSpacing: '0.02em' }}
                   >
                     {logo}
                   </div>
@@ -188,7 +324,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
       <div className="py-24 bg-black">
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
-            <h2 className="text-5xl font-light mb-6">
+            <h2 className="text-5xl font-light mb-6 font-clash">
               <span className="sentence-gradient">One Platform, Six Lenses</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-light">
@@ -238,7 +374,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
       <div className="py-24 bg-black">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-light mb-6">
+            <h2 className="text-5xl font-light mb-6 font-clash">
               <span className="sentence-gradient">Who Benefits from Advizer?</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-light">
@@ -429,7 +565,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
           </div>
 
           {/* Ready to Transform Section */}
-          <div className="text-center mt-16">
+          <div className="text-center mt-16" style={{ marginBottom: '125px' }}>
             <div className="bg-white/10 backdrop-blur-sm border border-gray-700/30 rounded-2xl p-8 max-w-4xl mx-auto shadow-lg">
               <h3 className="text-2xl font-medium text-white mb-4">Ready to Transform Your Advertising Strategy?</h3>
               <p className="text-white mb-6 leading-relaxed">
@@ -451,105 +587,141 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
       </div>
 
       {/* See It in Action Section - Demo Video & Feature Highlights */}
-      <div className="py-32 bg-black">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl font-light mb-6">
-              <span className="sentence-gradient">
-                See It in <span className="font-bold animate-gentle-pulse">Action</span>
-              </span>
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed font-light px-4">
-              A quick tour of the features designed to give you a decisive advantage on Meta.
-            </p>
-          </div>
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl font-light mb-6 font-clash">
+            <span className="sentence-gradient">
+              See It in <span className="font-bold animate-gentle-pulse">Action</span>
+            </span>
+          </h2>
+          <p className="text-lg sm:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed font-light px-4">
+            A quick tour of the features designed to give you a decisive advantage on Meta.
+          </p>
+          <div style={{ marginTop: '200px' }}></div>
+        </div>
 
-          {/* Feature Highlights Section */}
-          <div className="max-w-7xl mx-auto space-y-12">
-            {/* Analyze Card - Digital Collage Layout */}
-            <div className="bg-black min-h-[1100px] py-16">
-              <div className="max-w-7xl mx-auto px-6">
-                <div className="grid lg:grid-cols-2 gap-16 items-start min-h-[700px]">
-                  {/* Analyze Text Content - Left */}
-                  <div className="flex flex-col justify-center h-full space-y-8 pl-0 -ml-12 text-left">
-                    <div className="space-y-6">
-                      <button className="text-[#A3A3FF] text-base font-medium px-0 py-0 hover:text-[#B3B3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none">
-                        Analyze
-                      </button>
-                      <h3 className="text-3xl lg:text-4xl font-bold text-white leading-tight font-sans">
-                        AI Tagging
-                      </h3>
-                      <p className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg mb-8">
-                        Automatically tag every creative with AI for instant, actionable insights, no manual work required.
-                      </p>
+        {/* Feature Highlights Section */}
+        <div className="max-w-7xl mx-auto space-y-0">
+          {/* Analyze Card - Digital Collage Layout */}
+          <div className="bg-black min-h-[800px] py-0 pb-0 mb-0">
+            <div className="max-w-7xl mx-auto px-6">
+              <div className="grid lg:grid-cols-2 gap-16 items-start min-h-[700px]">
+                {/* Analyze Text Content - Left */}
+                <div className="flex flex-col justify-center h-full space-y-8 pl-0 -ml-12 text-left">
+                  <div className="space-y-6">
+                    <button className="text-[#A3A3FF] text-base font-medium px-0 py-0 hover:text-[#B3B3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none">
+                      Analyze
+                    </button>
+                    <h3 className="text-3xl lg:text-4xl font-bold text-white leading-tight font-sans">
+                      AI Tagging
+                    </h3>
+                    <p className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg mb-8 whitespace-nowrap overflow-hidden text-ellipsis">
+                      Instantly tag every creative insight. 
+                    </p>
+                  </div>
+                </div>
+                {/* Couple Ad Full Image - Right, centered */}
+                <div className="flex flex-row justify-end items-start w-full gap-16">
+                  <div className="flex flex-col items-start relative">
+                    <img
+                      src="/images/Ad-Visuals-3.png"
+                      alt="Ad Visual Table"
+                      className="h-[350px] w-[380px] max-w-none rounded-xl shadow-2xl -mt-12 mb-8 -ml-90 scale-120"
+                    />
+                    <div className="w-full flex justify-center">
+                      <img
+                        src="/images/Ad-Messaging (1).png"
+                        alt="Ad Messaging Table"
+                        className="h-[340px] w-[320px] max-w-none rounded-xl shadow-2xl mt-17 object-cover -ml-90"
+                      />
                     </div>
                   </div>
-                  {/* Couple Ad Full Image - Right, centered */}
-                  <div className="flex flex-row justify-end items-start w-full gap-16">
-                    <div className="flex flex-col items-start relative">
-                      <img
-                        src="/images/Ad-Visuals-3.png"
-                        alt="Ad Visual Table"
-                        className="h-[350px] w-[380px] max-w-none rounded-xl shadow-2xl -mt-12 mb-8 -ml-70 scale-120 translate-x-20"
-                      />
-                      <div className="w-full flex justify-center">
-                        <img
-                          src="/images/Ad-Messaging (1).png"
-                          alt="Ad Messaging Table"
-                          className="h-[340px] w-[320px] max-w-none rounded-xl shadow-2xl mt-17 object-cover -ml-70 translate-x-20"
-                        />
-                      </div>
-                    </div>
+                  <img
+                    src="/images/Girl-3.png"
+                    alt="Girl-3"
+                    className="h-[550px] rounded-xl shadow-2xl scale-120 transform translate-y-20 translate-x-10"
+                    style={{ width: '500px', maxWidth: 'none', minWidth: '500px' }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Visualize Card - Modern Minimal Design */}
+          <div 
+            ref={setVisualizeSectionRef}
+            className={`bg-black min-h-[500px] py-0 mt-0 pt-0 transition-all duration-1500 ease-in-out ${
+              visualizeAnimationPhase === 'expanding' || visualizeAnimationPhase === 'expanded' 
+                ? 'fixed inset-0 z-50 flex items-center justify-center bg-black' 
+                : ''
+            }`}
+          >
+            <div className="max-w-7xl mx-auto px-6">
+              <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[500px]">
+                {/* Analytics Dashboard - Left Side */}
+                <div className={`flex items-center justify-start order-2 lg:order-1 overflow-visible transition-all duration-700 ease-in-out ${
+                  visualizeAnimationPhase === 'expanding' || visualizeAnimationPhase === 'expanded'
+                    ? 'absolute inset-0 flex items-center justify-center z-10'
+                    : ''
+                }`}>
+                  <div className="relative overflow-visible">
                     <img
-                      src="/images/Girl-2.png"
-                      alt="Girl-2"
-                      className="h-[550px] rounded-xl shadow-2xl scale-120 transform translate-y-20 translate-x-20"
-                      style={{ width: '400px', maxWidth: 'none', minWidth: '400px' }}
+                      src="/images/Big-Visualize-2.png"
+                      alt="Visualize section image"
+                      className={`transition-all duration-1500 ease-in-out object-cover object-center shadow-lg ${
+                        visualizeAnimationPhase === 'expanding' || visualizeAnimationPhase === 'expanded'
+                          ? 'w-[60vw] h-[55vh] scale-100 mx-auto block -translate-x-1/12'
+                          : 'w-[850px] max-w-none h-[385px] scale-120 -ml-[110px]'
+                      }`}
                     />
                   </div>
                 </div>
-              </div>
-            </div>
 
-            {/* Visualize Card - Modern Minimal Design */}
-            <div className="bg-black min-h-[600px] py-16">
-              <div className="max-w-7xl mx-auto px-6">
-                <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[500px]">
-                  {/* Analytics Dashboard - Left Side */}
-                  <div className="flex items-center justify-start order-2 lg:order-1 overflow-visible">
-                    <div className="relative overflow-visible">
-                      <img
-                        src="/images/Visualize-2.png"
-                        alt="Visualize section image"
-                        className="w-[800px] max-w-none h-[360px] object-cover object-center shadow-lg scale-120 -ml-[110px]"
-                      />
-                    </div>
-                  </div>
+                {/* Text Content - Right Side */}
+                <div className={`flex flex-col justify-center space-y-8 order-1 lg:order-2 ml-32 items-end transition-all duration-700 ease-in-out ${
+                  visualizeAnimationPhase === 'expanding' || visualizeAnimationPhase === 'expanded'
+                    ? 'opacity-0 pointer-events-none'
+                    : 'opacity-100'
+                }`}>
+                  <div className="space-y-6 text-right">
+                    <button className="text-[#C3A3FF] text-base font-medium px-0 py-0 hover:text-[#B3A3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none">
+                      Visualize
+                    </button>
 
-                  {/* Text Content - Right Side */}
-                  <div className="flex flex-col justify-center space-y-8 order-1 lg:order-2 pr-50 items-end">
-                    <div className="space-y-6 text-right">
-                      <button className="text-[#C3A3FF] text-base font-medium px-0 py-0 hover:text-[#B3A3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none">
-                        Visualize
-                      </button>
+                    <h3 className="text-3xl lg:text-4xl font-bold text-white leading-tight font-sans">
+                      Translate insights into
+                      <br />
+                      <span className="text-white">visual reports</span>
+                    </h3>
 
-                      <h3 className="text-3xl lg:text-4xl font-bold text-white leading-tight font-sans">
-                        Translate insights into
-                        <br />
-                        <span className="text-white">visual reports</span>
-                      </h3>
-
-                      <p className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg">
-                        Digestible creative reports that the whole team can understand. Eliminate information overload.
-                      </p>
-                    </div>
+                    <p className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg">
+                      Digestible creative reports that the whole team can understand. Eliminate information overload.
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Share Card - Now "Unlock Granular Insights" */}
-            <div className="bg-black min-h-[600px] py-16">
+          {/* Share Card - Now "Unlock Granular Insights" */}
+          <div
+            ref={setImproveSectionRef}
+            className={`bg-black min-h-[800px] py-14 mt-16 transition-all duration-1500 ease-in-out ${
+              improveAnimationPhase === 'expanding' || improveAnimationPhase === 'expanded'
+                ? 'fixed inset-0 z-50 flex items-center justify-center bg-black min-h-screen min-w-full'
+                : ''
+            }`}
+          >
+            {improveAnimationPhase === 'expanding' || improveAnimationPhase === 'expanded' ? (
+              <div className="flex items-center justify-center min-h-screen min-w-full">
+                <img
+                  ref={setImproveImageRef}
+                  src="/images/Improve-3.png"
+                  alt="Improve section image"
+                  className="w-[60vw] h-[55vh] scale-100 mx-auto block rounded-xl shadow-2xl transition-all duration-1500 ease-in-out"
+                />
+              </div>
+            ) : (
               <div className="max-w-7xl mx-auto px-6">
                 <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[500px]">
                   {/* Text Content - Left Side */}
@@ -568,29 +740,29 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       </p>
                     </div>
                   </div>
-                  
                   {/* Image - Right Side */}
                   <div className="flex justify-center items-center">
                     <img
-                      src="/images/Improve-2.png"
+                      ref={setImproveImageRef}
+                      src="/images/Improve-3.png"
                       alt="Improve section image"
-                      className="w-[800px] max-w-none h-[350px] rounded-xl shadow-2xl"
+                      className="w-[820px] max-w-none h-[385px] rounded-xl shadow-2xl transition-all duration-1500 ease-in-out"
                     />
                   </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
 
       {/* FAQ Section */}
-      <div className="py-24 bg-black">
+      <div className="py-8 bg-black">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl mb-6 tracking-tight font-clash">
               <span className="sentence-gradient">
-                Frequently Asked <span className="font-extrabold animate-gentle-pulse">Questions</span>
+                Frequently Asked <span className="animate-gentle-pulse">Questions</span>
               </span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-light px-4">
@@ -737,11 +909,12 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
       .client-logos-slider {
         display: flex;
         animation: scrollElastic 30s linear infinite;
+        gap: 0;
       }
 
       @keyframes scrollElastic {
         0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-50% - 20px)); }
+        100% { transform: translateX(-33.3333%); }
       }
 
       .gradient-bg {
@@ -816,6 +989,15 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
 
       .font-sans {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+      }
+    `}</style>
+
+    <style jsx global>{`
+      @font-face {
+        font-family: 'Wasted Windey OpenType';
+        src: url('/fonts/WastedWindey.otf') format('opentype');
+        font-weight: normal;
+        font-style: normal;
       }
     `}</style>
     </div>
