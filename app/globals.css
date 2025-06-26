@@ -98,3 +98,10 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@font-face {
+  font-family: 'Wasted Windey OpenType';
+  src: url('/fonts/WastedWindey.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}

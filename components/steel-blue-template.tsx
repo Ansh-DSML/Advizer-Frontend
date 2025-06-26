@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ArrowRight, Play, Users, Tag, BarChart3, Monitor, Layers, Brain, TrendingUp } from "lucide-react"
 import { FaqAccordion } from "@/components/faq/faq-accordion"
 
+
 interface SteelBlueTemplateProps {
   onLoginClick?: () => void
 }
@@ -15,17 +16,11 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
   const [typewriterText, setTypewriterText] = useState("")
   const [showCursor, setShowCursor] = useState(true)
   const [isPageLoaded, setIsPageLoaded] = useState(false)
-  const [visualizeAnimationPhase, setVisualizeAnimationPhase] = useState('normal')
-  const [visualizeSectionRef, setVisualizeSectionRef] = useState<HTMLDivElement | null>(null)
-  const [visualizeAnimationTriggered, setVisualizeAnimationTriggered] = useState(false)
   const lastScrollY = useRef(0)
-  const [showBlurOverlay, setShowBlurOverlay] = useState(false)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const observerRef = useRef<IntersectionObserver | null>(null)
-  const [improveAnimationPhase, setImproveAnimationPhase] = useState('normal')
-  const [improveSectionRef, setImproveSectionRef] = useState<HTMLDivElement | null>(null)
-  const [improveImageRef, setImproveImageRef] = useState<HTMLImageElement | null>(null)
-  const [improveAnimationTriggered, setImproveAnimationTriggered] = useState(false)
+
+
 
   const clientLogos = [
     "Metro",
@@ -120,138 +115,6 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
       clearInterval(repeatInterval)
     }
   }, [isPageLoaded])
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!visualizeSectionRef) return
-      
-      const rect = visualizeSectionRef.getBoundingClientRect()
-      const windowHeight = window.innerHeight
-      const sectionTop = rect.top
-      const sectionHeight = rect.height
-      const sectionBottom = rect.bottom
-      const currentScrollY = window.scrollY
-      const scrollingDown = currentScrollY > lastScrollY.current
-      lastScrollY.current = currentScrollY
-      
-      // Trigger when 90% of the image is visible
-      const visibleHeight = Math.min(windowHeight, sectionBottom) - Math.max(0, sectionTop)
-      const percentVisible = visibleHeight / sectionHeight
-      if (
-        percentVisible >= 0.9 &&
-        visualizeAnimationPhase === 'normal' &&
-        !visualizeAnimationTriggered &&
-        scrollingDown
-      ) {
-        setVisualizeAnimationPhase('expanding')
-        setTimeout(() => setVisualizeAnimationPhase('expanded'), 1500)
-        setVisualizeAnimationTriggered(true)
-      }
-    }
-    
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [visualizeSectionRef, visualizeAnimationPhase, visualizeAnimationTriggered])
-
-  // Lock scroll while the effect is active
-  useEffect(() => {
-    if (
-      visualizeAnimationPhase === 'expanding' ||
-      visualizeAnimationPhase === 'expanded' ||
-      visualizeAnimationPhase === 'collapsing'
-    ) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-    return () => {
-      document.body.style.overflow = ''
-    }
-  }, [visualizeAnimationPhase])
-
-  // Effect always lasts 6 seconds, then collapses and scrolls to center
-  useEffect(() => {
-    if (visualizeAnimationPhase === 'expanded') {
-      if (visualizeSectionRef) {
-        visualizeSectionRef.scrollIntoView({ behavior: 'smooth', block: 'center' })
-      }
-      const timer = setTimeout(() => {
-        setVisualizeAnimationPhase('collapsing')
-        setTimeout(() => {
-          setVisualizeAnimationPhase('normal')
-          // Scroll to center after collapse animation, when section is back in flow
-          if (visualizeSectionRef) {
-            visualizeSectionRef.scrollIntoView({ behavior: 'smooth', block: 'center' })
-          }
-        }, 1500)
-      }, 6000)
-      return () => clearTimeout(timer)
-    }
-  }, [visualizeAnimationPhase, visualizeSectionRef])
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!improveImageRef) return
-      const rect = improveImageRef.getBoundingClientRect()
-      const windowHeight = window.innerHeight
-      const imageTop = rect.top
-      const imageHeight = rect.height
-      const imageBottom = rect.bottom
-      const currentScrollY = window.scrollY
-      const scrollingDown = currentScrollY > lastScrollY.current
-      lastScrollY.current = currentScrollY
-      // Trigger when 90% of the image is visible
-      const visibleHeight = Math.min(windowHeight, imageBottom) - Math.max(0, imageTop)
-      const percentVisible = visibleHeight / imageHeight
-      if (
-        percentVisible >= 0.9 &&
-        improveAnimationPhase === 'normal' &&
-        !improveAnimationTriggered &&
-        scrollingDown
-      ) {
-        setImproveAnimationPhase('expanding')
-        setTimeout(() => setImproveAnimationPhase('expanded'), 1500)
-        setImproveAnimationTriggered(true)
-      }
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [improveImageRef, improveAnimationPhase, improveAnimationTriggered])
-
-  // Lock scroll while the effect is active for Improve
-  useEffect(() => {
-    if (
-      improveAnimationPhase === 'expanding' ||
-      improveAnimationPhase === 'expanded' ||
-      improveAnimationPhase === 'collapsing'
-    ) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-    return () => {
-      document.body.style.overflow = ''
-    }
-  }, [improveAnimationPhase])
-
-  // Effect always lasts 6 seconds, then collapses and scrolls to center for Improve
-  useEffect(() => {
-    if (improveAnimationPhase === 'expanded') {
-      if (improveSectionRef) {
-        improveSectionRef.scrollIntoView({ behavior: 'smooth', block: 'center' })
-      }
-      const timer = setTimeout(() => {
-        setImproveAnimationPhase('collapsing')
-        setTimeout(() => {
-          setImproveAnimationPhase('normal')
-          if (improveSectionRef) {
-            improveSectionRef.scrollIntoView({ behavior: 'smooth', block: 'center' })
-          }
-        }, 1500)
-      }, 6000)
-      return () => clearTimeout(timer)
-    }
-  }, [improveAnimationPhase, improveSectionRef])
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-black">
@@ -591,7 +454,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
         <div className="text-center mb-20">
           <h2 className="text-5xl font-light mb-6 font-clash">
             <span className="sentence-gradient">
-              See It in <span className="font-bold animate-gentle-pulse">Action</span>
+              See It in <span className="animate-gentle-pulse">Action</span>
             </span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed font-light px-4">
@@ -603,20 +466,20 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
         {/* Feature Highlights Section */}
         <div className="max-w-7xl mx-auto space-y-0">
           {/* Analyze Card - Digital Collage Layout */}
-          <div className="bg-black min-h-[800px] py-0 pb-0 mb-0">
+          <div className="bg-black min-h-[800px] py-0 pb-0 mb-0 relative" style={{ zIndex: 1 }}>
             <div className="max-w-7xl mx-auto px-6">
               <div className="grid lg:grid-cols-2 gap-16 items-start min-h-[700px]">
                 {/* Analyze Text Content - Left */}
-                <div className="flex flex-col justify-center h-full space-y-8 pl-0 -ml-12 text-left">
-                  <div className="space-y-6">
+                <div className="flex flex-col justify-center h-full space-y-8 pl-0 -ml-12 text-left items-center">
+                  <div className="space-y-6 w-full flex flex-col items-start">
                     <button className="text-[#A3A3FF] text-base font-medium px-0 py-0 hover:text-[#B3B3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none">
                       Analyze
                     </button>
-                    <h3 className="text-3xl lg:text-4xl font-bold text-white leading-tight font-sans">
+                    <h3 id="analyze-subheading" className="text-3xl lg:text-4xl font-bold text-white leading-tight font-sans relative">
                       AI Tagging
                     </h3>
-                    <p className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg mb-8 whitespace-nowrap overflow-hidden text-ellipsis">
-                      Instantly tag every creative insight. 
+                    <p id="analyze-insight-text" className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg mb-8 whitespace-nowrap overflow-hidden text-ellipsis">
+                      Instantly tag every creative insight.
                     </p>
                   </div>
                 </div>
@@ -642,60 +505,185 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                     className="h-[550px] rounded-xl shadow-2xl scale-120 transform translate-y-20 translate-x-10"
                     style={{ width: '500px', maxWidth: 'none', minWidth: '500px' }}
                   />
+                  {/* S-shaped line from left edge of Girl 3 image (now horizontal) */}
+                  <svg
+                    className="hidden lg:block"
+                    style={{
+                      position: 'absolute',
+                      left: '655px', // adjust as needed to align with Girl 3's left edge
+                      top: '380px', // adjust as needed for vertical alignment
+                      width: '145px',
+                      height: '100px',
+                      pointerEvents: 'none',
+                      zIndex: 3,
+                    }}
+                    viewBox="0 0 400 100"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M 10 50 C 110 0, 290 100, 390 50"
+                      stroke="white"
+                      strokeWidth="3"
+                      fill="none"
+                      style={{
+                        filter: 'drop-shadow(0 0 12px #bcd0ff) drop-shadow(0 0 4px #bcd0ff)',
+                        opacity: 0.85,
+                      }}
+                    
+                    />
+                  </svg>
+                  {/* Third S-shaped line, slightly upper left edge of Girl 3 image */}
+                  <svg
+                    className="hidden lg:block"
+                    style={{
+                      position: 'absolute',
+                      left: '655px', // slightly upper left edge
+                      top: '160px',  // slightly above the first S-line
+                      width: '145px',
+                      height: '100px',
+                      pointerEvents: 'none',
+                      zIndex: 3,
+                    }}
+                    viewBox="0 0 400 100"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M 10 50 C 110 0, 290 100, 390 50"
+                      stroke="white"
+                      strokeWidth="3"
+                      fill="none"
+                      style={{
+                        filter: 'drop-shadow(0 0 12px #bcd0ff) drop-shadow(0 0 4px #bcd0ff)',
+                        opacity: 0.85,
+                      }}
+                    />
+                  </svg>
                 </div>
               </div>
+              {/* Vertical line from below Analyze subheading to above Visualize image */}
+              <span
+                className="hidden lg:block"
+                style={{
+                  position: 'absolute',
+                  left: '6.5%', // Moved further left from previous position
+                  top: 'calc(400px + 2.5rem)', // Shifted further down below the subheading
+                  width: '2px',
+                  height: '340px', // Adjust so it stops 30px above the Visualize image
+                  background: 'white',
+                  opacity: 0.8,
+                  borderRadius: '1px',
+                  zIndex: 2,
+                }}
+              />
+              {/* Horizontal line extending right from the bottom of the vertical line to the right edge */}
+              <span
+                className="hidden lg:block"
+                style={{
+                  position: 'absolute',
+                  left: '6.5%',
+                  top: `calc(400px + 2.5rem + 340px)`, // Start at the bottom of the vertical line
+                  width: '78%', // From 6.5% to 100%
+                  height: '2px',
+                  background: 'white',
+                  opacity: 0.8,
+                  borderRadius: '1px',
+                  zIndex: 2,
+                }}
+              />
+              {/* Short vertical line at the end of the horizontal line (90 degree turn down) */}
+              <span
+                className="hidden lg:block"
+                style={{
+                  position: 'absolute',
+                  left: '84.4%',
+                  top: `calc(400px + 2.5rem + 340px)`,
+                  width: '2px',
+                  height: '190px', // Demo length
+                  background: 'white',
+                  opacity: 0.8,
+                  borderRadius: '1px',
+                  zIndex: 2,
+                }}
+              />
             </div>
           </div>
 
-          {/* Visualize Card - Modern Minimal Design */}
-          <div 
-            ref={setVisualizeSectionRef}
-            className={`bg-black min-h-[500px] py-0 mt-0 pt-0 transition-all duration-1500 ease-in-out ${
-              visualizeAnimationPhase === 'expanding' || visualizeAnimationPhase === 'expanded' 
-                ? 'fixed inset-0 z-50 flex items-center justify-center bg-black' 
-                : ''
-            }`}
-          >
+          {/* Visualize Card - Modern Minimal Design (STATIC, NO ANIMATION) */}
+          <div className="bg-black min-h-[500px] py-0 mt-0 pt-0">
             <div className="max-w-7xl mx-auto px-6">
               <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[500px]">
                 {/* Analytics Dashboard - Left Side */}
-                <div className={`flex items-center justify-start order-2 lg:order-1 overflow-visible transition-all duration-700 ease-in-out ${
-                  visualizeAnimationPhase === 'expanding' || visualizeAnimationPhase === 'expanded'
-                    ? 'absolute inset-0 flex items-center justify-center z-10'
-                    : ''
-                }`}>
+                <div className="flex items-center justify-start order-2 lg:order-1 overflow-visible">
                   <div className="relative overflow-visible">
                     <img
                       src="/images/Big-Visualize-2.png"
                       alt="Visualize section image"
-                      className={`transition-all duration-1500 ease-in-out object-cover object-center shadow-lg ${
-                        visualizeAnimationPhase === 'expanding' || visualizeAnimationPhase === 'expanded'
-                          ? 'w-[60vw] h-[55vh] scale-100 mx-auto block -translate-x-1/12'
-                          : 'w-[850px] max-w-none h-[385px] scale-120 -ml-[110px]'
-                      }`}
+                      className="w-[850px] max-w-none h-[385px] scale-120 -ml-[110px] object-cover object-center shadow-lg"
                     />
                   </div>
                 </div>
-
                 {/* Text Content - Right Side */}
-                <div className={`flex flex-col justify-center space-y-8 order-1 lg:order-2 ml-32 items-end transition-all duration-700 ease-in-out ${
-                  visualizeAnimationPhase === 'expanding' || visualizeAnimationPhase === 'expanded'
-                    ? 'opacity-0 pointer-events-none'
-                    : 'opacity-100'
-                }`}>
+                <div className="flex flex-col justify-center space-y-8 order-1 lg:order-2 ml-32 items-end">
                   <div className="space-y-6 text-right">
                     <button className="text-[#C3A3FF] text-base font-medium px-0 py-0 hover:text-[#B3A3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none">
                       Visualize
                     </button>
-
                     <h3 className="text-3xl lg:text-4xl font-bold text-white leading-tight font-sans">
                       Translate insights into
                       <br />
                       <span className="text-white">visual reports</span>
                     </h3>
-
                     <p className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg">
-                      Digestible creative reports that the whole team can understand. Eliminate information overload.
+                      Digestible creative reports that the whole team can understand. <span className="relative inline-block">Eliminate
+                        <span
+                          className="hidden lg:block"
+                          style={{
+                            position: 'absolute',
+                            left: '78%',
+                            top: 'calc(100% + 16px)',
+                            transform: 'translateX(-50%)',
+                            width: '2px',
+                            height: '170px', // Demo length
+                            background: 'white',
+                            opacity: 0.8,
+                            borderRadius: '1px',
+                            zIndex: 2,
+                          }}
+                        />
+                        {/* Horizontal line at the bottom of the vertical line, turning left */}
+                        <span
+                          className="hidden lg:block"
+                          style={{
+                            position: 'absolute',
+                            left: '78%',
+                            top: 'calc(100% + 14px + 170px)', // At the bottom of the vertical line
+                            transform: 'translateX(-100%)',
+                            width: '1005px', // Demo length
+                            height: '2px',
+                            background: 'white',
+                            opacity: 0.8,
+                            borderRadius: '1px',
+                            zIndex: 2,
+                          }}
+                        />
+                        {/* Vertical line at the left end of the horizontal line, turning down */}
+                        <span
+                          className="hidden lg:block"
+                          style={{
+                            position: 'absolute',
+                            left: '-1512%',
+                            top: 'calc(100% + 14px + 170px)', // Same top as the horizontal line
+                            width: '2px',
+                            height: '180px', // Demo length
+                            background: 'white',
+                            opacity: 0.8,
+                            borderRadius: '1px',
+                            zIndex: 2,
+                          }}
+                        />
+                      </span> information overload.
                     </p>
                   </div>
                 </div>
@@ -703,55 +691,36 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
             </div>
           </div>
 
-          {/* Share Card - Now "Unlock Granular Insights" */}
-          <div
-            ref={setImproveSectionRef}
-            className={`bg-black min-h-[800px] py-14 mt-16 transition-all duration-1500 ease-in-out ${
-              improveAnimationPhase === 'expanding' || improveAnimationPhase === 'expanded'
-                ? 'fixed inset-0 z-50 flex items-center justify-center bg-black min-h-screen min-w-full'
-                : ''
-            }`}
-          >
-            {improveAnimationPhase === 'expanding' || improveAnimationPhase === 'expanded' ? (
-              <div className="flex items-center justify-center min-h-screen min-w-full">
-                <img
-                  ref={setImproveImageRef}
-                  src="/images/Improve-3.png"
-                  alt="Improve section image"
-                  className="w-[60vw] h-[55vh] scale-100 mx-auto block rounded-xl shadow-2xl transition-all duration-1500 ease-in-out"
-                />
-              </div>
-            ) : (
-              <div className="max-w-7xl mx-auto px-6">
-                <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[500px]">
-                  {/* Text Content - Left Side */}
-                  <div className="flex flex-col justify-center space-y-8 pl-0 -ml-12">
-                    <div className="space-y-6">
-                      <button className="text-[#A3FFA3] text-base font-medium px-0 py-0 hover:text-[#B3FFB3] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none">
-                        Improve
-                      </button>
-                      <h3 className="text-3xl lg:text-4xl font-bold text-white leading-tight font-sans">
-                        Unlock Granular
-                        <br />
-                        <span className="text-white">Insights</span>
-                      </h3>
-                      <p className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg">
-                        Break down performance by key demographics to make smarter, data-driven decisions.
-                      </p>
-                    </div>
-                  </div>
-                  {/* Image - Right Side */}
-                  <div className="flex justify-center items-center">
-                    <img
-                      ref={setImproveImageRef}
-                      src="/images/Improve-3.png"
-                      alt="Improve section image"
-                      className="w-[820px] max-w-none h-[385px] rounded-xl shadow-2xl transition-all duration-1500 ease-in-out"
-                    />
+          {/* Share Card - Now "Unlock Granular Insights" (STATIC, NO ANIMATION) */}
+          <div className="bg-black min-h-[800px] py-14 mt-16">
+            <div className="max-w-7xl mx-auto px-6">
+              <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[500px]">
+                {/* Text Content - Left Side */}
+                <div className="flex flex-col justify-center space-y-8 pl-0 -ml-12">
+                  <div className="space-y-6">
+                    <button className="text-[#A3FFA3] text-base font-medium px-0 py-0 hover:text-[#B3FFB3] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none">
+                      Improve
+                    </button>
+                    <h3 className="text-3xl lg:text-4xl font-bold text-white leading-tight font-sans">
+                      Unlock Granular
+                      <br />
+                      <span className="text-white">Insights</span>
+                    </h3>
+                    <p className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg">
+                      Break down performance by key demographics to make smarter, data-driven decisions.
+                    </p>
                   </div>
                 </div>
+                {/* Image - Right Side */}
+                <div className="flex justify-center items-center">
+                  <img
+                    src="/images/Improve-3.png"
+                    alt="Improve section image"
+                    className="w-[820px] max-w-none h-[385px] rounded-xl shadow-2xl"
+                  />
+                </div>
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
@@ -989,15 +958,6 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
 
       .font-sans {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-      }
-    `}</style>
-
-    <style jsx global>{`
-      @font-face {
-        font-family: 'Wasted Windey OpenType';
-        src: url('/fonts/WastedWindey.otf') format('opentype');
-        font-weight: normal;
-        font-style: normal;
       }
     `}</style>
     </div>
