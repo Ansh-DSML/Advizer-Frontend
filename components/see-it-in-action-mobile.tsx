@@ -13,17 +13,17 @@ export default function SeeItInActionMobile() {
             margin-top: 2.5rem !important; /* Move images further down */
           }
           .portrait-ad-visuals {
-            width: 62vw !important;
-            height: 52vw !important;
+            width: 59vw !important;
+            height: 56vw !important;
             max-width: 300px !important;
             max-height: 360px !important;
             object-fit: cover;
-            margin-left: -6vw !important;
+            margin-left: -9vw !important;
             margin-right: auto !important;
           }
           .portrait-ad-messaging {
-            width: 62vw !important;
-            height: 52vw !important;
+            width: 58vw !important;
+            height: 56vw !important;
             max-width: 300px !important;
             max-height: 360px !important;
             object-fit: cover;
@@ -33,6 +33,25 @@ export default function SeeItInActionMobile() {
           .big-visualize-img {
             height: 260px !important;
             object-fit: contain !important;
+          }
+        }
+        @media (orientation: landscape) {
+          .landscape-img-row {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: space-between !important;
+            align-items: stretch !important;
+            gap: 2vw !important;
+            width: 100% !important;
+            margin-top: 2.5rem !important;
+          }
+          .landscape-ad-visuals, .landscape-ad-messaging {
+            width: 44vw !important;
+            height: 32vw !important;
+            max-width: 480px !important;
+            max-height: 340px !important;
+            object-fit: cover !important;
+            margin: 0 !important;
           }
         }
         @media (orientation: landscape) {
@@ -88,16 +107,16 @@ export default function SeeItInActionMobile() {
               className="rounded-xl shadow-2xl mb-2"
               style={{ width: '220px', maxWidth: '80vw', height: 'auto' }}
             />
-            <div className="portrait-img-row w-full">
+            <div className="portrait-img-row w-full landscape-img-row w-full">
               <img
                 src="/images/Ad-Visuals-3.png"
                 alt="Ad Visuals"
-                className="rounded-xl shadow-xl portrait-ad-visuals"
+                className="rounded-xl shadow-xl portrait-ad-visuals landscape-ad-visuals"
               />
               <img
                 src="/images/Ad-Messaging (1).png"
                 alt="Ad Messaging"
-                className="rounded-xl shadow-lg portrait-ad-messaging"
+                className="rounded-xl shadow-lg portrait-ad-messaging landscape-ad-messaging"
               />
             </div>
           </div>
