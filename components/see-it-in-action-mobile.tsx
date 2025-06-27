@@ -46,6 +46,17 @@ export default function SeeItInActionMobile() {
             max-height: 400px !important;
             object-fit: contain !important;
           }
+          .portrait-text-center {
+            text-align: center !important;
+          }
+          .portrait-text-center p {
+            text-align: center !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+          .portrait-bottom-spacing {
+            margin-bottom: 8rem !important;
+          }
         }
         @media (orientation: landscape) {
           .landscape-img-row {
@@ -120,7 +131,7 @@ export default function SeeItInActionMobile() {
           }
         }
       `}</style>
-      <div className="p-4 max-w-md mx-auto see-in-action-top sm:mt-0">
+      <div className="p-4 max-w-md mx-auto see-in-action-top sm:mt-0 portrait-bottom-spacing">
         <div className="text-center mb-2 p-0">
           <h2
             className="text-4xl font-extrabold font-clash mb-2"
@@ -142,7 +153,7 @@ export default function SeeItInActionMobile() {
         </div>
 
         {/* Analyze Section (Mobile) */}
-        <div className="mt-3 text-left landscape-analyze-text">
+        <div className="mt-3 text-left landscape-analyze-text portrait-text-center">
           <button className="text-[#A3A3FF] text-base font-medium px-0 py-0 hover:text-[#B3B3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none mb-2">
             Analyze
           </button>
@@ -175,7 +186,7 @@ export default function SeeItInActionMobile() {
         </div>
 
         {/* Visualize Section (Mobile) */}
-        <div className="mt-14 text-right landscape-visualize-text">
+        <div className="mt-14 text-right landscape-visualize-text portrait-text-center">
           <button className="text-[#C3A3FF] text-base font-medium px-0 py-0 hover:text-[#B3B3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none mb-2">
             Visualize
           </button>
@@ -196,7 +207,7 @@ export default function SeeItInActionMobile() {
         </div>
 
         {/* Improve Section (Mobile) */}
-        <div className="mt-12 text-left landscape-improve-text">
+        <div className="mt-12 text-left landscape-improve-text portrait-text-center">
           <button className="text-[#A3FFA3] text-base font-medium px-0 py-0 hover:text-[#B3FFB3] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none mb-2">
             Improve
           </button>

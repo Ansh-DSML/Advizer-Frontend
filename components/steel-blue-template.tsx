@@ -133,12 +133,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
   useEffect(() => {
     const observer = new window.IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 1.0) {
           setVerticalLineGlowed(true)
-          observer.disconnect()
+        } else if (!entry.isIntersecting) {
+          setVerticalLineGlowed(false)
         }
       },
-      { threshold: 1.0 }
+      { threshold: [0, 1] }
     )
     if (verticalLineRef.current) {
       observer.observe(verticalLineRef.current)
@@ -149,12 +150,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
   useEffect(() => {
     const observer = new window.IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 1.0) {
           setHorizontalLineGlowed(true)
-          observer.disconnect()
+        } else if (!entry.isIntersecting) {
+          setHorizontalLineGlowed(false)
         }
       },
-      { threshold: 1.0 }
+      { threshold: [0, 1] }
     )
     if (horizontalLineRef.current) {
       observer.observe(horizontalLineRef.current)
@@ -165,12 +167,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
   useEffect(() => {
     const observer = new window.IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 1.0) {
           setVerticalLine2Glowed(true)
-          observer.disconnect()
+        } else if (!entry.isIntersecting) {
+          setVerticalLine2Glowed(false)
         }
       },
-      { threshold: 1.0 }
+      { threshold: [0, 1] }
     )
     if (verticalLine2Ref.current) {
       observer.observe(verticalLine2Ref.current)
@@ -181,12 +184,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
   useEffect(() => {
     const observer = new window.IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 1.0) {
           setVerticalLine3Glowed(true)
-          observer.disconnect()
+        } else if (!entry.isIntersecting) {
+          setVerticalLine3Glowed(false)
         }
       },
-      { threshold: 1.0 }
+      { threshold: [0, 1] }
     )
     if (verticalLine3Ref.current) {
       observer.observe(verticalLine3Ref.current)
@@ -197,12 +201,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
   useEffect(() => {
     const observer = new window.IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 1.0) {
           setHorizontalLine3Glowed(true)
-          observer.disconnect()
+        } else if (!entry.isIntersecting) {
+          setHorizontalLine3Glowed(false)
         }
       },
-      { threshold: 1.0 }
+      { threshold: [0, 1] }
     )
     if (horizontalLine3Ref.current) {
       observer.observe(horizontalLine3Ref.current)
@@ -213,12 +218,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
   useEffect(() => {
     const observer = new window.IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 1.0) {
           setVerticalLine4Glowed(true)
-          observer.disconnect()
+        } else if (!entry.isIntersecting) {
+          setVerticalLine4Glowed(false)
         }
       },
-      { threshold: 1.0 }
+      { threshold: [0, 1] }
     )
     if (verticalLine4Ref.current) {
       observer.observe(verticalLine4Ref.current)
@@ -256,13 +262,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
               Login
               <ArrowRight className="ml-3 w-5 h-5" />
             </Button>
-            <Button
+            {/* <Button
               size="lg"
               className="bg-[#2563eb] hover:bg-blue-700 text-white px-8 py-6 text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300 border border-gray-600"
             >
               <Play className="mr-3 w-5 h-5" />
               Demo
-            </Button>
+            </Button> */}
           </div>
 
           <div className="text-center mb-4">
@@ -291,7 +297,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
       </div>
 
       {/* Features Section - Six Lenses */}
-      <div className="py-24 bg-black">
+      <div className="pt-5 pb-24 bg-black">
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-5xl font-light mb-6 font-clash">
@@ -341,11 +347,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
       </div>
 
       {/* Who Benefits Section */}
-      <div className="py-24 bg-black">
+      <div className="pt-5 pb-24 bg-black">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-light mb-6 font-clash">
-              <span className="sentence-gradient">Who Benefits from Advizer?</span>
+              <span className="sentence-gradient">
+                Who Benefits from Advizer?
+              </span>
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-light">
               Discover how Advizer transforms advertising strategies across different roles and industries, delivering
@@ -557,297 +565,299 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
       </div>
 
       {/* See It in Action Section - Demo Video & Feature Highlights */}
-      {(() => {
-        const isMobile = useIsMobile();
-        return isMobile ? (
-          <SeeItInActionMobile />
-        ) : (
-          <div className="container mx-auto px-6">
-            <div className="text-center mb-20">
-              <h2 className="text-5xl font-light mb-6 font-clash">
-                <span className="sentence-gradient">
-                  See It in <span className="animate-gentle-pulse">Action</span>
-                </span>
-              </h2>
-              <p className="text-lg sm:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed font-light px-4">
-                A quick tour of the features designed to give you a decisive advantage on Meta.
-              </p>
-              <div style={{ marginTop: '200px' }}></div>
-            </div>
-            {/* Feature Highlights Section */}
-            <div className="max-w-7xl mx-auto space-y-0">
-              {/* Analyze Card - Digital Collage Layout */}
-              <div className="bg-black min-h-[800px] py-0 pb-0 mb-0 relative" style={{ zIndex: 1 }}>
-                <div className="max-w-7xl mx-auto px-6">
-                  <div className="grid lg:grid-cols-2 gap-16 items-start min-h-[700px]">
-                    {/* Analyze Text Content - Left */}
-                    <div className="flex flex-col justify-center h-full space-y-8 pl-0 -ml-12 text-left items-center">
-                      <div className="space-y-6 w-full flex flex-col items-start">
-                        <button className="text-[#A3A3FF] text-base font-medium px-0 py-0 hover:text-[#B3B3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none">
-                          Analyze
-                        </button>
-                        <h3 id="analyze-subheading" className="text-3xl lg:text-4xl font-bold text-white leading-tight font-sans relative">
-                          AI Tagging
-                        </h3>
-                        <p id="analyze-insight-text" className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg mb-8 whitespace-nowrap overflow-hidden text-ellipsis">
-                          Instantly tag every creative insight.
-                        </p>
+      <div style={{ marginTop: '-100px' }}>
+        {(() => {
+          const isMobile = useIsMobile();
+          return isMobile ? (
+            <SeeItInActionMobile />
+          ) : (
+            <div className="container mx-auto px-6">
+              <div className="text-center mb-20">
+                <h2 className="text-5xl font-light mb-6 font-clash">
+                  <span className="sentence-gradient">
+                    See It in <span className="animate-gentle-pulse">Action</span>
+                  </span>
+                </h2>
+                <p className="text-lg sm:text-xl text-gray-400 max-w-full mx-auto leading-relaxed font-light px-4">
+                  A quick tour of the features designed to give you a decisive advantage on Meta.
+                </p>
+                <div style={{ marginTop: '200px' }}></div>
+              </div>
+              {/* Feature Highlights Section */}
+              <div className="max-w-7xl mx-auto space-y-0">
+                {/* Analyze Card - Digital Collage Layout */}
+                <div className="bg-black min-h-[800px] py-0 pb-0 mb-0 relative" style={{ zIndex: 1 }}>
+                  <div className="max-w-7xl mx-auto px-6">
+                    <div className="grid lg:grid-cols-2 gap-16 items-start min-h-[700px]">
+                      {/* Analyze Text Content - Left */}
+                      <div className="flex flex-col justify-center h-full space-y-8 pl-0 -ml-12 text-left items-center">
+                        <div className="space-y-6 w-full flex flex-col items-start">
+                          <button className="text-[#A3A3FF] text-base font-medium px-0 py-0 hover:text-[#B3B3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none">
+                            Analyze
+                          </button>
+                          <h3 id="analyze-subheading" className="text-3xl lg:text-4xl font-bold text-white leading-tight font-sans relative">
+                            AI Tagging
+                          </h3>
+                          <p id="analyze-insight-text" className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg mb-8 whitespace-nowrap overflow-hidden text-ellipsis">
+                            Instantly tag every creative insight.
+                          </p>
+                        </div>
+                      </div>
+                      {/* Couple Ad Full Image - Right, centered */}
+                      <div className="flex flex-row justify-end items-start w-full gap-16">
+                        <div className="flex flex-col items-start relative">
+                          <img
+                            src="/images/Ad-Visuals-3.png"
+                            alt="Ad Visual Table"
+                            className="h-[350px] w-[380px] max-w-none rounded-xl shadow-2xl -mt-12 mb-8 -ml-90 scale-120"
+                          />
+                          <div className="w-full flex justify-center">
+                            <img
+                              src="/images/Ad-Messaging (1).png"
+                              alt="Ad Messaging Table"
+                              className="h-[340px] w-[320px] max-w-none rounded-xl shadow-2xl mt-17 object-cover -ml-90"
+                            />
+                          </div>
+                        </div>
+                        {/* Girl-3 image and anchored SVG lines */}
+                        <div className="relative" style={{ display: 'inline-block' }}>
+                          <img
+                            src="/images/Girl-3.png"
+                            alt="Girl-3"
+                            className="h-[550px] rounded-xl shadow-2xl scale-120 transform translate-y-20 translate-x-10"
+                            style={{ width: '500px', maxWidth: 'none', minWidth: '500px' }}
+                          />
+                          {/* S-shaped line from left edge of Girl 3 image (now horizontal) */}
+                          <svg
+                            className="hidden lg:block"
+                            style={{
+                              position: 'absolute',
+                              left: '-19.5%',
+                              top: '70%', // adjust as needed for vertical alignment
+                              width: '28%', // relative to image width
+                              height: '18%', // relative to image height
+                              pointerEvents: 'none',
+                              zIndex: 3,
+                            }}
+                            viewBox="0 0 400 100"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M 10 50 C 110 0, 290 100, 390 50"
+                              stroke="white"
+                              strokeWidth="3"
+                              fill="none"
+                              style={{
+                                filter: 'drop-shadow(0 0 12px #bcd0ff) drop-shadow(0 0 4px #bcd0ff)',
+                                opacity: 0.85,
+                              }}
+                            />
+                          </svg>
+                          {/* Third S-shaped line, slightly upper left edge of Girl 3 image */}
+                          <svg
+                            className="hidden lg:block"
+                            style={{
+                              position: 'absolute',
+                              left: '-19.5%',
+                              top: '20%', // adjust as needed for vertical alignment
+                              width: '28%',
+                              height: '18%',
+                              pointerEvents: 'none',
+                              zIndex: 3,
+                            }}
+                            viewBox="0 0 400 100"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M 10 50 C 110 0, 290 100, 390 50"
+                              stroke="white"
+                              strokeWidth="3"
+                              fill="none"
+                              style={{
+                                filter: 'drop-shadow(0 0 12px #bcd0ff) drop-shadow(0 0 4px #bcd0ff)',
+                                opacity: 0.85,
+                              }}
+                            />
+                          </svg>
+                        </div>
                       </div>
                     </div>
-                    {/* Couple Ad Full Image - Right, centered */}
-                    <div className="flex flex-row justify-end items-start w-full gap-16">
-                      <div className="flex flex-col items-start relative">
-                        <img
-                          src="/images/Ad-Visuals-3.png"
-                          alt="Ad Visual Table"
-                          className="h-[350px] w-[380px] max-w-none rounded-xl shadow-2xl -mt-12 mb-8 -ml-90 scale-120"
-                        />
-                        <div className="w-full flex justify-center">
+                    {/* Vertical line from below Analyze subheading to above Visualize image */}
+                    <span
+                      ref={verticalLineRef}
+                      className={`hidden lg:block travelling-vertical-glow-line${verticalLineGlowed ? " glow-animate" : ""}`}
+                      style={{
+                        position: 'absolute',
+                        left: '6.5%',
+                        top: '54%',
+                        width: '2px',
+                        height: '43.7%',
+                        background: 'white',
+                        opacity: 0.8,
+                        borderRadius: '1px',
+                        zIndex: 2,
+                      }}
+                    />
+                    {/* Horizontal line extending right from the bottom of the vertical line to the right edge */}
+                    <span
+                      ref={horizontalLineRef}
+                      className={`hidden lg:block travelling-horizontal-glow-line${horizontalLineGlowed ? " glow-animate" : ""}`}
+                      style={{
+                        position: 'absolute',
+                        left: '6.5%',
+                        top: `97.5%`,
+                        width: '78%',
+                        height: '2px',
+                        background: 'white',
+                        opacity: 0.8,
+                        borderRadius: '1px',
+                        zIndex: 2,
+                      }}
+                    />
+                    {/* Short vertical line at the end of the horizontal line (90 degree turn down) */}
+                    <span
+                      ref={verticalLine2Ref}
+                      className={`hidden lg:block travelling-vertical-glow-line-2${verticalLine2Glowed ? " glow-animate" : ""}`}
+                      style={{
+                        position: 'absolute',
+                        left: '84.4%',
+                        top: '97.5%',
+                        width: '2px',
+                        height: '24%',
+                        background: 'white',
+                        opacity: 0.8,
+                        borderRadius: '2px',
+                        zIndex: 2,
+                      }}
+                    />
+                  </div>
+                </div>
+
+                {/* Visualize Card - Modern Minimal Design (STATIC, NO ANIMATION) */}
+                <div className="bg-black min-h-[500px] py-0 mt-0 pt-0">
+                  <div className="max-w-7xl mx-auto px-6">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[500px]">
+                      {/* Analytics Dashboard - Left Side */}
+                      <div className="flex items-center justify-start order-2 lg:order-1 overflow-visible">
+                        <div className="relative overflow-visible">
                           <img
-                            src="/images/Ad-Messaging (1).png"
-                            alt="Ad Messaging Table"
-                            className="h-[340px] w-[320px] max-w-none rounded-xl shadow-2xl mt-17 object-cover -ml-90"
+                            src="/images/Big-Visualize-2.png"
+                            alt="Visualize section image"
+                            className="w-[850px] max-w-none h-[385px] scale-120 -ml-[110px] object-cover object-center shadow-lg"
                           />
                         </div>
                       </div>
-                      {/* Girl-3 image and anchored SVG lines */}
-                      <div className="relative" style={{ display: 'inline-block' }}>
-                        <img
-                          src="/images/Girl-3.png"
-                          alt="Girl-3"
-                          className="h-[550px] rounded-xl shadow-2xl scale-120 transform translate-y-20 translate-x-10"
-                          style={{ width: '500px', maxWidth: 'none', minWidth: '500px' }}
-                        />
-                        {/* S-shaped line from left edge of Girl 3 image (now horizontal) */}
-                        <svg
-                          className="hidden lg:block"
-                          style={{
-                            position: 'absolute',
-                            left: '-19.5%',
-                            top: '70%', // adjust as needed for vertical alignment
-                            width: '28%', // relative to image width
-                            height: '18%', // relative to image height
-                            pointerEvents: 'none',
-                            zIndex: 3,
-                          }}
-                          viewBox="0 0 400 100"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M 10 50 C 110 0, 290 100, 390 50"
-                            stroke="white"
-                            strokeWidth="3"
-                            fill="none"
-                            style={{
-                              filter: 'drop-shadow(0 0 12px #bcd0ff) drop-shadow(0 0 4px #bcd0ff)',
-                              opacity: 0.85,
-                            }}
-                          />
-                        </svg>
-                        {/* Third S-shaped line, slightly upper left edge of Girl 3 image */}
-                        <svg
-                          className="hidden lg:block"
-                          style={{
-                            position: 'absolute',
-                            left: '-19.5%',
-                            top: '20%', // adjust as needed for vertical alignment
-                            width: '28%',
-                            height: '18%',
-                            pointerEvents: 'none',
-                            zIndex: 3,
-                          }}
-                          viewBox="0 0 400 100"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M 10 50 C 110 0, 290 100, 390 50"
-                            stroke="white"
-                            strokeWidth="3"
-                            fill="none"
-                            style={{
-                              filter: 'drop-shadow(0 0 12px #bcd0ff) drop-shadow(0 0 4px #bcd0ff)',
-                              opacity: 0.85,
-                            }}
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                  {/* Vertical line from below Analyze subheading to above Visualize image */}
-                  <span
-                    ref={verticalLineRef}
-                    className={`hidden lg:block travelling-vertical-glow-line${verticalLineGlowed ? " glow-animate" : ""}`}
-                    style={{
-                      position: 'absolute',
-                      left: '6.5%',
-                      top: '54%',
-                      width: '2px',
-                      height: '43.7%',
-                      background: 'white',
-                      opacity: 0.8,
-                      borderRadius: '1px',
-                      zIndex: 2,
-                    }}
-                  />
-                  {/* Horizontal line extending right from the bottom of the vertical line to the right edge */}
-                  <span
-                    ref={horizontalLineRef}
-                    className={`hidden lg:block travelling-horizontal-glow-line${horizontalLineGlowed ? " glow-animate" : ""}`}
-                    style={{
-                      position: 'absolute',
-                      left: '6.5%',
-                      top: `97.5%`,
-                      width: '78%',
-                      height: '2px',
-                      background: 'white',
-                      opacity: 0.8,
-                      borderRadius: '1px',
-                      zIndex: 2,
-                    }}
-                  />
-                  {/* Short vertical line at the end of the horizontal line (90 degree turn down) */}
-                  <span
-                    ref={verticalLine2Ref}
-                    className={`hidden lg:block travelling-vertical-glow-line-2${verticalLine2Glowed ? " glow-animate" : ""}`}
-                    style={{
-                      position: 'absolute',
-                      left: '84.4%',
-                      top: '97.5%',
-                      width: '2px',
-                      height: '24%',
-                      background: 'white',
-                      opacity: 0.8,
-                      borderRadius: '2px',
-                      zIndex: 2,
-                    }}
-                  />
-                </div>
-              </div>
-
-              {/* Visualize Card - Modern Minimal Design (STATIC, NO ANIMATION) */}
-              <div className="bg-black min-h-[500px] py-0 mt-0 pt-0">
-                <div className="max-w-7xl mx-auto px-6">
-                  <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[500px]">
-                    {/* Analytics Dashboard - Left Side */}
-                    <div className="flex items-center justify-start order-2 lg:order-1 overflow-visible">
-                      <div className="relative overflow-visible">
-                        <img
-                          src="/images/Big-Visualize-2.png"
-                          alt="Visualize section image"
-                          className="w-[850px] max-w-none h-[385px] scale-120 -ml-[110px] object-cover object-center shadow-lg"
-                        />
-                      </div>
-                    </div>
-                    {/* Text Content - Right Side */}
-                    <div className="flex flex-col justify-center space-y-8 order-1 lg:order-2 ml-32 items-end">
-                      <div className="space-y-6 text-right">
-                        <button className="text-[#C3A3FF] text-base font-medium px-0 py-0 hover:text-[#B3A3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none">
-                          Visualize
-                        </button>
-                        <h3 className="text-3xl lg:text-4xl font-bold text-white leading-tight font-sans">
-                          Translate insights into
-                          <br />
-                          <span className="text-white">visual reports</span>
-                        </h3>
-                        <p className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg">
-                          Digestible creative reports that the whole team can understand. <span className="relative inline-block">Eliminate
-                            <span
-                              ref={verticalLine3Ref}
-                              className={`hidden lg:block travelling-vertical-glow-line-3${verticalLine3Glowed ? " glow-animate" : ""}`}
-                              style={{
-                                position: 'absolute',
-                                left: '78%',
-                                top: '170%',
-                                transform: 'translateX(-50%)',
-                                width: '2px',
-                                height: '645%',
-                                background: 'white',
-                                opacity: 0.8,
-                                borderRadius: '2px',
-                                zIndex: 2,
-                              }}
-                            />
-                            {/* Horizontal line at the bottom of the vertical line, turning left */}
-                            <span
-                              ref={horizontalLine3Ref}
-                              className={`hidden lg:block travelling-horizontal-glow-line-3${horizontalLine3Glowed ? " glow-animate" : ""}`}
-                              style={{
-                                position: 'absolute',
-                                left: '79%',
-                                top: '810%',
-                                transform: 'translateX(-100%)',
-                                width: '1590%',
-                                height: '2px',
-                                background: 'white',
-                                opacity: 0.8,
-                                borderRadius: '1px',
-                                zIndex: 2,
-                              }}
-                            />
-                            {/* Vertical line at the left end of the horizontal line, turning down */}
-                            <span
-                              ref={verticalLine4Ref}
-                              className={`hidden lg:block travelling-vertical-glow-line-4${verticalLine4Glowed ? " glow-animate" : ""}`}
-                              style={{
-                                position: 'absolute',
-                                left: '-1512%',
-                                top: '810%',
-                                width: '2px',
-                                height: '700%',
-                                background: 'white',
-                                opacity: 0.8,
-                                borderRadius: '2px',
-                                zIndex: 2,
-                              }}
-                            />
-                          </span> information overload.
-                        </p>
+                      {/* Text Content - Right Side */}
+                      <div className="flex flex-col justify-center space-y-8 order-1 lg:order-2 ml-32 items-end">
+                        <div className="space-y-6 text-right">
+                          <button className="text-[#C3A3FF] text-base font-medium px-0 py-0 hover:text-[#B3A3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none">
+                            Visualize
+                          </button>
+                          <h3 className="text-3xl lg:text-4xl font-bold text-white leading-tight font-sans">
+                            Translate insights into
+                            <br />
+                            <span className="text-white">visual reports</span>
+                          </h3>
+                          <p className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg">
+                            Digestible creative reports that the whole team can understand. <span className="relative inline-block">Eliminate
+                              <span
+                                ref={verticalLine3Ref}
+                                className={`hidden lg:block travelling-vertical-glow-line-3${verticalLine3Glowed ? " glow-animate" : ""}`}
+                                style={{
+                                  position: 'absolute',
+                                  left: '78%',
+                                  top: '170%',
+                                  transform: 'translateX(-50%)',
+                                  width: '2px',
+                                  height: '645%',
+                                  background: 'white',
+                                  opacity: 0.8,
+                                  borderRadius: '2px',
+                                  zIndex: 2,
+                                }}
+                              />
+                              {/* Horizontal line at the bottom of the vertical line, turning left */}
+                              <span
+                                ref={horizontalLine3Ref}
+                                className={`hidden lg:block travelling-horizontal-glow-line-3${horizontalLine3Glowed ? " glow-animate" : ""}`}
+                                style={{
+                                  position: 'absolute',
+                                  left: '79%',
+                                  top: '810%',
+                                  transform: 'translateX(-100%)',
+                                  width: '1593%',
+                                  height: '2px',
+                                  background: 'white',
+                                  opacity: 0.8,
+                                  borderRadius: '1px',
+                                  zIndex: 2,
+                                }}
+                              />
+                              {/* Vertical line at the left end of the horizontal line, turning down */}
+                              <span
+                                ref={verticalLine4Ref}
+                                className={`hidden lg:block travelling-vertical-glow-line-4${verticalLine4Glowed ? " glow-animate" : ""}`}
+                                style={{
+                                  position: 'absolute',
+                                  left: '-1512%',
+                                  top: '810%',
+                                  width: '2px',
+                                  height: '700%',
+                                  background: 'white',
+                                  opacity: 0.8,
+                                  borderRadius: '2px',
+                                  zIndex: 2,
+                                }}
+                              />
+                            </span> information overload.
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Share Card - Now "Unlock Granular Insights" (STATIC, NO ANIMATION) */}
-              <div className="bg-black min-h-[800px] py-14 mt-16">
-                <div className="max-w-7xl mx-auto px-6">
-                  <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[500px]">
-                    {/* Text Content - Left Side */}
-                    <div className="flex flex-col justify-center space-y-8 pl-0 -ml-12">
-                      <div className="space-y-6">
-                        <button className="text-[#A3FFA3] text-base font-medium px-0 py-0 hover:text-[#B3FFB3] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none">
-                          Improve
-                        </button>
-                        <h3 className="text-3xl lg:text-4xl font-bold text-white leading-tight font-sans">
-                          Unlock Granular
-                          <br />
-                          <span className="text-white">Insights</span>
-                        </h3>
-                        <p className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg">
-                          Break down performance by key demographics to make smarter, data-driven decisions.
-                        </p>
+                {/* Share Card - Now "Unlock Granular Insights" (STATIC, NO ANIMATION) */}
+                <div className="bg-black min-h-[800px] py-14 mt-16">
+                  <div className="max-w-7xl mx-auto px-6">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[500px]">
+                      {/* Text Content - Left Side */}
+                      <div className="flex flex-col justify-center space-y-8 pl-0 -ml-12">
+                        <div className="space-y-6">
+                          <button className="text-[#A3FFA3] text-base font-medium px-0 py-0 hover:text-[#B3FFB3] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none">
+                            Improve
+                          </button>
+                          <h3 className="text-3xl lg:text-4xl font-bold text-white leading-tight font-sans">
+                            Unlock Granular
+                            <br />
+                            <span className="text-white">Insights</span>
+                          </h3>
+                          <p className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg">
+                            Break down performance by key demographics to make smarter, data-driven decisions.
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                    {/* Image - Right Side */}
-                    <div className="flex justify-center items-center">
-                      <img
-                        src="/images/Improve-3.png"
-                        alt="Improve section image"
-                        className="w-[830px] max-w-none h-[395px] rounded-xl shadow-2xl"
-                      />
+                      {/* Image - Right Side */}
+                      <div className="flex justify-center items-center">
+                        <img
+                          src="/images/Improve-3.png"
+                          alt="Improve section image"
+                          className="w-[830px] max-w-none h-[395px] rounded-xl shadow-2xl"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        )
-      })()}
+          )
+        })()}
+      </div>
 
       {/* FAQ Section */}
-      <div className="py-8 bg-black">
+      <div className="pt-0 pb-8 bg-black" style={{ marginTop: '-98px' }}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl mb-6 tracking-tight font-clash">
@@ -855,7 +865,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                 Frequently Asked <span className="animate-gentle-pulse">Questions</span>
               </span>
             </h2>
-            <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-light px-4">
+            <p className="text-lg sm:text-xl text-gray-400 max-w-full mx-auto leading-relaxed font-light px-4">
               Find answers to common questions about Advizer's ad analysis and suggestion platform.
             </p>
           </div>
@@ -864,6 +874,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
             <FaqAccordion />
           </div>
         </div>
+      </div>
+
+      {/* Copyright */}
+      <div className="text-center py-8 bg-black">
+        <p className="text-gray-400 text-sm">
+          © 2025 Advize. All rights reserved.
+        </p>
       </div>
 
       <style jsx>{`
@@ -1142,13 +1159,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
         position: absolute;
         top: 50%;
         left: 0;
-        height: 4px;
+        height: 5px;
         width: 0;
         transform: translateY(-50%);
-        background: linear-gradient(to right, #bcd0ffcc 0%, #fff 100%);
-        box-shadow: 0 0 16px 4px #bcd0ffcc;
-        opacity: 0.8;
-        border-radius: 2px;
+        background: linear-gradient(to right, #e0eaff 0%, #fff 100%);
+        box-shadow: 0 0 32px 4px #bcd0ff, 0 0 12px 4px #bcd0ffcc;
+        opacity: 1;
+        border-radius: 3px;
         transition: width 2s linear;
         z-index: 3;
         pointer-events: none;
@@ -1166,13 +1183,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
         position: absolute;
         left: 50%;
         top: 0;
-        width: 4px;
+        width: 5px;
         height: 0;
         transform: translateX(-50%);
-        background: linear-gradient(to bottom, #bcd0ffcc 0%, #fff 100%);
-        box-shadow: 0 0 16px 4px #bcd0ffcc;
-        opacity: 0.8;
-        border-radius: 2px;
+        background: linear-gradient(to bottom, #e0eaff 0%, #fff 100%);
+        box-shadow: 0 0 32px 4px #bcd0ff, 0 0 12px 4px #bcd0ffcc;
+        opacity: 1;
+        border-radius: 3px;
         transition: height 2s linear;
         z-index: 3;
         pointer-events: none;
@@ -1190,13 +1207,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
         position: absolute;
         left: 50%;
         top: 0;
-        width: 4px;
+        width: 5px;
         height: 0;
         transform: translateX(-50%);
-        background: linear-gradient(to bottom, #bcd0ffcc 0%, #fff 100%);
-        box-shadow: 0 0 16px 4px #bcd0ffcc;
-        opacity: 0.8;
-        border-radius: 2px;
+        background: linear-gradient(to bottom, #e0eaff 0%, #fff 100%);
+        box-shadow: 0 0 32px 4px #bcd0ff, 0 0 12px 4px #bcd0ffcc;
+        opacity: 1;
+        border-radius: 3px;
         transition: height 2s linear;
         z-index: 3;
         pointer-events: none;
@@ -1214,13 +1231,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
         position: absolute;
         top: 50%;
         right: 0;
-        height: 4px;
+        height: 5px;
         width: 0;
         transform: translateY(-50%);
-        background: linear-gradient(to right, #bcd0ffcc 0%, #fff 100%);
-        box-shadow: 0 0 16px 4px #bcd0ffcc;
-        opacity: 0.8;
-        border-radius: 1px;
+        background: linear-gradient(to right, #e0eaff 0%, #fff 100%);
+        box-shadow: 0 0 32px 4px #bcd0ff, 0 0 12px 4px #bcd0ffcc;
+        opacity: 1;
+        border-radius: 3px;
         transition: width 2s linear;
         z-index: 3;
         pointer-events: none;
@@ -1238,13 +1255,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
         position: absolute;
         left: 50%;
         top: 0;
-        width: 4px;
+        width: 5px;
         height: 0;
         transform: translateX(-50%);
-        background: linear-gradient(to bottom, #bcd0ffcc 0%, #fff 100%);
-        box-shadow: 0 0 16px 4px #bcd0ffcc;
-        opacity: 0.8;
-        border-radius: 2px;
+        background: linear-gradient(to bottom, #e0eaff 0%, #fff 100%);
+        box-shadow: 0 0 32px 4px #bcd0ff, 0 0 12px 4px #bcd0ffcc;
+        opacity: 1;
+        border-radius: 3px;
         transition: height 2s linear;
         z-index: 3;
         pointer-events: none;
