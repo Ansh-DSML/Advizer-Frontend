@@ -1,7 +1,7 @@
 export default function SeeItInActionMobile() {
   return (
     <div className="p-4 max-w-md mx-auto">
-      <div className="text-center mt-2 mb-2">
+      <div className="text-center mt-0 mb-2">
         <h2
           className="text-4xl font-extrabold font-clash mb-2"
           style={{
@@ -22,7 +22,7 @@ export default function SeeItInActionMobile() {
       </div>
 
       {/* Analyze Section (Mobile) */}
-      <div className="mt-6 text-left">
+      <div className="mt-3 text-left">
         <button className="text-[#A3A3FF] text-base font-medium px-0 py-0 hover:text-[#B3B3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none mb-2">
           Analyze
         </button>
@@ -57,7 +57,7 @@ export default function SeeItInActionMobile() {
       </div>
 
       {/* Visualize Section (Mobile) */}
-      <div className="mt-20 text-right">
+      <div className="mt-14 text-right">
         <button className="text-[#C3A3FF] text-base font-medium px-0 py-0 hover:text-[#B3A3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none mb-2">
           Visualize
         </button>
@@ -72,7 +72,7 @@ export default function SeeItInActionMobile() {
             src="/images/Big-Visualize-2.png"
             alt="Visualize section image"
             className="rounded-xl shadow-xl"
-            style={{ width: '340px', maxWidth: '98vw', height: 'auto' }}
+            style={{ width: '340px', maxWidth: '98vw', height: '340px', objectFit: 'cover' }}
           />
         </div>
       </div>
@@ -93,7 +93,7 @@ export default function SeeItInActionMobile() {
             src="/images/Improve-3.png"
             alt="Improve section image"
             className="rounded-xl shadow-xl"
-            style={{ width: '340px', maxWidth: '98vw', height: 'auto' }}
+            style={{ width: '340px', maxWidth: '98vw', height: '340px', objectFit: 'cover' }}
           />
         </div>
       </div>
