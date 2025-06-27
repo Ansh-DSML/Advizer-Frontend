@@ -2,12 +2,32 @@ export default function SeeItInActionMobile() {
   return (
     <>
       <style jsx>{`
-        @media (orientation: landscape) {
-          .landscape-img {
-            width: 80vw !important;
+        @media (orientation: portrait) {
+          .portrait-img-row {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: space-between !important;
+            align-items: stretch !important;
+            gap: 0 !important;
+            width: 100% !important;
+          }
+          .portrait-ad-visuals {
+            width: 48vw !important;
             height: 38vw !important;
-            max-width: 600px !important;
-            max-height: 320px !important;
+            max-width: 220px !important;
+            max-height: 260px !important;
+            object-fit: cover;
+            margin-left: 0 !important;
+            margin-right: auto !important;
+          }
+          .portrait-ad-messaging {
+            width: 48vw !important;
+            height: 38vw !important;
+            max-width: 220px !important;
+            max-height: 260px !important;
+            object-fit: cover;
+            margin-right: 0 !important;
+            margin-left: auto !important;
           }
         }
       `}</style>
@@ -50,18 +70,16 @@ export default function SeeItInActionMobile() {
               className="rounded-xl shadow-2xl mb-2"
               style={{ width: '220px', maxWidth: '80vw', height: 'auto' }}
             />
-            <div className="flex flex-row justify-center items-center gap-3 w-full">
+            <div className="portrait-img-row w-full">
               <img
                 src="/images/Ad-Visuals-3.png"
                 alt="Ad Visuals"
-                className="rounded-xl shadow-xl"
-                style={{ width: '48%', maxWidth: '120px', height: 'auto' }}
+                className="rounded-xl shadow-xl portrait-ad-visuals"
               />
               <img
                 src="/images/Ad-Messaging (1).png"
                 alt="Ad Messaging"
-                className="rounded-xl shadow-lg"
-                style={{ width: '48%', maxWidth: '120px', height: 'auto' }}
+                className="rounded-xl shadow-lg portrait-ad-messaging"
               />
             </div>
           </div>
@@ -82,7 +100,7 @@ export default function SeeItInActionMobile() {
             <img
               src="/images/Big-Visualize-2.png"
               alt="Visualize section image"
-              className="rounded-xl shadow-xl landscape-img"
+              className="rounded-xl shadow-xl"
               style={{ width: '340px', maxWidth: '98vw', height: '160px', objectFit: 'cover' }}
             />
           </div>
@@ -103,7 +121,7 @@ export default function SeeItInActionMobile() {
             <img
               src="/images/Improve-3.png"
               alt="Improve section image"
-              className="rounded-xl shadow-xl landscape-img"
+              className="rounded-xl shadow-xl"
               style={{ width: '340px', maxWidth: '98vw', height: '140px', objectFit: 'cover' }}
             />
           </div>
