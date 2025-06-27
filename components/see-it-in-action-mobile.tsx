@@ -40,6 +40,12 @@ export default function SeeItInActionMobile() {
             height: 260px !important;
             object-fit: contain !important;
           }
+          .portrait-big-visualize-img {
+            margin-top: 0 !important;
+            height: 70vw !important;
+            max-height: 400px !important;
+            object-fit: contain !important;
+          }
         }
         @media (orientation: landscape) {
           .landscape-img-row {
@@ -52,22 +58,22 @@ export default function SeeItInActionMobile() {
             margin-top: 2.5rem !important;
           }
           .landscape-ad-visuals {
-            width: 48vw !important;
-            height: 32vw !important;
-            max-width: 520px !important;
-            max-height: 340px !important;
+            width: 52vw !important;
+            height: 36vw !important;
+            max-width: 600px !important;
+            max-height: 400px !important;
             object-fit: cover !important;
-            margin-left: -12vw !important;
+            margin-left: -18vw !important;
             margin-right: auto !important;
             display: block !important;
           }
           .landscape-ad-messaging {
-            width: 52vw !important;
-            height: 32vw !important;
-            max-width: 520px !important;
-            max-height: 340px !important;
+            width: 60vw !important;
+            height: 36vw !important;
+            max-width: 700px !important;
+            max-height: 400px !important;
             object-fit: contain !important;
-            margin-right: -2vw !important;
+            margin-right: -4vw !important;
             margin-left: auto !important;
             display: block !important;
           }
@@ -80,6 +86,24 @@ export default function SeeItInActionMobile() {
             text-align: right !important;
             padding-right: 4vw !important;
             margin-right: 0 !important;
+          }
+          .landscape-big-visualize-img {
+            width: 70vw !important;
+            height: 38vw !important;
+            max-width: 900px !important;
+            max-height: 440px !important;
+            object-fit: contain !important;
+            display: block !important;
+            margin: 0 auto !important;
+          }
+          .landscape-improve-img {
+            width: 70vw !important;
+            height: 38vw !important;
+            max-width: 900px !important;
+            max-height: 440px !important;
+            object-fit: contain !important;
+            display: block !important;
+            margin: 0 auto !important;
           }
         }
         @media (orientation: landscape) {
@@ -161,11 +185,11 @@ export default function SeeItInActionMobile() {
           <p className="text-base text-[#A1A1AA] leading-relaxed font-light mb-6 max-w-xs ml-auto">
             Digestible creative reports that the whole team can understand. Eliminate information overload.
           </p>
-          <div className="flex justify-center w-full mt-20">
+          <div className="flex justify-center w-full mt-8">
             <img
               src="/images/Big-Visualize-2.png"
               alt="Visualize section image"
-              className="rounded-xl shadow-xl landscape-img big-visualize-img"
+              className="rounded-xl shadow-xl landscape-img big-visualize-img landscape-big-visualize-img portrait-big-visualize-img"
               style={{ width: '340px', maxWidth: '98vw' }}
             />
           </div>
@@ -186,7 +210,7 @@ export default function SeeItInActionMobile() {
             <img
               src="/images/Improve-3.png"
               alt="Improve section image"
-              className="rounded-xl shadow-xl landscape-img"
+              className="rounded-xl shadow-xl landscape-img landscape-improve-img"
               style={{ width: '340px', maxWidth: '98vw', height: '140px', objectFit: 'cover' }}
             />
           </div>
