@@ -12,21 +12,33 @@ interface SteelBlueTemplateProps {
 }
 
 export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplateProps) {
-  const [showClients, setShowClients] = useState(false)
   const [typewriterText, setTypewriterText] = useState("")
   const [showCursor, setShowCursor] = useState(true)
   const [isPageLoaded, setIsPageLoaded] = useState(false)
   const lastScrollY = useRef(0)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const observerRef = useRef<IntersectionObserver | null>(null)
+  const verticalLineRef = useRef(null)
+  const [verticalLineGlowed, setVerticalLineGlowed] = useState(false)
+  const horizontalLineRef = useRef(null)
+  const [horizontalLineGlowed, setHorizontalLineGlowed] = useState(false)
+  const verticalLine2Ref = useRef(null)
+  const [verticalLine2Glowed, setVerticalLine2Glowed] = useState(false)
+  const verticalLine3Ref = useRef(null)
+  const [verticalLine3Glowed, setVerticalLine3Glowed] = useState(false)
+  const horizontalLine3Ref = useRef(null)
+  const [horizontalLine3Glowed, setHorizontalLine3Glowed] = useState(false)
+  const verticalLine4Ref = useRef(null)
+  const [verticalLine4Glowed, setVerticalLine4Glowed] = useState(false)
 
 
 
   const clientLogos = [
-    "Metro",
-    "Mochi",
+    "Metro Shoes",
+    "Mochi Shoes",
     "Armaf India",
-    "NueGo",
+    "NueGo Bus",
+    "GRT Jewellers" 
   ]
 
   const features = [
@@ -116,6 +128,102 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
     }
   }, [isPageLoaded])
 
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVerticalLineGlowed(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 1.0 }
+    )
+    if (verticalLineRef.current) {
+      observer.observe(verticalLineRef.current)
+    }
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHorizontalLineGlowed(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 1.0 }
+    )
+    if (horizontalLineRef.current) {
+      observer.observe(horizontalLineRef.current)
+    }
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVerticalLine2Glowed(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 1.0 }
+    )
+    if (verticalLine2Ref.current) {
+      observer.observe(verticalLine2Ref.current)
+    }
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVerticalLine3Glowed(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 1.0 }
+    )
+    if (verticalLine3Ref.current) {
+      observer.observe(verticalLine3Ref.current)
+    }
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHorizontalLine3Glowed(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 1.0 }
+    )
+    if (horizontalLine3Ref.current) {
+      observer.observe(horizontalLine3Ref.current)
+    }
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVerticalLine4Glowed(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 1.0 }
+    )
+    if (verticalLine4Ref.current) {
+      observer.observe(verticalLine4Ref.current)
+    }
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="min-h-screen relative overflow-hidden bg-black">
       {/* Hero Section */}
@@ -148,39 +256,36 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
             </Button>
             <Button
               size="lg"
-              className="bg-[#2563eb] hover:bg-blue-700 text-white border border-gray-600 px-6 py-6 text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300"
+              className="bg-[#2563eb] hover:bg-blue-700 text-white px-8 py-6 text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300 border border-gray-600"
             >
               <Play className="mr-3 w-5 h-5" />
               Demo
             </Button>
           </div>
 
-          <Button
-            className="bg-[#2563eb] hover:bg-blue-700 text-gray-300 hover:text-white border border-gray-600 px-6 py-6 text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300 relative z-10"
-            onClick={() => setShowClients(!showClients)}
-          >
-            <Users className="mr-2 w-4 h-4" />
-            Companies we worked with
-          </Button>
+          <div className="text-center mb-4">
+            <h3 className="text-lg font-semibold text-white mb-4 bg-[#2563eb] hover:bg-blue-700 px-6 py-3 rounded-full inline-block border border-gray-600 transform hover:scale-105 transition-all duration-300">
+              <Users className="inline mr-2 w-5 h-5" />
+              Companies we worked with
+            </h3>
+          </div>
         </div>
 
-        {showClients && (
-          <div className="mt-20 overflow-hidden rounded-3xl py-3 bg-black animate-elasticIn">
-            <div className="client-logos-container" style={{ background: 'black', padding: '16px 0' }}>
-              <div className="client-logos-slider">
-                {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, index) => (
-                  <div
-                    key={index}
-                    className="flex-shrink-0 text-white font-bold text-3xl whitespace-nowrap transition-all duration-500 transform hover:scale-110 hover:rotate-3 mr-8"
-                    style={{ fontFamily: 'Wasted Windey OpenType', letterSpacing: '0.02em' }}
-                  >
-                    {logo}
-                  </div>
-                ))}
-              </div>
+        <div className="-mt-2 overflow-hidden rounded-3xl py-3 bg-black">
+          <div className="client-logos-container" style={{ background: 'black', padding: '16px 0' }}>
+            <div className="client-logos-slider">
+              {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 text-white font-bold text-3xl whitespace-nowrap transition-all duration-500 transform hover:scale-110 hover:rotate-3 mr-8"
+                  style={{ fontFamily: 'Wasted Windey OpenType', letterSpacing: '0.02em' }}
+                >
+                  {logo}
+                </div>
+              ))}
             </div>
           </div>
-        )}
+        </div>
       </div>
 
       {/* Features Section - Six Lenses */}
@@ -499,78 +604,81 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       />
                     </div>
                   </div>
-                  <img
-                    src="/images/Girl-3.png"
-                    alt="Girl-3"
-                    className="h-[550px] rounded-xl shadow-2xl scale-120 transform translate-y-20 translate-x-10"
-                    style={{ width: '500px', maxWidth: 'none', minWidth: '500px' }}
-                  />
-                  {/* S-shaped line from left edge of Girl 3 image (now horizontal) */}
-                  <svg
-                    className="hidden lg:block"
-                    style={{
-                      position: 'absolute',
-                      left: '655px', // adjust as needed to align with Girl 3's left edge
-                      top: '380px', // adjust as needed for vertical alignment
-                      width: '145px',
-                      height: '100px',
-                      pointerEvents: 'none',
-                      zIndex: 3,
-                    }}
-                    viewBox="0 0 400 100"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M 10 50 C 110 0, 290 100, 390 50"
-                      stroke="white"
-                      strokeWidth="3"
-                      fill="none"
-                      style={{
-                        filter: 'drop-shadow(0 0 12px #bcd0ff) drop-shadow(0 0 4px #bcd0ff)',
-                        opacity: 0.85,
-                      }}
-                    
+                  {/* Girl-3 image and anchored SVG lines */}
+                  <div className="relative" style={{ display: 'inline-block' }}>
+                    <img
+                      src="/images/Girl-3.png"
+                      alt="Girl-3"
+                      className="h-[550px] rounded-xl shadow-2xl scale-120 transform translate-y-20 translate-x-10"
+                      style={{ width: '500px', maxWidth: 'none', minWidth: '500px' }}
                     />
-                  </svg>
-                  {/* Third S-shaped line, slightly upper left edge of Girl 3 image */}
-                  <svg
-                    className="hidden lg:block"
-                    style={{
-                      position: 'absolute',
-                      left: '655px', // slightly upper left edge
-                      top: '160px',  // slightly above the first S-line
-                      width: '145px',
-                      height: '100px',
-                      pointerEvents: 'none',
-                      zIndex: 3,
-                    }}
-                    viewBox="0 0 400 100"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M 10 50 C 110 0, 290 100, 390 50"
-                      stroke="white"
-                      strokeWidth="3"
-                      fill="none"
+                    {/* S-shaped line from left edge of Girl 3 image (now horizontal) */}
+                    <svg
+                      className="hidden lg:block"
                       style={{
-                        filter: 'drop-shadow(0 0 12px #bcd0ff) drop-shadow(0 0 4px #bcd0ff)',
-                        opacity: 0.85,
+                        position: 'absolute',
+                        left: '-19.5%',
+                        top: '70%', // adjust as needed for vertical alignment
+                        width: '28%', // relative to image width
+                        height: '18%', // relative to image height
+                        pointerEvents: 'none',
+                        zIndex: 3,
                       }}
-                    />
-                  </svg>
+                      viewBox="0 0 400 100"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M 10 50 C 110 0, 290 100, 390 50"
+                        stroke="white"
+                        strokeWidth="3"
+                        fill="none"
+                        style={{
+                          filter: 'drop-shadow(0 0 12px #bcd0ff) drop-shadow(0 0 4px #bcd0ff)',
+                          opacity: 0.85,
+                        }}
+                      />
+                    </svg>
+                    {/* Third S-shaped line, slightly upper left edge of Girl 3 image */}
+                    <svg
+                      className="hidden lg:block"
+                      style={{
+                        position: 'absolute',
+                        left: '-19.5%',
+                        top: '20%', // adjust as needed for vertical alignment
+                        width: '28%',
+                        height: '18%',
+                        pointerEvents: 'none',
+                        zIndex: 3,
+                      }}
+                      viewBox="0 0 400 100"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M 10 50 C 110 0, 290 100, 390 50"
+                        stroke="white"
+                        strokeWidth="3"
+                        fill="none"
+                        style={{
+                          filter: 'drop-shadow(0 0 12px #bcd0ff) drop-shadow(0 0 4px #bcd0ff)',
+                          opacity: 0.85,
+                        }}
+                      />
+                    </svg>
+                  </div>
                 </div>
               </div>
               {/* Vertical line from below Analyze subheading to above Visualize image */}
               <span
-                className="hidden lg:block"
+                ref={verticalLineRef}
+                className={`hidden lg:block travelling-vertical-glow-line${verticalLineGlowed ? " glow-animate" : ""}`}
                 style={{
                   position: 'absolute',
-                  left: '6.5%', // Moved further left from previous position
-                  top: 'calc(400px + 2.5rem)', // Shifted further down below the subheading
+                  left: '6.5%',
+                  top: '54%',
                   width: '2px',
-                  height: '340px', // Adjust so it stops 30px above the Visualize image
+                  height: '43.7%',
                   background: 'white',
                   opacity: 0.8,
                   borderRadius: '1px',
@@ -579,12 +687,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
               />
               {/* Horizontal line extending right from the bottom of the vertical line to the right edge */}
               <span
-                className="hidden lg:block"
+                ref={horizontalLineRef}
+                className={`hidden lg:block travelling-horizontal-glow-line${horizontalLineGlowed ? " glow-animate" : ""}`}
                 style={{
                   position: 'absolute',
                   left: '6.5%',
-                  top: `calc(400px + 2.5rem + 340px)`, // Start at the bottom of the vertical line
-                  width: '78%', // From 6.5% to 100%
+                  top: `97.5%`,
+                  width: '78%',
                   height: '2px',
                   background: 'white',
                   opacity: 0.8,
@@ -594,16 +703,17 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
               />
               {/* Short vertical line at the end of the horizontal line (90 degree turn down) */}
               <span
-                className="hidden lg:block"
+                ref={verticalLine2Ref}
+                className={`hidden lg:block travelling-vertical-glow-line-2${verticalLine2Glowed ? " glow-animate" : ""}`}
                 style={{
                   position: 'absolute',
                   left: '84.4%',
-                  top: `calc(400px + 2.5rem + 340px)`,
+                  top: '97.5%',
                   width: '2px',
-                  height: '190px', // Demo length
+                  height: '24%',
                   background: 'white',
                   opacity: 0.8,
-                  borderRadius: '1px',
+                  borderRadius: '2px',
                   zIndex: 2,
                 }}
               />
@@ -638,29 +748,31 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                     <p className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg">
                       Digestible creative reports that the whole team can understand. <span className="relative inline-block">Eliminate
                         <span
-                          className="hidden lg:block"
+                          ref={verticalLine3Ref}
+                          className={`hidden lg:block travelling-vertical-glow-line-3${verticalLine3Glowed ? " glow-animate" : ""}`}
                           style={{
                             position: 'absolute',
                             left: '78%',
-                            top: 'calc(100% + 16px)',
+                            top: '170%',
                             transform: 'translateX(-50%)',
                             width: '2px',
-                            height: '170px', // Demo length
+                            height: '645%',
                             background: 'white',
                             opacity: 0.8,
-                            borderRadius: '1px',
+                            borderRadius: '2px',
                             zIndex: 2,
                           }}
                         />
                         {/* Horizontal line at the bottom of the vertical line, turning left */}
                         <span
-                          className="hidden lg:block"
+                          ref={horizontalLine3Ref}
+                          className={`hidden lg:block travelling-horizontal-glow-line-3${horizontalLine3Glowed ? " glow-animate" : ""}`}
                           style={{
                             position: 'absolute',
-                            left: '78%',
-                            top: 'calc(100% + 14px + 170px)', // At the bottom of the vertical line
+                            left: '79%',
+                            top: '810%',
                             transform: 'translateX(-100%)',
-                            width: '1005px', // Demo length
+                            width: '1590%',
                             height: '2px',
                             background: 'white',
                             opacity: 0.8,
@@ -670,16 +782,17 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                         />
                         {/* Vertical line at the left end of the horizontal line, turning down */}
                         <span
-                          className="hidden lg:block"
+                          ref={verticalLine4Ref}
+                          className={`hidden lg:block travelling-vertical-glow-line-4${verticalLine4Glowed ? " glow-animate" : ""}`}
                           style={{
                             position: 'absolute',
                             left: '-1512%',
-                            top: 'calc(100% + 14px + 170px)', // Same top as the horizontal line
+                            top: '810%',
                             width: '2px',
-                            height: '180px', // Demo length
+                            height: '700%',
                             background: 'white',
                             opacity: 0.8,
-                            borderRadius: '1px',
+                            borderRadius: '2px',
                             zIndex: 2,
                           }}
                         />
@@ -716,7 +829,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                   <img
                     src="/images/Improve-3.png"
                     alt="Improve section image"
-                    className="w-[820px] max-w-none h-[385px] rounded-xl shadow-2xl"
+                    className="w-[830px] max-w-none h-[395px] rounded-xl shadow-2xl"
                   />
                 </div>
               </div>
@@ -746,6 +859,15 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
       </div>
 
       <style jsx>{`
+      html, body {
+        background-color: black !important;
+        overflow-x: hidden;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       .gradient-text {
         background: linear-gradient(90deg, #C7F6F8 0%, #87C6F5 50%, #4B8DF0 100%);
         -webkit-background-clip: text;
@@ -958,6 +1080,169 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
 
       .font-sans {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+      }
+
+      /* Microsoft Edge specific fixes */
+      @supports (-ms-ime-align: auto) {
+        html, body {
+          background-color: black !important;
+          overflow-x: hidden;
+        }
+        
+        .min-h-screen {
+          background-color: black !important;
+        }
+      }
+
+      /* Webkit browsers (Chrome, Safari) */
+      @supports (-webkit-appearance: none) {
+        html, body {
+          background-color: black !important;
+        }
+      }
+
+      .travelling-vertical-glow-line {
+        position: absolute;
+        overflow: visible;
+      }
+      .travelling-vertical-glow-line::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 4px;
+        height: 0;
+        transform: translateX(-50%);
+        background: linear-gradient(to bottom, #bcd0ffcc 0%, #fff 100%);
+        box-shadow: 0 0 16px 4px #bcd0ffcc;
+        opacity: 0.8;
+        border-radius: 2px;
+        transition: height 2s linear;
+        z-index: 3;
+        pointer-events: none;
+      }
+      .travelling-vertical-glow-line.glow-animate::after {
+        height: 100%;
+      }
+
+      .travelling-horizontal-glow-line {
+        position: absolute;
+        overflow: visible;
+      }
+      .travelling-horizontal-glow-line::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        height: 4px;
+        width: 0;
+        transform: translateY(-50%);
+        background: linear-gradient(to right, #bcd0ffcc 0%, #fff 100%);
+        box-shadow: 0 0 16px 4px #bcd0ffcc;
+        opacity: 0.8;
+        border-radius: 2px;
+        transition: width 2s linear;
+        z-index: 3;
+        pointer-events: none;
+      }
+      .travelling-horizontal-glow-line.glow-animate::after {
+        width: 100%;
+      }
+
+      .travelling-vertical-glow-line-2 {
+        position: absolute;
+        overflow: visible;
+      }
+      .travelling-vertical-glow-line-2::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 4px;
+        height: 0;
+        transform: translateX(-50%);
+        background: linear-gradient(to bottom, #bcd0ffcc 0%, #fff 100%);
+        box-shadow: 0 0 16px 4px #bcd0ffcc;
+        opacity: 0.8;
+        border-radius: 2px;
+        transition: height 2s linear;
+        z-index: 3;
+        pointer-events: none;
+      }
+      .travelling-vertical-glow-line-2.glow-animate::after {
+        height: 100%;
+      }
+
+      .travelling-vertical-glow-line-3 {
+        position: absolute;
+        overflow: visible;
+      }
+      .travelling-vertical-glow-line-3::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 4px;
+        height: 0;
+        transform: translateX(-50%);
+        background: linear-gradient(to bottom, #bcd0ffcc 0%, #fff 100%);
+        box-shadow: 0 0 16px 4px #bcd0ffcc;
+        opacity: 0.8;
+        border-radius: 2px;
+        transition: height 2s linear;
+        z-index: 3;
+        pointer-events: none;
+      }
+      .travelling-vertical-glow-line-3.glow-animate::after {
+        height: 100%;
+      }
+
+      .travelling-horizontal-glow-line-3 {
+        position: absolute;
+        overflow: visible;
+      }
+      .travelling-horizontal-glow-line-3::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        height: 4px;
+        width: 0;
+        transform: translateY(-50%);
+        background: linear-gradient(to right, #bcd0ffcc 0%, #fff 100%);
+        box-shadow: 0 0 16px 4px #bcd0ffcc;
+        opacity: 0.8;
+        border-radius: 1px;
+        transition: width 2s linear;
+        z-index: 3;
+        pointer-events: none;
+      }
+      .travelling-horizontal-glow-line-3.glow-animate::after {
+        width: 100%;
+      }
+
+      .travelling-vertical-glow-line-4 {
+        position: absolute;
+        overflow: visible;
+      }
+      .travelling-vertical-glow-line-4::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 4px;
+        height: 0;
+        transform: translateX(-50%);
+        background: linear-gradient(to bottom, #bcd0ffcc 0%, #fff 100%);
+        box-shadow: 0 0 16px 4px #bcd0ffcc;
+        opacity: 0.8;
+        border-radius: 2px;
+        transition: height 2s linear;
+        z-index: 3;
+        pointer-events: none;
+      }
+      .travelling-vertical-glow-line-4.glow-animate::after {
+        height: 100%;
       }
     `}</style>
     </div>
