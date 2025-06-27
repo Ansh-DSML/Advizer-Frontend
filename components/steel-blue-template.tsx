@@ -607,15 +607,15 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       <div className="flex flex-row justify-end items-start w-full gap-16">
                         <div className="flex flex-col items-start relative">
                           <img
-                            src="/images/Ad-Visuals-3.png"
+                            src="/images/Ad-Visuals-4.png"
                             alt="Ad Visual Table"
                             className="h-[350px] w-[380px] max-w-none rounded-xl shadow-2xl -mt-12 mb-8 -ml-90 scale-120"
                           />
                           <div className="w-full flex justify-center">
                             <img
-                              src="/images/Ad-Messaging (1).png"
+                              src="/images/Ad-Messaging-Final.png"
                               alt="Ad Messaging Table"
-                              className="h-[340px] w-[320px] max-w-none rounded-xl shadow-2xl mt-17 object-cover -ml-90"
+                              className="h-[350px] w-[380px] max-w-none rounded-xl shadow-2xl mt-17 object-cover -ml-90"
                             />
                           </div>
                         </div>
@@ -632,9 +632,9 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                             className="hidden lg:block"
                             style={{
                               position: 'absolute',
-                              left: '-19.5%',
+                              left: '-13.2%',
                               top: '70%', // adjust as needed for vertical alignment
-                              width: '28%', // relative to image width
+                              width: '22%', // relative to image width
                               height: '18%', // relative to image height
                               pointerEvents: 'none',
                               zIndex: 3,
@@ -659,9 +659,9 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                             className="hidden lg:block"
                             style={{
                               position: 'absolute',
-                              left: '-19.5%',
+                              left: '-13.2%',
                               top: '20%', // adjust as needed for vertical alignment
-                              width: '28%',
+                              width: '22%',
                               height: '18%',
                               pointerEvents: 'none',
                               zIndex: 3,
