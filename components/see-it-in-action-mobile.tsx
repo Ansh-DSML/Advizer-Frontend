@@ -10,24 +10,34 @@ export default function SeeItInActionMobile() {
             align-items: stretch !important;
             gap: 0 !important;
             width: 100% !important;
+            margin-top: 2.5rem !important; /* Move images further down */
           }
           .portrait-ad-visuals {
-            width: 48vw !important;
-            height: 38vw !important;
-            max-width: 220px !important;
-            max-height: 260px !important;
+            width: 54vw !important;
+            height: 44vw !important;
+            max-width: 260px !important;
+            max-height: 320px !important;
             object-fit: cover;
-            margin-left: 0 !important;
+            margin-left: -12vw !important;
             margin-right: auto !important;
           }
           .portrait-ad-messaging {
-            width: 48vw !important;
-            height: 38vw !important;
-            max-width: 220px !important;
-            max-height: 260px !important;
+            width: 54vw !important;
+            height: 44vw !important;
+            max-width: 260px !important;
+            max-height: 320px !important;
             object-fit: cover;
-            margin-right: 0 !important;
+            margin-right: -12vw !important;
             margin-left: auto !important;
+          }
+        }
+        @media (orientation: landscape) {
+          .landscape-img {
+            width: 95vw !important;
+            height: 38vw !important;
+            max-width: 800px !important;
+            max-height: 320px !important;
+            object-fit: cover;
           }
         }
       `}</style>
@@ -100,7 +110,7 @@ export default function SeeItInActionMobile() {
             <img
               src="/images/Big-Visualize-2.png"
               alt="Visualize section image"
-              className="rounded-xl shadow-xl"
+              className="rounded-xl shadow-xl landscape-img"
               style={{ width: '340px', maxWidth: '98vw', height: '160px', objectFit: 'cover' }}
             />
           </div>
@@ -121,7 +131,7 @@ export default function SeeItInActionMobile() {
             <img
               src="/images/Improve-3.png"
               alt="Improve section image"
-              className="rounded-xl shadow-xl"
+              className="rounded-xl shadow-xl landscape-img"
               style={{ width: '340px', maxWidth: '98vw', height: '140px', objectFit: 'cover' }}
             />
           </div>
