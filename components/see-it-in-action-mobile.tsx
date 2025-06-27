@@ -2,6 +2,12 @@ export default function SeeItInActionMobile() {
   return (
     <>
       <style jsx>{`
+        @media (orientation: portrait), (orientation: landscape) {
+          .see-in-action-top {
+            margin-top: -8rem !important;
+            padding-top: 0 !important;
+          }
+        }
         @media (orientation: portrait) {
           .portrait-img-row {
             display: flex !important;
@@ -10,7 +16,7 @@ export default function SeeItInActionMobile() {
             align-items: stretch !important;
             gap: 0 !important;
             width: 100% !important;
-            margin-top: 2.5rem !important; /* Move images further down */
+            margin-top: 2.5rem !important;
           }
           .portrait-ad-visuals {
             width: 59vw !important;
@@ -45,13 +51,31 @@ export default function SeeItInActionMobile() {
             width: 100% !important;
             margin-top: 2.5rem !important;
           }
-          .landscape-ad-visuals, .landscape-ad-messaging {
+          .landscape-ad-visuals {
             width: 44vw !important;
             height: 32vw !important;
             max-width: 480px !important;
             max-height: 340px !important;
             object-fit: cover !important;
-            margin: 0 !important;
+            margin-left: -6vw !important;
+          }
+          .landscape-ad-messaging {
+            width: 44vw !important;
+            height: 32vw !important;
+            max-width: 480px !important;
+            max-height: 340px !important;
+            object-fit: contain !important;
+            margin-right: 0 !important;
+          }
+          .landscape-analyze-text, .landscape-improve-text {
+            text-align: left !important;
+            padding-left: 2vw !important;
+            margin-left: 0 !important;
+          }
+          .landscape-visualize-text {
+            text-align: right !important;
+            padding-right: 2vw !important;
+            margin-right: 0 !important;
           }
         }
         @media (orientation: landscape) {
@@ -68,8 +92,8 @@ export default function SeeItInActionMobile() {
           }
         }
       `}</style>
-      <div className="p-4 max-w-md mx-auto -mt-12 sm:mt-0">
-        <div className="text-center mt-0 mb-2">
+      <div className="p-4 max-w-md mx-auto see-in-action-top sm:mt-0">
+        <div className="text-center mb-2 p-0">
           <h2
             className="text-4xl font-extrabold font-clash mb-2"
             style={{
@@ -77,7 +101,7 @@ export default function SeeItInActionMobile() {
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-              color: '#7bb6f7', // fallback for non-webkit browsers
+              color: '#7bb6f7',
               letterSpacing: '-0.01em',
               display: 'inline-block',
             }}
@@ -90,7 +114,7 @@ export default function SeeItInActionMobile() {
         </div>
 
         {/* Analyze Section (Mobile) */}
-        <div className="mt-3 text-left">
+        <div className="mt-3 text-left landscape-analyze-text">
           <button className="text-[#A3A3FF] text-base font-medium px-0 py-0 hover:text-[#B3B3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none mb-2">
             Analyze
           </button>
@@ -123,7 +147,7 @@ export default function SeeItInActionMobile() {
         </div>
 
         {/* Visualize Section (Mobile) */}
-        <div className="mt-14 text-right">
+        <div className="mt-14 text-right landscape-visualize-text">
           <button className="text-[#C3A3FF] text-base font-medium px-0 py-0 hover:text-[#B3B3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none mb-2">
             Visualize
           </button>
@@ -144,7 +168,7 @@ export default function SeeItInActionMobile() {
         </div>
 
         {/* Improve Section (Mobile) */}
-        <div className="mt-12 text-left">
+        <div className="mt-12 text-left landscape-improve-text">
           <button className="text-[#A3FFA3] text-base font-medium px-0 py-0 hover:text-[#B3FFB3] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none mb-2">
             Improve
           </button>
