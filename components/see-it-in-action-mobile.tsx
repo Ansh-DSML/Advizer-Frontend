@@ -1,6 +1,6 @@
 export default function SeeItInActionMobile() {
   return (
-    <div className="p-4 max-w-md mx-auto">
+    <div className="p-4 max-w-md mx-auto -mt-12 sm:mt-0">
       <div className="text-center mt-0 mb-2">
         <h2
           className="text-4xl font-extrabold font-clash mb-2"
@@ -72,7 +72,7 @@ export default function SeeItInActionMobile() {
             src="/images/Big-Visualize-2.png"
             alt="Visualize section image"
             className="rounded-xl shadow-xl"
-            style={{ width: '340px', maxWidth: '98vw', height: '340px', objectFit: 'cover' }}
+            style={{ width: '340px', maxWidth: '98vw', height: '140px', objectFit: 'cover' }}
           />
         </div>
       </div>
@@ -93,7 +93,7 @@ export default function SeeItInActionMobile() {
             src="/images/Improve-3.png"
             alt="Improve section image"
             className="rounded-xl shadow-xl"
-            style={{ width: '340px', maxWidth: '98vw', height: '340px', objectFit: 'cover' }}
+            style={{ width: '340px', maxWidth: '98vw', height: '140px', objectFit: 'cover' }}
           />
         </div>
       </div>
