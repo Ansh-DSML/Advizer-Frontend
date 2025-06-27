@@ -13,22 +13,26 @@ export default function SeeItInActionMobile() {
             margin-top: 2.5rem !important; /* Move images further down */
           }
           .portrait-ad-visuals {
-            width: 54vw !important;
-            height: 44vw !important;
-            max-width: 260px !important;
-            max-height: 320px !important;
+            width: 62vw !important;
+            height: 52vw !important;
+            max-width: 300px !important;
+            max-height: 360px !important;
             object-fit: cover;
-            margin-left: -12vw !important;
+            margin-left: -6vw !important;
             margin-right: auto !important;
           }
           .portrait-ad-messaging {
-            width: 54vw !important;
-            height: 44vw !important;
-            max-width: 260px !important;
-            max-height: 320px !important;
+            width: 62vw !important;
+            height: 52vw !important;
+            max-width: 300px !important;
+            max-height: 360px !important;
             object-fit: cover;
-            margin-right: -12vw !important;
+            margin-right: -6vw !important;
             margin-left: auto !important;
+          }
+          .big-visualize-img {
+            height: 260px !important;
+            object-fit: contain !important;
           }
         }
         @media (orientation: landscape) {
@@ -38,6 +42,10 @@ export default function SeeItInActionMobile() {
             max-width: 800px !important;
             max-height: 320px !important;
             object-fit: cover;
+          }
+          .big-visualize-img {
+            height: 260px !important;
+            object-fit: contain !important;
           }
         }
       `}</style>
@@ -110,8 +118,8 @@ export default function SeeItInActionMobile() {
             <img
               src="/images/Big-Visualize-2.png"
               alt="Visualize section image"
-              className="rounded-xl shadow-xl landscape-img"
-              style={{ width: '340px', maxWidth: '98vw', height: '160px', objectFit: 'cover' }}
+              className="rounded-xl shadow-xl landscape-img big-visualize-img"
+              style={{ width: '340px', maxWidth: '98vw' }}
             />
           </div>
         </div>
