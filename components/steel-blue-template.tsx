@@ -1110,13 +1110,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
         position: absolute;
         left: 50%;
         top: 0;
-        width: 4px;
+        width: 5px;
         height: 0;
         transform: translateX(-50%);
-        background: linear-gradient(to bottom, #bcd0ffcc 0%, #fff 100%);
-        box-shadow: 0 0 16px 4px #bcd0ffcc;
-        opacity: 0.8;
-        border-radius: 2px;
+        background: linear-gradient(to bottom, #e0eaff 0%, #fff 100%);
+        box-shadow: 0 0 32px 4px #bcd0ff, 0 0 12px 4px #bcd0ffcc;
+        opacity: 1;
+        border-radius: 3px;
         transition: height 2s linear;
         z-index: 3;
         pointer-events: none;
