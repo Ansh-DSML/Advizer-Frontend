@@ -23,7 +23,7 @@ export default function SeeItInActionMobile() {
             height: 56vw !important;
             max-width: 300px !important;
             max-height: 360px !important;
-            object-fit: cover;
+            object-fit: cover !important;
             margin-left: -9vw !important;
             margin-right: auto !important;
           }
@@ -32,7 +32,7 @@ export default function SeeItInActionMobile() {
             height: 56vw !important;
             max-width: 300px !important;
             max-height: 360px !important;
-            object-fit: cover;
+            object-fit: cover !important;
             margin-right: -6vw !important;
             margin-left: auto !important;
           }
@@ -52,29 +52,33 @@ export default function SeeItInActionMobile() {
             margin-top: 2.5rem !important;
           }
           .landscape-ad-visuals {
-            width: 44vw !important;
+            width: 48vw !important;
             height: 32vw !important;
-            max-width: 480px !important;
+            max-width: 520px !important;
             max-height: 340px !important;
             object-fit: cover !important;
-            margin-left: -6vw !important;
+            margin-left: -12vw !important;
+            margin-right: auto !important;
+            display: block !important;
           }
           .landscape-ad-messaging {
-            width: 44vw !important;
+            width: 52vw !important;
             height: 32vw !important;
-            max-width: 480px !important;
+            max-width: 520px !important;
             max-height: 340px !important;
             object-fit: contain !important;
-            margin-right: 0 !important;
+            margin-right: -2vw !important;
+            margin-left: auto !important;
+            display: block !important;
           }
           .landscape-analyze-text, .landscape-improve-text {
             text-align: left !important;
-            padding-left: 2vw !important;
+            padding-left: 4vw !important;
             margin-left: 0 !important;
           }
           .landscape-visualize-text {
             text-align: right !important;
-            padding-right: 2vw !important;
+            padding-right: 4vw !important;
             margin-right: 0 !important;
           }
         }
@@ -84,7 +88,7 @@ export default function SeeItInActionMobile() {
             height: 38vw !important;
             max-width: 800px !important;
             max-height: 320px !important;
-            object-fit: cover;
+            object-fit: cover !important;
           }
           .big-visualize-img {
             height: 260px !important;
