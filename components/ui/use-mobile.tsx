@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 
-// List of supported device sizes (width, height) in px
 const SUPPORTED_SIZES = [
   // Portrait
   { width: 375, height: 667 },
@@ -22,7 +21,6 @@ const SUPPORTED_SIZES = [
   { width: 932, height: 430 },
   { width: 915, height: 412 },
   { width: 740, height: 360 },
-  { width: 915, height: 412 },
   { width: 1024, height: 768 },
   { width: 1180, height: 820 },
   { width: 1366, height: 1024 },
@@ -41,6 +39,11 @@ function isSizeMatch(winW: number, winH: number, size: { width: number; height: 
     (Math.abs(winW - size.width) <= SIZE_TOLERANCE && Math.abs(winH - size.height) <= SIZE_TOLERANCE) ||
     (Math.abs(winW - size.height) <= SIZE_TOLERANCE && Math.abs(winH - size.width) <= SIZE_TOLERANCE)
   )
+}
+
+function isRealMobileDevice() {
+  const ua = navigator.userAgent || navigator.vendor
+  return /android|iphone|ipad|ipod|mobile/i.test(ua)
 }
 
 export function useSupportedDeviceSize() {
@@ -67,7 +70,7 @@ export function useSupportedDeviceSize() {
           matchedSize: found,
           forcedFallback: false,
         })
-      } else if (dpr >= 2 && dpr <= 3.5) {
+      } else if (dpr >= 2 && dpr <= 3.5 && isRealMobileDevice()) {
         const fallbackSize = isPortrait
           ? { width: 414, height: 896 }
           : { width: 896, height: 414 }
