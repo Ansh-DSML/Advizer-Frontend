@@ -119,3 +119,39 @@ body {
   font-weight: 700 !important;
   letter-spacing: -0.01em;
 }
+
+/* Handle extremely tight landscape screens */
+@media (orientation: landscape) and (max-height: 420px) {
+  .landscape-title {
+    font-size: 1.5rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .landscape-subtext {
+    font-size: 0.85rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .landscape-heading {
+    font-size: 1.1rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .landscape-body {
+    font-size: 0.8rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .landscape-img {
+    width: 90vw !important;
+    max-width: 320px !important;
+    height: auto !important;
+    object-fit: cover !important;
+  }
+
+  .landscape-section {
+    padding-bottom: 1rem !important;
+  }
+}
+
