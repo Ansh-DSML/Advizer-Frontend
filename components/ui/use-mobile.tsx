@@ -34,7 +34,6 @@ const SUPPORTED_SIZES = [
   { width: 1024, height: 600 },
 ]
 
-// Allow a small tolerance for browser UI, scrollbars, etc.
 const SIZE_TOLERANCE = 2
 
 function isSizeMatch(winW: number, winH: number, size: { width: number; height: number }) {
@@ -49,23 +48,50 @@ export function useSupportedDeviceSize() {
     isSupportedDevice: boolean
     isPortrait: boolean
     matchedSize?: { width: number; height: number }
+    forcedFallback?: boolean
   }>({ isSupportedDevice: false, isPortrait: true })
 
   useEffect(() => {
     function checkSize() {
       const winW = window.innerWidth
       const winH = window.innerHeight
+      const dpr = window.devicePixelRatio || 1
+      const isPortrait = winH >= winW
+
       const found = SUPPORTED_SIZES.find(size => isSizeMatch(winW, winH, size))
-      setMatch({
-        isSupportedDevice: !!found,
-        isPortrait: winH >= winW,
-        matchedSize: found,
-      })
+
+      if (found) {
+        setMatch({
+          isSupportedDevice: true,
+          isPortrait,
+          matchedSize: found,
+          forcedFallback: false,
+        })
+      } else if (dpr >= 2 && dpr <= 3.5) {
+        const fallbackSize = isPortrait
+          ? { width: 414, height: 896 }
+          : { width: 896, height: 414 }
+
+        setMatch({
+          isSupportedDevice: true,
+          isPortrait,
+          matchedSize: fallbackSize,
+          forcedFallback: true,
+        })
+      } else {
+        setMatch({
+          isSupportedDevice: false,
+          isPortrait,
+          matchedSize: undefined,
+          forcedFallback: false,
+        })
+      }
     }
+
     checkSize()
     window.addEventListener("resize", checkSize)
     return () => window.removeEventListener("resize", checkSize)
   }, [])
 
   return match
-} 
+}

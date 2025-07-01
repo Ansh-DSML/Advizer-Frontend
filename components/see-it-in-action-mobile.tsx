@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { useSupportedDeviceSize } from "./ui/use-mobile"
 
 // Section data for each image
@@ -43,28 +43,13 @@ const allSections = [
 
 export default function SeeItInActionMobile() {
   const { isSupportedDevice, isPortrait } = useSupportedDeviceSize()
-  const [windowWidth, setWindowWidth] = useState(
-    typeof window !== 'undefined' ? window.innerWidth : 0
-  )
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowWidth(window.innerWidth)
-    }
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
-
-  // Show mobile layout if device is supported OR width < 768px
-  const shouldShowMobileLayout = isSupportedDevice || windowWidth < 768
-  if (!shouldShowMobileLayout) return null
+  
+  if (!isSupportedDevice) return null
 
   const sections = isPortrait
     ? allSections
     : allSections.filter(s => s.section !== "analyze")
-
-  if (!sections.length) return null
-
+  
   const textCenter = isPortrait ? "" : "text-center"
   const landscapePadding = !isPortrait ? "pb-12 sm:pb-16" : ""
   const landscapeMinH = !isPortrait
