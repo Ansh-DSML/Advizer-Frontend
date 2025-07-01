@@ -1,4 +1,29 @@
+import React from 'react';
+
 export default function SeeItInActionMobile() {
+  const [isLandscape, setIsLandscape] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkOrientation = () => {
+      const isLandscapeMode = window.innerWidth > window.innerHeight;
+      setIsLandscape(isLandscapeMode);
+    };
+
+    checkOrientation();
+    window.addEventListener('resize', checkOrientation);
+    window.addEventListener('orientationchange', checkOrientation);
+
+    return () => {
+      window.removeEventListener('resize', checkOrientation);
+      window.removeEventListener('orientationchange', checkOrientation);
+    };
+  }, []);
+
+  // Debug log in render
+  if (typeof window !== 'undefined') {
+    console.log('RENDER: width', window.innerWidth, 'height', window.innerHeight, 'isLandscape', isLandscape);
+  }
+
   return (
     <>
       <style jsx>{`
@@ -64,7 +89,7 @@ export default function SeeItInActionMobile() {
             display: block !important;
           }
         }
-        @media (orientation: landscape) {
+        @media (orientation: landscape), (min-width: 768px) and (max-height: 600px) {
           .landscape-img-row {
             display: flex !important;
             flex-direction: row !important;
@@ -82,7 +107,11 @@ export default function SeeItInActionMobile() {
             object-fit: cover !important;
             margin-left: -18vw !important;
             margin-right: auto !important;
-            display: block !important;
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            position: absolute !important;
+            left: -9999px !important;
           }
           .landscape-ad-messaging {
             width: 60vw !important;
@@ -92,7 +121,11 @@ export default function SeeItInActionMobile() {
             object-fit: contain !important;
             margin-right: -4vw !important;
             margin-left: auto !important;
-            display: block !important;
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            position: absolute !important;
+            left: -9999px !important;
           }
           .landscape-analyze-text, .landscape-improve-text {
             text-align: left !important;
@@ -143,8 +176,15 @@ export default function SeeItInActionMobile() {
           .portrait-svg-line-2 {
             display: none !important;
           }
+          .landscape-analyze-main-img {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            position: absolute !important;
+            left: -9999px !important;
+          }
         }
-        @media (orientation: landscape) {
+        @media (orientation: landscape), (min-width: 768px) and (max-height: 600px) {
           .landscape-img {
             width: 95vw !important;
             height: 38vw !important;
@@ -190,14 +230,31 @@ export default function SeeItInActionMobile() {
           <p className="text-base text-[#A1A1AA] leading-relaxed font-light mb-6 max-w-xs">
             Instantly tag every creative insight.
           </p>
+          {/* Landscape-only image */}
+          {isLandscape && (
+            <div className="flex justify-center w-full" style={{ marginTop: '8%', marginBottom: '1%' }}>
+              <img
+                src="/images/Analyze-Landscape-new.png"
+                alt="Analyze Landscape"
+                className="rounded-xl shadow-xl"
+                style={{ 
+                  maxWidth: '90vw',
+                  height: 'auto',
+                  objectFit: 'contain'
+                }}
+              />
+            </div>
+          )}
           <div className="flex flex-col items-center w-full mt-6 mb-2 gap-4">
             <div className="relative">
-              <img
-                src="/images/Girl-3.png"
-                alt="Girl-3"
-                className="rounded-xl shadow-2xl mb-2"
-                style={{ width: '220px', maxWidth: '80vw', height: 'auto' }}
-              />
+              {!isLandscape && (
+                <img
+                  src="/images/Girl-3.png"
+                  alt="Girl-3"
+                  className="rounded-xl shadow-2xl mb-2 landscape-analyze-main-img"
+                  style={{ width: '220px', maxWidth: '80vw', height: 'auto' }}
+                />
+              )}
               {/* SVG line for portrait mode */}
               <svg
                 className="portrait-svg-line"
@@ -254,16 +311,20 @@ export default function SeeItInActionMobile() {
               </svg>
             </div>
             <div className="portrait-img-row w-full landscape-img-row w-full">
-              <img
-                src="/images/Ad-Visuals-4.png"
-                alt="Ad Visuals"
-                className="rounded-xl shadow-xl portrait-ad-visuals landscape-ad-visuals"
-              />
-              <img
-                src="/images/Ad-Messaging-Final.png"
-                alt="Ad Messaging"
-                className="rounded-xl shadow-lg portrait-ad-messaging landscape-ad-messaging"
-              />
+              {!isLandscape && (
+                <img
+                  src="/images/Ad-Visuals-4.png"
+                  alt="Ad Visuals"
+                  className="rounded-xl shadow-xl portrait-ad-visuals landscape-ad-visuals"
+                />
+              )}
+              {!isLandscape && (
+                <img
+                  src="/images/Ad-Messaging-Final.png"
+                  alt="Ad Messaging"
+                  className="rounded-xl shadow-lg portrait-ad-messaging landscape-ad-messaging"
+                />
+              )}
             </div>
           </div>
         </div>

@@ -286,7 +286,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                 <div
                   key={index}
                   className="flex-shrink-0 text-white font-bold text-3xl whitespace-nowrap transition-all duration-500 transform hover:scale-110 hover:rotate-3 mr-8"
-                  style={{ fontFamily: 'Wasted Windey OpenType', letterSpacing: '0.02em' }}
+                  style={{ fontFamily: 'Impact, Arial Black, sans-serif', letterSpacing: '0.02em' }}
                 >
                   {logo}
                 </div>
