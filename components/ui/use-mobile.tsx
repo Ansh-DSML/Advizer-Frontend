@@ -13,6 +13,8 @@ const SUPPORTED_SIZES = [
   { width: 820, height: 1180 },
   { width: 1024, height: 1366 },
   { width: 540, height: 720 },
+  { width: 912, height: 1368 },
+  { width: 853, height: 1280 },
   // Landscape
   { width: 667, height: 375 },
   { width: 896, height: 414 },
@@ -29,6 +31,7 @@ const SUPPORTED_SIZES = [
   { width: 1024, height: 419 },
   { width: 1114, height: 720 },
   { width: 882, height: 344 },
+  { width: 1024, height: 600 },
 ]
 
 // Allow a small tolerance for browser UI, scrollbars, etc.

@@ -855,7 +855,16 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
       )}
 
       {/* FAQ Section */}
-      <div className={`pt-0 pb-8 bg-black${device.isSupportedDevice && !device.isPortrait ? ' mt-40' : ''}`} style={{ marginTop: device.isSupportedDevice && !device.isPortrait ? '10rem' : '-98px' }}>
+      <div
+        className={`pt-0 pb-8 bg-black${device.isSupportedDevice && !device.isPortrait ? ' mt-40' : ''}${device.isSupportedDevice && device.isPortrait ? ' mt-32' : ''}`}
+        style={{
+          marginTop: device.isSupportedDevice && !device.isPortrait
+            ? '10rem'
+            : device.isSupportedDevice && device.isPortrait
+              ? '8rem'
+              : '-98px'
+        }}
+      >
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl mb-6 tracking-tight font-clash">
