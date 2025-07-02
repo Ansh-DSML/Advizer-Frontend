@@ -92,7 +92,7 @@ export default function SeeItInActionMobile() {
               <img
                 src="/images/Analyze-Landscape-new.png"
                 alt="Analyze Landscape"
-                className="w-[1000px] h-[300px] max-w-full rounded-xl shadow-lg object-contain"
+                className="w-[1150px] h-[480px] max-w-full rounded-xl shadow-lg object-contain"
               />
             </div>
           </div>
@@ -150,10 +150,17 @@ export default function SeeItInActionMobile() {
       {isPortrait && (
         <>
           <div className="w-full flex flex-col items-center -mt-12 mb-0" style={{ marginTop: '-9rem' }}>
-            <h2 className="text-4xl sm:text-5xl font-light mb-0 font-clash text-center text-white">
-              <span className="sentence-gradient">
-                See It in <span className="animate-gentle-pulse">Action</span>
-              </span>
+          <h2 className="text-3xl sm:text-4xl  text-center mb-2" style={{
+            background: 'linear-gradient(90deg, #C7F6F8 0%, #87C6F5 50%, #4B8DF0 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            display: 'inline-block',
+            color: 'transparent',
+          }}> 
+          
+                See It in Action
+        
             </h2>
             <p className="text-base sm:text-lg text-gray-400 max-w-full mx-auto leading-relaxed font-light px-4 text-center mt-3 mb-0">
               A quick tour of the features designed to give you a decisive advantage on Meta.
