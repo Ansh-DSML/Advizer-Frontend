@@ -364,7 +364,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                 <div className="flex items-center mb-6">
                   <div className="w-8 h-8 mr-4 text-blue-400">
                     <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
-                      <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.9 1 3 1.9 3 3V21C3 22.1 3.9 23 5 23H19C20.1 23 21 22.1 21 21V9M19 9H14V4H19V9Z" />
+                      <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.9 1 3 1.9 3 3V21C3 22.1 3.9 23 5 23H19C20.1 23 21 22.1 21 21V9Z" />
                     </svg>
                   </div>
                   <h3 className="text-xl font-semibold text-white">Growth & Performance Marketers</h3>
@@ -422,7 +422,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                 <div className="flex items-center mb-6">
                   <div className="w-8 h-8 mr-4 text-blue-400">
                     <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
-                      <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" />
+                      <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z" />
                     </svg>
                   </div>
                   <h3 className="text-xl font-semibold text-white"> Creative Strategists & Designers</h3>
@@ -581,9 +581,9 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
               {/* Analyze Card - Digital Collage Layout */}
               <div className="bg-black min-h-[800px] py-0 pb-0 mb-0 relative" style={{ zIndex: 1 }}>
                 <div className="max-w-7xl mx-auto px-6">
-                  <div className="grid lg:grid-cols-2 gap-16 items-start min-h-[700px]">
+                  <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[700px]">
                     {/* Analyze Text Content - Left */}
-                    <div className="flex flex-col justify-center h-full space-y-8 pl-0 -ml-12 text-left items-center">
+                    <div className="flex flex-col justify-center h-full space-y-8 pl-0 -ml-10 text-left items-center -mt-10">
                       <div className="space-y-6 w-full flex flex-col items-start">
                         <button className="text-[#A3A3FF] text-base font-medium px-0 py-0 hover:text-[#B3B3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none">
                           Analyze
@@ -596,85 +596,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                         </p>
                       </div>
                     </div>
-                    {/* Couple Ad Full Image - Right, centered */}
-                    <div className="flex flex-row justify-end items-start w-full gap-16">
-                      <div className="flex flex-col items-start relative">
-                        <img
-                          src="/images/Ad-Visuals-4.png"
-                          alt="Ad Visual Table"
-                          className="h-[350px] w-[380px] max-w-none rounded-xl shadow-2xl -mt-12 mb-8 -ml-90 scale-120"
-                        />
-                        <div className="w-full flex justify-center">
-                          <img
-                            src="/images/Ad-Messaging-Final.png"
-                            alt="Ad Messaging Table"
-                            className="h-[350px] w-[380px] max-w-none rounded-xl shadow-2xl mt-17 object-cover -ml-90"
-                          />
-                        </div>
-                      </div>
-                      {/* Girl-3 image and anchored SVG lines */}
-                      <div className="relative" style={{ display: 'inline-block' }}>
-                        <img
-                          src="/images/Girl-3.png"
-                          alt="Girl-3"
-                          className="h-[550px] rounded-xl shadow-2xl scale-120 transform translate-y-20 translate-x-10"
-                          style={{ width: '500px', maxWidth: 'none', minWidth: '500px' }}
-                        />
-                        {/* S-shaped line from left edge of Girl 3 image (now horizontal) */}
-                        <svg
-                          className="hidden lg:block"
-                          style={{
-                            position: 'absolute',
-                            left: '-13.2%',
-                            top: '70%', // adjust as needed for vertical alignment
-                            width: '22%', // relative to image width
-                            height: '18%', // relative to image height
-                            pointerEvents: 'none',
-                            zIndex: 3,
-                          }}
-                          viewBox="0 0 400 100"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M 10 50 C 110 0, 290 100, 390 50"
-                            stroke="white"
-                            strokeWidth="3"
-                            fill="none"
-                            style={{
-                              filter: 'drop-shadow(0 0 12px #bcd0ff) drop-shadow(0 0 4px #bcd0ff)',
-                              opacity: 0.85,
-                            }}
-                          />
-                        </svg>
-                        {/* Third S-shaped line, slightly upper left edge of Girl 3 image */}
-                        <svg
-                          className="hidden lg:block"
-                          style={{
-                            position: 'absolute',
-                            left: '-13.2%',
-                            top: '20%', // adjust as needed for vertical alignment
-                            width: '22%',
-                            height: '18%',
-                            pointerEvents: 'none',
-                            zIndex: 3,
-                          }}
-                          viewBox="0 0 400 100"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M 10 50 C 110 0, 290 100, 390 50"
-                            stroke="white"
-                            strokeWidth="3"
-                            fill="none"
-                            style={{
-                              filter: 'drop-shadow(0 0 12px #bcd0ff) drop-shadow(0 0 4px #bcd0ff)',
-                              opacity: 0.85,
-                            }}
-                          />
-                        </svg>
-                      </div>
+                    {/* Analyze-Last image - Right */}
+                    <div className="flex justify-center items-center mt-[50%] -ml-[30%]">
+                      <img
+                        src="/images/Analyze-Last.png"
+                        alt="Analyze Last"
+                        className="h-[450px] w-[800px] min-w-[700px] rounded-xl shadow-2xl object-contain"
+                      />
                     </div>
                   </div>
                   {/* Vertical line from below Analyze subheading to above Visualize image */}
