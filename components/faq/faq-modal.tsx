@@ -29,12 +29,11 @@ export function FaqModal() {
                 <DialogTitle className="text-xl font-medium text-left">{faq.question}</DialogTitle>
               </DialogHeader>
               <div className="mt-4">
-                <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                <div className="mt-6 pt-4 border-t border-gray-200">
-                  <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
-                    {faq.category}
-                  </span>
-                </div>
+                <p 
+                  className="text-gray-600 leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: faq.answer }}
+                />
+
               </div>
             </DialogContent>
           </Dialog>

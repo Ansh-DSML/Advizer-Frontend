@@ -1,53 +1,53 @@
 export const faqData = [
   {
-    question: "What types of ads can Advizer analyze?",
+    question: "Which ad formats does Advize analyse?",
     answer:
-      "Advizer can analyze both video and image advertisements. We support common video formats (MP4, MOV) and image formats (JPG, PNG). Our AI model processes these ads to provide detailed insights about their effectiveness and potential improvements.",
+      "Advize ingests Meta image, video and carousel creatives—including boosted posts—across every campaign objective.",
   },
   {
-    question: "How accurate is the ad analysis?",
+    question: "How often are metrics and tags refreshed?",
     answer:
-      "Our AI model has been trained on thousands of successful ad campaigns and achieves over 90% accuracy in identifying key performance indicators. The analysis is continuously improved through machine learning and user feedback.",
+      "We pull fresh performance data and run the tagging pipeline <strong>once every 24 hours</strong>, so insights stay current without manual effort.",
   },
   {
-    question: "What metrics does Advizer evaluate in ads?",
+    question: "What creative elements does the AI recognise?",
     answer:
-      "We evaluate multiple metrics including visual appeal, message clarity, target audience alignment, emotional impact, brand consistency, call-to-action effectiveness, and overall engagement potential.",
+      "Over 50 taxonomies cover visuals (colour palette, setting, subject), messaging (hook style, benefit) and motion cues."
   },
   {
-    question: "How long does it take to get the analysis report?",
+    question: "How accurate is the tag classification?",
     answer:
-      "Most analyses are completed within 2-3 minutes for images and 5-7 minutes for videos. The exact time depends on the file size and complexity of the ad content.",
+      "Models are trained on thousands of annotated ads and validated against confidence benchmarks for precision and recall."
   },
   {
-    question: "Can I analyze multiple ads at once?",
+    question: "Can Advize handle multiple ad accounts?",
     answer:
-      "Yes, you can upload and analyze multiple ads in a single session. Our batch processing feature allows you to compare different versions of your ads and get comprehensive insights for each.",
+      "Yes—connect unlimited accounts and use filters to compare brands, campaigns or regions side-by-side."
   },
   {
-    question: "What file formats are supported?",
+    question: "Does Advize provide creative recommendations?",
     answer:
-      "We support common video formats (MP4, MOV, AVI) and image formats (JPG, PNG, GIF). Maximum file size is 500MB for videos and 50MB for images.",
+      "Yes—The Creative Brief module summarises which elements outperform for each demographic, guiding your next production sprint."
   },
   {
-    question: "How does Advizer ensure data privacy?",
+    question: "What competitor data will I see?",
     answer:
-      "All uploaded ads are processed securely using end-to-end encryption. We don't store your ad content permanently, and all analysis is done in real-time. Your data is never shared with third parties.",
+      "Competitor Insights highlights formats, colours and messages your rivals use most, helping you spot untapped creative angles.",
   },
   {
-    question: "Can I export the analysis reports?",
+    question: "Can Advize analyse ads in multiple languages or regions?",
     answer:
-      "Yes, you can export reports in multiple formats including PDF, CSV, and JSON. Reports include detailed metrics, visualizations, and actionable recommendations.",
+      "Absolutely. Visual tags are language-agnostic, and text-based insights support all major ad-platform languages, letting you compare performance across markets.",
   },
   {
-    question: "What makes Advizer different from other ad analysis tools?",
+    question: "Which industries get the most value from Advize?",
     answer:
-      "Advizer combines advanced AI technology with industry expertise to provide not just analysis but actionable suggestions. Our platform offers real-time processing, detailed visual feedback, and personalized improvement recommendations.",
+      "E-commerce, consumer brands, D2C,fintech, gaming and agencies are early adopters, but any advertiser running Meta campaigns can benefit.",
   },
   {
-    question: "How often should I analyze my ads?",
+    question: "How do we get onboarded?",
     answer:
-      "We recommend analyzing your ads:\n- Before launching a new campaign\n- After significant changes to your ad\n- Every 3-6 months for ongoing campaigns\n- When you notice a drop in performance",
+      "Contact us via the form and we’ll provision your workspace, walk you through a secure Meta Business connection and deliver your first daily insights report.",
   },
 ]
 

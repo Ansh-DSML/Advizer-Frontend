@@ -40,9 +40,11 @@ export function FaqAccordion({ className = "" }: FaqAccordionProps) {
               }`}
             >
               <div className="p-6 pt-4 animate-fadeIn">
-                <p className="whitespace-pre-line text-lg leading-relaxed" style={{ color: "#AAAAAA" }}>
-                  {faq.answer}
-                </p>
+                <p 
+                  className="whitespace-pre-line text-lg leading-relaxed" 
+                  style={{ color: "#AAAAAA" }}
+                  dangerouslySetInnerHTML={{ __html: faq.answer }}
+                />
               </div>
             </div>
           </div>

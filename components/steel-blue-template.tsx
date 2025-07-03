@@ -48,32 +48,32 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
     {
       icon: Tag,
       title: "Tagging Pipeline",
-      description: "50+ taxonomies auto‑applied to every image, video & carousel for instant analysis.",
+      description: "50 + visual and messaging taxonomies auto-tag every image, video and carousel within hours.",
     },
     {
       icon: BarChart3,
       title: "Creative Analytics",
-      description: "Slice results by objective, result type, timeline or demographic to spot performance drivers.",
+      description: " Slice results by objective, timeline or demographic to surface performance drivers.",
     },
     {
       icon: Monitor,
       title: "Media Dashboard",
-      description: "Full‑funnel spend & KPIs across campaigns, ad sets & ads with geo & demo breakdowns.",
+      description: " Track spend & KPIs across campaigns, ad sets and ads with platform, region, age, device and gender breakdowns.",
     },
     {
       icon: Layers,
       title: "Creative Mix Analysis",
-      description: "See which formats win for each objective and demographic.",
+      description: " Identify winning formats for each objective and audience, then scale what works and cut waste.",
     },
     {
       icon: Brain,
       title: "Creative Brief",
-      description: "AI suggests the best creative elements for any target audience.",
+      description: " AI summarises which creative elements win by demographic, guiding your next production sprint.",
     },
     {
       icon: TrendingUp,
       title: "Competitor Insights",
-      description: "Benchmark competitor creatives to uncover whitespace (no spend data required).",
+      description: " Analyse rival creatives to uncover whitespace in formats, messages and visual styles.",
       badge: "Coming Soon",
     },
   ]
@@ -239,7 +239,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
       <div className="container mx-auto px-4 py-20">
         <div className="text-center">
           <div className="text-center mb-8">
-            <span className="font-medium gradient-text">Creative Analytics Platform</span>
+            <span className="font-medium gradient-text">AI-Powered Creative Intelligence</span>
           </div>
 
           <h1 className="text-8xl md:text-9xl font-light mb-8 tracking-tight font-clash">
@@ -250,8 +250,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
           </h1>
 
           <p className="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-light mb-16">
-            Sophisticated AI-powered analytics for Meta advertising. Decode creative performance patterns and unlock
-            actionable insights for your campaigns.
+          <b>Advize turns Meta ad data into daily creative insights. Auto-tag every asset, analyse performance drivers and spot winning formats, messages and visuals—no spreadsheets required. </b>
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
@@ -282,16 +281,12 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
 
         <div className="-mt-2 overflow-hidden rounded-3xl py-3 bg-black">
           <div className="client-logos-container" style={{ background: 'black', padding: '16px 0' }}>
-            <div className="client-logos-slider">
-              {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, index) => (
-                <div
-                  key={index}
-                  className="flex-shrink-0 text-white font-bold text-3xl whitespace-nowrap transition-all duration-500 transform hover:scale-110 hover:rotate-3 mr-8"
-                  style={{ fontFamily: 'Impact, Arial Black, sans-serif', letterSpacing: '0.02em' }}
-                >
-                  {logo}
-                </div>
-              ))}
+            <div className="flex flex-wrap justify-center gap-8">
+              <div className="text-white font-bold text-3xl" style={{ fontFamily: 'Times New Roman', letterSpacing: '0.02em' }}>Metro Shoes</div>
+              <div className="text-white font-bold text-3xl" style={{ fontFamily: 'Times New Roman', letterSpacing: '0.02em' }}>Mochi Shoes</div>
+              <div className="text-white font-bold text-3xl" style={{ fontFamily: 'Times New Roman', letterSpacing: '0.02em' }}>Armaf India</div>
+              <div className="text-white font-bold text-3xl" style={{ fontFamily: 'Times New Roman', letterSpacing: '0.02em' }}>NueGo Bus</div>
+              <div className="text-white font-bold text-3xl" style={{ fontFamily: 'Times New Roman', letterSpacing: '0.02em' }}>GRT Jewellers</div>
             </div>
           </div>
         </div>
@@ -353,12 +348,12 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
           <div className="text-center mb-16">
             <h2 className="text-5xl font-light mb-6 font-clash">
               <span className="sentence-gradient">
-                Who Benefits from Advizer?
+              Built for Every Data-Driven Marketing Team
               </span>
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-light">
-              Discover how Advizer transforms advertising strategies across different roles and industries, delivering
-              measurable results for every stakeholder.
+              <b>  Advize converts creative data into revenue-lifting decisions for performance
+              marketers, brand leaders and design squads alike. </b> 
             </p>
           </div>
 
@@ -372,7 +367,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.9 1 3 1.9 3 3V21C3 22.1 3.9 23 5 23H19C20.1 23 21 22.1 21 21V9M19 9H14V4H19V9Z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-white">CMOs & Brand Managers</h3>
+                  <h3 className="text-xl font-semibold text-white">Growth & Performance Marketers</h3>
                 </div>
 
                 <div className="space-y-4">
@@ -383,8 +378,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       </svg>
                     </div>
                     <p className="text-white leading-relaxed">
-                      Achieve <span className="text-blue-400 font-semibold">25% reduction</span> in reporting time,
-                      freeing up strategic focus.
+                      Identify <span className="text-blue-400 font-semibold"> high-ROI asset–audience–objective</span>  combinations across your Meta ads in minutes.
                     </p>
                   </div>
 
@@ -395,7 +389,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       </svg>
                     </div>
                     <p className="text-white leading-relaxed">
-                      Gain faster ad optimization for improved campaign performance.
+                    Re-allocate spend daily with fresh creative-lift signals by region, placement and device.
                     </p>
                   </div>
 
@@ -405,7 +399,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                         <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
                       </svg>
                     </div>
-                    <p className="text-white leading-relaxed">See a significant boost in overall marketing ROI.</p>
+                    <p className="text-white leading-relaxed">Measure ROAS impact of every visual, hook and copy variation.</p>
                   </div>
 
                   <div className="flex items-start">
@@ -415,7 +409,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       </svg>
                     </div>
                     <p className="text-white leading-relaxed">
-                      Access creative briefs and insights instantly, streamlining campaign planning.
+                    Spot wasted spend fast with demographic-level performance heat-maps.
                     </p>
                   </div>
                 </div>
@@ -431,7 +425,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-white">Creative Teams</h3>
+                  <h3 className="text-xl font-semibold text-white"> Creative Strategists & Designers</h3>
                 </div>
 
                 <div className="space-y-4">
@@ -442,7 +436,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       </svg>
                     </div>
                     <p className="text-white leading-relaxed">
-                      Enhance creative effectiveness with data-driven insights.
+                    Shorten concept-ing cycles by up to <span className="text-blue-400 font-semibold">30% </span> using proven hooks, colours and story arcs.
                     </p>
                   </div>
 
@@ -453,8 +447,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       </svg>
                     </div>
                     <p className="text-white leading-relaxed">
-                      Reduce ad testing cycles by up to <span className="text-blue-400 font-semibold">70%</span> with
-                      predictive analytics.
+                    Auto-generate data-backed creative briefs for any demographic, region or device.
                     </p>
                   </div>
 
@@ -465,7 +458,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       </svg>
                     </div>
                     <p className="text-white leading-relaxed">
-                      Improve collaboration with centralized creative briefs and performance data.
+                    Compare layouts, text and palettes to see exactly what drives engagement in Meta feeds.
                     </p>
                   </div>
 
@@ -476,7 +469,8 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       </svg>
                     </div>
                     <p className="text-white leading-relaxed">
-                      Unlock new levels of content performance and engagement.
+                    Tap a daily leaderboard of top-performing formats and messaging to inspire your next
+                    campaign.
                     </p>
                   </div>
                 </div>
@@ -492,7 +486,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       <path d="M22,21H2V3H4V19H6V10H10V19H12V6H16V19H18V14H22V21Z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-white">Media Teams</h3>
+                  <h3 className="text-xl font-semibold text-white">Brand & Analytics Leaders</h3>
                 </div>
 
                 <div className="space-y-4">
@@ -502,7 +496,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                         <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
                       </svg>
                     </div>
-                    <p className="text-white leading-relaxed">Streamline campaign reporting and save valuable hours.</p>
+                    <p className="text-white leading-relaxed">Connect creative-performance scores to revenue KPIs for crystal-clear ROI storytelling.</p>
                   </div>
 
                   <div className="flex items-start">
@@ -512,8 +506,8 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       </svg>
                     </div>
                     <p className="text-white leading-relaxed">
-                      Optimize media spend with <span className="text-blue-400 font-semibold">40% faster</span>{" "}
-                      decision-making capabilities.
+                    Replace clunky Meta dashboards with a single, <span className="text-blue-400 font-semibold"> daily refreshed</span>{" "}
+                    cockpit of spend and results.
                     </p>
                   </div>
 
@@ -524,7 +518,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       </svg>
                     </div>
                     <p className="text-white leading-relaxed">
-                      Improve targeting accuracy for better campaign outcomes.
+                    Share concise, executive-ready insights with leadership and agency partners in one click.
                     </p>
                   </div>
 
@@ -535,7 +529,8 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       </svg>
                     </div>
                     <p className="text-white leading-relaxed">
-                      Get a holistic view of cross-platform performance for strategic adjustments.
+                    Benchmark long-term creative trends and spending efficiency to guide quarterly planning and
+                    OKRs.
                     </p>
                   </div>
                 </div>
@@ -546,10 +541,9 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
           {/* Ready to Transform Section */}
           <div className="text-center mt-16" style={{ marginBottom: '125px' }}>
             <div className="bg-white/10 backdrop-blur-sm border border-gray-700/30 rounded-2xl p-8 max-w-4xl mx-auto shadow-lg">
-              <h3 className="text-2xl font-medium text-white mb-4">Ready to Transform Your Advertising Strategy?</h3>
+              <h3 className="text-2xl font-medium text-white mb-4">Ready to power smarter creative decisions?</h3>
               <p className="text-white mb-6 leading-relaxed">
-                Join thousands of marketing professionals who trust Advizer to optimize their creative performance and
-                drive better results.
+              Join marketers who use Advize to convert data into higher-performing Meta ads. 
               </p>
               <div className="flex justify-center">
                 <Button
@@ -760,7 +754,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                           <span className="text-white">visual reports</span>
                         </h3>
                         <p className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg">
-                          Digestible creative reports that the whole team can understand. <span className="relative inline-block">Eliminate
+                           <span className="relative inline-block">Eliminate
                             <span
                               ref={verticalLine3Ref}
                               className={`hidden lg:block travelling-vertical-glow-line-3${verticalLine3Glowed ? " glow-animate" : ""}`}
@@ -834,7 +828,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                           <span className="text-white">Insights</span>
                         </h3>
                         <p className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg">
-                          Break down performance by key demographics to make smarter, data-driven decisions.
+                          Break performance down by key demographics to guide data-driven decisions.
                         </p>
                       </div>
                     </div>

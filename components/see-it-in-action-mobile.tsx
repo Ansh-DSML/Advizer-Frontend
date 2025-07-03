@@ -107,7 +107,7 @@ export default function SeeItInActionMobile() {
               <span className="text-white">visual reports</span>
             </h3>
             <p className="text-sm sm:text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg mx-auto text-center mb-3">
-              Digestible creative reports that the whole team can understand. Eliminate information overload.
+              Digestible dashboards that any team member can understand.
             </p>
           </div>
 
@@ -198,7 +198,7 @@ export default function SeeItInActionMobile() {
                   Translate insights into visual reports
                 </h3>
                 <p className="text-sm sm:text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg mx-auto text-center mb-2">
-                  Digestible creative reports that the whole team can understand. Eliminate information overload.
+                  Digestible dashboards that any team member can understand.
                 </p>
                 <div className="flex justify-center w-full mt-1">
                   <img
@@ -213,7 +213,7 @@ export default function SeeItInActionMobile() {
                     Unlock Granular Insights
                   </h3>
                   <p className="text-sm sm:text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg mx-auto text-center mb-2">
-                    Break down performance by key demographics to make smarter, data-driven decisions.
+                  Break performance down by key demographics to guide data-driven decisions.
                   </p>
                   <div className="flex justify-center w-full mt-4">
                     <img

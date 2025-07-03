@@ -110,7 +110,10 @@ export function FaqSidebar() {
                         }`}
                       >
                         <div className="p-4 pt-0 text-slate-300 text-sm">
-                          <p className="whitespace-pre-line">{faq.answer}</p>
+                          <p 
+                            className="whitespace-pre-line"
+                            dangerouslySetInnerHTML={{ __html: faq.answer }}
+                          />
                         </div>
                       </div>
                     </div>
