@@ -595,12 +595,12 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                         </p>
                       </div>
                     </div>
-                    {/* Analyze-Last image - Right */}
+                    {/* Analyze-Last image - Right */} 
                     <div className="flex justify-center items-center -ml-10">
                       <img
-                        src="/images/Slide1.png"
-                        alt="Slide 1"
-                        className="h-[600px] w-[1180px] min-w-[900px] rounded-xl shadow-2xl object-contain"
+                        src="/images/Analyze-Final.png"
+                        alt="analyze final"
+                        className="h-[600px] w-[900px] min-w-[900px] rounded-xl shadow-2xl object-contain"
                       />
                     </div>
                   </div>

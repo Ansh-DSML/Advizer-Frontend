@@ -90,7 +90,7 @@ export default function SeeItInActionMobile() {
             </p>
             <div className="flex justify-center w-full mb-4 mt-0" style={{ marginTop: '2rem' }}>
               <img
-                src="/images/Slide1.png"
+                src="/images/Analyze-Final.png"
                 alt="Analyze Landscape"
                 className="w-[670px] min-w-[670px] h-[480px] max-w-full rounded-xl shadow-lg object-contain"
               />
@@ -175,7 +175,7 @@ export default function SeeItInActionMobile() {
               </p>
               <div className="flex justify-center w-full mt-4">
                 <img
-                  src="/images/Slide1.png"
+                  src="/images/Analyze-Final.png"
                   alt="Girl 3"
                   className="w-[400px] h-[270px] max-w-full rounded-xl shadow-md object-cover"
                 />
