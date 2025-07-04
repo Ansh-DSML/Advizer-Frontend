@@ -46,6 +46,13 @@ function isRealMobileDevice() {
   return /android|iphone|ipad|ipod|mobile/i.test(ua)
 }
 
+function isTouchDevice() {
+  return (
+    'ontouchstart' in window ||
+    navigator.maxTouchPoints > 0
+  )
+}
+
 export function useSupportedDeviceSize() {
   const [match, setMatch] = useState<{
     isSupportedDevice: boolean
@@ -70,7 +77,7 @@ export function useSupportedDeviceSize() {
           matchedSize: found,
           forcedFallback: false,
         })
-      } else if (dpr >= 2 && dpr <= 3.5 && isRealMobileDevice()) {
+      } else if ((dpr >= 2 && dpr <= 3.5 && (isRealMobileDevice() || isTouchDevice())) || (isTouchDevice() && winW <= 1366 && winH <= 1366)) {
         const fallbackSize = isPortrait
           ? { width: 414, height: 896 }
           : { width: 896, height: 414 }
