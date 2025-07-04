@@ -600,7 +600,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       <img
                         src="/images/Slide1.png"
                         alt="Slide 1"
-                        className="h-[600px] w-[1200px] min-w-[900px] rounded-xl shadow-2xl object-contain"
+                        className="h-[600px] w-[1180px] min-w-[900px] rounded-xl shadow-2xl object-contain"
                       />
                     </div>
                   </div>
