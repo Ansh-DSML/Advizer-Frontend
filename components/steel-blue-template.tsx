@@ -574,16 +574,15 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
               <p className="text-lg sm:text-xl text-gray-400 max-w-full mx-auto leading-relaxed font-light px-4">
                 A quick tour of the features designed to give you a decisive advantage on Meta.
               </p>
-              <div style={{ marginTop: '200px' }}></div>
             </div>
             {/* Feature Highlights Section */}
             <div className="max-w-7xl mx-auto space-y-0">
               {/* Analyze Card - Digital Collage Layout */}
-              <div className="bg-black min-h-[800px] py-0 pb-0 mb-0 relative" style={{ zIndex: 1 }}>
+              <div className="bg-black min-h-[400px] py-0 pb-0 mb-0 relative" style={{ zIndex: 1 }}>
                 <div className="max-w-7xl mx-auto px-6">
-                  <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[700px]">
+                  <div className="grid lg:grid-cols-2 gap-8 items-center min-h-[400px]">
                     {/* Analyze Text Content - Left */}
-                    <div className="flex flex-col justify-center h-full space-y-8 pl-0 -ml-10 text-left items-center -mt-10">
+                    <div className="flex flex-col justify-center h-full space-y-8 pl-0 -ml-10 text-left items-center -mt-32">
                       <div className="space-y-6 w-full flex flex-col items-start">
                         <button className="text-[#A3A3FF] text-base font-medium px-0 py-0 hover:text-[#B3B3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none">
                           Analyze
@@ -597,11 +596,11 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       </div>
                     </div>
                     {/* Analyze-Last image - Right */}
-                    <div className="flex justify-center items-center mt-[50%] -ml-[30%]">
+                    <div className="flex justify-center items-center -ml-10">
                       <img
-                        src="/images/Analyze-Last.png"
+                        src="/images/Slide1.png"
                         alt="Analyze Last"
-                        className="h-[450px] w-[800px] min-w-[700px] rounded-xl shadow-2xl object-contain"
+                        className="h-[600px] w-[1200px] min-w-[900px] rounded-xl shadow-2xl object-contain"
                       />
                     </div>
                   </div>
@@ -646,7 +645,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       left: '84.4%',
                       top: '97.5%',
                       width: '2px',
-                      height: '24%',
+                      height: '29%',
                       background: 'white',
                       opacity: 0.8,
                       borderRadius: '2px',
@@ -657,16 +656,16 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
               </div>
 
               {/* Visualize Card - Modern Minimal Design (STATIC, NO ANIMATION) */}
-              <div className="bg-black min-h-[500px] py-0 mt-0 pt-0">
+              <div className="bg-black min-h-[300px] py-0 mt-0 pt-0">
                 <div className="max-w-7xl mx-auto px-6">
-                  <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[500px]">
+                  <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[300px]">
                     {/* Analytics Dashboard - Left Side */}
                     <div className="flex items-center justify-start order-2 lg:order-1 overflow-visible">
                       <div className="relative overflow-visible">
                         <img
-                          src="/images/Big-Visualize-2.png"
+                          src="/images/Visualize-4.png"
                           alt="Visualize section image"
-                          className="w-[850px] max-w-none h-[385px] scale-120 -ml-[110px] object-cover object-center shadow-lg"
+                          className="w-[850px] max-w-none h-[485px] scale-120 -ml-[110px] object-contain object-center shadow-lg"
                         />
                       </div>
                     </div>
@@ -682,13 +681,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                           <span className="text-white">visual reports</span>
                         </h3>
                         <p className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg">
-                           <span className="relative inline-block">Eliminate
+                           <span className="relative inline-block">Digestible dashboards that any team member can understand. 
                             <span
                               ref={verticalLine3Ref}
                               className={`hidden lg:block travelling-vertical-glow-line-3${verticalLine3Glowed ? " glow-animate" : ""}`}
                               style={{
                                 position: 'absolute',
-                                left: '78%',
+                                left: '60%',
                                 top: '170%',
                                 transform: 'translateX(-50%)',
                                 width: '2px',
@@ -705,10 +704,10 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                               className={`hidden lg:block travelling-horizontal-glow-line-3${horizontalLine3Glowed ? " glow-animate" : ""}`}
                               style={{
                                 position: 'absolute',
-                                left: '79%',
+                                left: '60.5%',
                                 top: '810%',
                                 transform: 'translateX(-100%)',
-                                width: '1593%',
+                                width: '220%',
                                 height: '2px',
                                 background: 'white',
                                 opacity: 0.8,
@@ -722,7 +721,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                               className={`hidden lg:block travelling-vertical-glow-line-4${verticalLine4Glowed ? " glow-animate" : ""}`}
                               style={{
                                 position: 'absolute',
-                                left: '-1512%',
+                                left: '-159.5%',
                                 top: '810%',
                                 width: '2px',
                                 height: '700%',
@@ -732,7 +731,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                                 zIndex: 2,
                               }}
                             />
-                          </span> information overload.
+                          </span> 
                         </p>
                       </div>
                     </div>
@@ -763,9 +762,9 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                     {/* Image - Right Side */}
                     <div className="flex justify-center items-center">
                       <img
-                        src="/images/Improve-3.png"
+                        src="/images/ad_focal_point_ctr2.png"
                         alt="Improve section image"
-                        className="w-[830px] max-w-none h-[395px] rounded-xl shadow-2xl"
+                        className="w-[850px] min-w-[850px] max-w-none h-[450px] rounded-xl shadow-2xl"
                       />
                     </div>
                   </div>

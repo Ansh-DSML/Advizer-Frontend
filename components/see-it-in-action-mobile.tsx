@@ -88,16 +88,16 @@ export default function SeeItInActionMobile() {
             <p className="text-sm sm:text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg mx-auto text-center mb-2">
               Instantly tag every creative insight.
             </p>
-            <div className="flex justify-center w-full mb-4 mt-0" style={{ marginTop: '5rem' }}>
+            <div className="flex justify-center w-full mb-4 mt-0" style={{ marginTop: '2rem' }}>
               <img
-                src="/images/Analyze-Landscape-new.png"
+                src="/images/Slide1.png"
                 alt="Analyze Landscape"
-                className="w-[1150px] h-[480px] max-w-full rounded-xl shadow-lg object-contain"
+                className="w-[670px] min-w-[670px] h-[480px] max-w-full rounded-xl shadow-lg object-contain"
               />
             </div>
           </div>
 
-          <div className="space-y-2 w-full max-w-xl mx-auto mb-6" style={{ marginTop: '7rem' }}>
+          <div className="space-y-2 w-full max-w-xl mx-auto mb-6" style={{ marginTop: '3rem' }}>
             <button className="text-[#C3A3FF] text-sm font-medium hover:text-[#B3A3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none text-center block mx-auto">
               Visualize
             </button>
@@ -114,14 +114,14 @@ export default function SeeItInActionMobile() {
           {/* Big Visualize 2 image below Visualize section text */}
           <div className="flex justify-center w-full mb-6 mt-20">
             <img
-              src="/images/Big-Visualize-2.png"
+              src="/images/Visualize-4.png"
               alt="Big Visualize 2"
-              className="w-[800px] h-[300px] max-w-full rounded-xl shadow-lg object-contain"
+              className="w-[800px] h-[350px] max-w-full rounded-xl shadow-lg object-contain"
             />
           </div>
 
           {/* Improve section text only, center aligned */}
-          <div className="space-y-2 w-full max-w-xl mx-auto mb-6" style={{ marginTop: '7rem' }}>
+          <div className="w-full mx-auto mb-6 overflow-x-auto" style={{ marginTop: '7rem' }}>
             <button className="text-[#A3FFA3] text-sm font-medium hover:text-[#B3FFB3] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none text-center block mx-auto">
               Improve
             </button>
@@ -136,11 +136,11 @@ export default function SeeItInActionMobile() {
           </div>
 
           {/* Improve 3 image below Improve section text */}
-          <div className="flex justify-center w-full mb-6 mt-12">
+          <div className="mb-6 mt-12">
             <img
-              src="/images/Improve-3.png"
+              src="/images/ad_focal_point_ctr2.png"
               alt="Improve 3"
-              className="w-[800px] h-[300px] max-w-full rounded-xl shadow-lg object-contain"
+              className="w-[680px] max-w-none h-[485px] rounded-xl shadow-lg object-contain"
             />
           </div>
         </>
@@ -175,23 +175,12 @@ export default function SeeItInActionMobile() {
               </p>
               <div className="flex justify-center w-full mt-4">
                 <img
-                  src="/images/Girl-3.png"
+                  src="/images/Slide1.png"
                   alt="Girl 3"
-                  className="w-[270px] h-[270px] max-w-full rounded-xl shadow-md object-cover"
+                  className="w-[400px] h-[270px] max-w-full rounded-xl shadow-md object-cover"
                 />
               </div>
-              <div className="flex flex-row justify-center items-center w-full gap-4 mt-4">
-                <img
-                  src="/images/Ad-Visuals-4.png"
-                  alt="Ad Messaging Final"
-                  className="w-[200px] h-[200px] max-w-full rounded-xl shadow-md object-cover"
-                />
-                <img
-                  src="/images/Ad-Messaging-Final.png"
-                  alt="Ad Visuals 4"
-                  className="w-[200px] h-[200px] max-w-full rounded-xl shadow-md object-cover"
-                />
-              </div>
+              
               <div className="w-full flex flex-col items-center mt-6" style={{ marginTop: '3rem' }}>
                 <span className="text-[#C3A3FF] text-sm font-medium text-center mb-1">Visualize</span>
                 <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight font-sans text-center mb-1">
@@ -202,7 +191,7 @@ export default function SeeItInActionMobile() {
                 </p>
                 <div className="flex justify-center w-full mt-1">
                   <img
-                    src="/images/Big-Visualize-2.png"
+                    src="/images/Visualize-4.png"
                     alt="Big Visualize 2"
                     className="w-[370px] h-[280px] max-w-full rounded-xl shadow-md object-contain"
                   />
@@ -217,7 +206,7 @@ export default function SeeItInActionMobile() {
                   </p>
                   <div className="flex justify-center w-full mt-4">
                     <img
-                      src="/images/Improve-3.png"
+                      src="/images/ad_focal_point_ctr2.png"
                       alt="Improve 3"
                       className="w-[370px] h-[280px] max-w-full rounded-xl shadow-md object-contain"
                     />
