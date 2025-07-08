@@ -598,7 +598,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                     {/* Analyze-Last image - Right */} 
                     <div className="flex justify-center items-center -ml-10">
                       <img
-                        src="/images/Analyze-Final-2.png"
+                        src="/images/Analyze-Final-3.png"
                         alt="analyze final"
                         className="h-[600px] w-[900px] min-w-[900px] rounded-xl shadow-2xl object-contain"
                       />
@@ -663,7 +663,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                     <div className="flex items-center justify-start order-2 lg:order-1 overflow-visible">
                       <div className="relative overflow-visible">
                         <img
-                          src="/images/Visualize-4.png"
+                          src="/images/Visualize-Final.jpg"
                           alt="Visualize section image"
                           className="w-[850px] max-w-none h-[485px] scale-120 -ml-[110px] object-contain object-center shadow-lg"
                         />
@@ -762,7 +762,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                     {/* Image - Right Side */}
                     <div className="flex justify-center items-center">
                       <img
-                        src="/images/ad_focal_point_ctr2.png"
+                        src="/images/ctr_heatmap.png"
                         alt="Improve section image"
                         className="w-[850px] min-w-[850px] max-w-none h-[450px] rounded-xl shadow-2xl"
                       />

@@ -90,9 +90,9 @@ export default function SeeItInActionMobile() {
             </p>
             <div className="flex justify-center w-full mb-4 mt-0" style={{ marginTop: '2rem' }}>
               <img
-                src="/images/Analyze-Final-2.png"
+                src="/images/Analyze-Final-3.png"
                 alt="Analyze Landscape"
-                className="w-[670px] min-w-[670px] h-[480px] max-w-full rounded-xl shadow-lg object-contain"
+                className="w-[670px] min-w-[670px] h-[500px] max-w-full rounded-xl shadow-lg object-contain"
               />
             </div>
           </div>
@@ -114,7 +114,7 @@ export default function SeeItInActionMobile() {
           {/* Big Visualize 2 image below Visualize section text */}
           <div className="flex justify-center w-full mb-6 mt-20">
             <img
-              src="/images/Visualize-4.png"
+              src="/images/Visualize-Final.jpg"
               alt="Big Visualize 2"
               className="w-[800px] h-[350px] max-w-full rounded-xl shadow-lg object-contain"
             />
@@ -138,7 +138,7 @@ export default function SeeItInActionMobile() {
           {/* Improve 3 image below Improve section text */}
           <div className="mb-6 mt-12">
             <img
-              src="/images/ad_focal_point_ctr2.png"
+              src="/images/ctr_heatmap.png"
               alt="Improve 3"
               className="w-[680px] max-w-none h-[485px] rounded-xl shadow-lg object-contain"
             />
@@ -175,9 +175,9 @@ export default function SeeItInActionMobile() {
               </p>
               <div className="flex justify-center w-full mt-4">
                 <img
-                  src="/images/Analyze-Portrait.png"
+                  src="/images/Analyze-Final-3.png"
                   alt="Girl 3"
-                  className="w-[400px] min-w-[385px] h-[205px] max-w-full rounded-xl shadow-md object-cover"
+                  className="w-[400px] min-w-[385px] h-[235px] max-w-full rounded-xl shadow-md object-contain"
                 />
               </div>
               
@@ -191,7 +191,7 @@ export default function SeeItInActionMobile() {
                 </p>
                 <div className="flex justify-center w-full mt-1">
                   <img
-                    src="/images/Visualize-4.png"
+                    src="/images/Visualize-Final.jpg"
                     alt="Big Visualize 2"
                     className="w-[370px] h-[280px] max-w-full rounded-xl shadow-md object-contain"
                   />
@@ -206,7 +206,7 @@ export default function SeeItInActionMobile() {
                   </p>
                   <div className="flex justify-center w-full mt-4">
                     <img
-                      src="/images/ad_focal_point_ctr2.png"
+                      src="/images/ctr_heatmap.png"
                       alt="Improve 3"
                       className="w-[370px] h-[280px] max-w-full rounded-xl shadow-md object-contain"
                     />
