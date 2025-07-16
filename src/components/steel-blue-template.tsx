@@ -33,7 +33,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
   const verticalLine4Ref = useRef(null)
   const [verticalLine4Glowed, setVerticalLine4Glowed] = useState(false)
   const device = useSupportedDeviceSize()
-  const isSeeItInActionLaptop = useSeeItInActionLaptopSize();
+  const isSeeItInActionLaptop = useSeeItInActionLaptopSize(); 
 
 
 
@@ -42,7 +42,8 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
     "Mochi Shoes",
     "Armaf India",
     "NueGo Bus",
-    "GRT Jewellers" 
+    "GRT Jewellers",
+    "Simpolo"
   ]
 
   const features = [
@@ -288,6 +289,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
               <div className="text-white font-bold text-3xl" style={{ fontFamily: 'Times New Roman', letterSpacing: '0.02em' }}>Armaf India</div>
               <div className="text-white font-bold text-3xl" style={{ fontFamily: 'Times New Roman', letterSpacing: '0.02em' }}>NueGo Bus</div>
               <div className="text-white font-bold text-3xl" style={{ fontFamily: 'Times New Roman', letterSpacing: '0.02em' }}>GRT Jewellers</div>
+              <div className="text-white font-bold text-3xl" style={{ fontFamily: 'Times New Roman', letterSpacing: '0.02em' }}>Simpolo</div>
             </div>
           </div>
         </div>
