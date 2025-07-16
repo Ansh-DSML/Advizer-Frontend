@@ -30,6 +30,7 @@ const SUPPORTED_SIZES = [
   { width: 1114, height: 720 },
   { width: 882, height: 344 },
   { width: 1024, height: 600 },
+  { width: 1280, height: 1706 },
 ]
 
 const SIZE_TOLERANCE = 2
@@ -43,6 +44,8 @@ function isSizeMatch(winW: number, winH: number, size: { width: number; height: 
 
 function isRealMobileDevice() {
   const ua = navigator.userAgent || navigator.vendor
+  // Exclude MacBooks (Macintosh) from being detected as mobile
+  if (/Macintosh/i.test(ua)) return false;
   return /android|iphone|ipad|ipod|mobile/i.test(ua)
 }
 
@@ -77,7 +80,10 @@ export function useSupportedDeviceSize() {
           matchedSize: found,
           forcedFallback: false,
         })
-      } else if ((dpr >= 2 && dpr <= 3.5 && (isRealMobileDevice() || isTouchDevice())) || (isTouchDevice() && winW <= 1366 && winH <= 1366)) {
+      } else if (
+        isRealMobileDevice() && // Only fallback for real mobile devices
+        dpr >= 2 && dpr <= 3.5
+      ) {
         const fallbackSize = isPortrait
           ? { width: 414, height: 896 }
           : { width: 896, height: 414 }
@@ -104,4 +110,37 @@ export function useSupportedDeviceSize() {
   }, [])
 
   return match
+}
+
+// List of laptop dimensions for 'See It In Action' special layout
+const SEE_IT_IN_ACTION_LAPTOP_SIZES = [
+  { width: 1440, height: 900 },
+  { width: 1400, height: 800 },
+  { width: 1280, height: 800 },
+  { width: 1470, height: 956 },
+  { width: 1512, height: 982 },
+  { width: 1440, height: 932 },
+  { width: 1280, height: 832 },
+]
+
+// Hook to detect if current window size matches any of the special laptop sizes
+export function useSeeItInActionLaptopSize() {
+  const [isSeeItInActionLaptop, setIsSeeItInActionLaptop] = useState(false)
+
+  useEffect(() => {
+    function checkLaptopSize() {
+      const winW = window.innerWidth
+      const winH = window.innerHeight
+      const match = SEE_IT_IN_ACTION_LAPTOP_SIZES.some(size =>
+        (Math.abs(winW - size.width) <= SIZE_TOLERANCE && Math.abs(winH - size.height) <= SIZE_TOLERANCE) ||
+        (Math.abs(winW - size.height) <= SIZE_TOLERANCE && Math.abs(winH - size.width) <= SIZE_TOLERANCE)
+      )
+      setIsSeeItInActionLaptop(match)
+    }
+    checkLaptopSize()
+    window.addEventListener("resize", checkLaptopSize)
+    return () => window.removeEventListener("resize", checkLaptopSize)
+  }, [])
+
+  return isSeeItInActionLaptop
 }

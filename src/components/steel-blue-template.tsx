@@ -6,7 +6,7 @@ import { Card, CardContent } from "./ui/card"
 import { ArrowRight, Play, Users, Tag, BarChart3, Monitor, Layers, Brain, TrendingUp } from "lucide-react"
 import { FaqAccordion } from "./faq/faq-accordion"
 import SeeItInActionMobile from "./see-it-in-action-mobile"
-import { useSupportedDeviceSize } from "./ui/use-mobile"
+import { useSupportedDeviceSize, useSeeItInActionLaptopSize } from "./ui/use-mobile"
 
 
 interface SteelBlueTemplateProps {
@@ -33,6 +33,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
   const verticalLine4Ref = useRef(null)
   const [verticalLine4Glowed, setVerticalLine4Glowed] = useState(false)
   const device = useSupportedDeviceSize()
+  const isSeeItInActionLaptop = useSeeItInActionLaptopSize();
 
 
 
@@ -601,6 +602,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                         src="/images/Analyze-Final-3.png"
                         alt="analyze final"
                         className="h-[600px] w-[900px] min-w-[900px] rounded-xl shadow-2xl object-contain"
+                        style={isSeeItInActionLaptop ? { marginLeft: '-80px' } : {}}
                       />
                     </div>
                   </div>
@@ -627,7 +629,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                     style={{
                       position: 'absolute',
                       left: '6.5%',
-                      top: `97.5%`,
+                      top:'97.5%',
                       width: '78%',
                       height: '2px',
                       background: 'white',
@@ -691,7 +693,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                                 top: '170%',
                                 transform: 'translateX(-50%)',
                                 width: '2px',
-                                height: '645%',
+                                height:  isSeeItInActionLaptop ? '232%' :'645%',
                                 background: 'white',
                                 opacity: 0.8,
                                 borderRadius: '2px',
@@ -705,7 +707,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                               style={{
                                 position: 'absolute',
                                 left: '60.5%',
-                                top: '810%',
+                                top: isSeeItInActionLaptop ? '395%' : '810%',
                                 transform: 'translateX(-100%)',
                                 width: '220%',
                                 height: '2px',
@@ -722,9 +724,9 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                               style={{
                                 position: 'absolute',
                                 left: '-159.5%',
-                                top: '810%',
+                                top: isSeeItInActionLaptop ? '395%' : '810%',
                                 width: '2px',
-                                height: '700%',
+                                height: isSeeItInActionLaptop ? '232%':'700%',
                                 background: 'white',
                                 opacity: 0.8,
                                 borderRadius: '2px',
@@ -764,7 +766,8 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       <img
                         src="/images/ctr_heatmap.png"
                         alt="Improve section image"
-                        className="w-[850px] min-w-[850px] max-w-none h-[450px] rounded-xl shadow-2xl"
+                        className="w-[850px] min-w-[850px] max-w-none h-[450px] rounded-xl shadow-2xl "
+                        style={isSeeItInActionLaptop ? { marginLeft: '-80px' } : {}} 
                       />
                     </div>
                   </div>
