@@ -33,7 +33,7 @@ const SUPPORTED_SIZES = [
   { width: 1280, height: 1706 },
 ]
 
-const SIZE_TOLERANCE = 2
+const SIZE_TOLERANCE = 10
 
 function isSizeMatch(winW: number, winH: number, size: { width: number; height: number }) {
   return (
@@ -121,6 +121,10 @@ const SEE_IT_IN_ACTION_LAPTOP_SIZES = [
   { width: 1512, height: 982 },
   { width: 1440, height: 932 },
   { width: 1280, height: 832 },
+  { width: 1280, height: 800 },
+  { width: 1152, height: 720 },
+  { width: 1024, height: 640 },
+  { width: 1024, height: 600 }
 ]
 
 // Hook to detect if current window size matches any of the special laptop sizes

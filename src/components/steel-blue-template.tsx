@@ -283,14 +283,31 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
 
         <div className="-mt-2 overflow-hidden rounded-3xl py-3 bg-black">
           <div className="client-logos-container" style={{ background: 'black', padding: '16px 0' }}>
-            <div className="flex flex-wrap justify-center gap-8">
-              <div className="text-white font-bold text-3xl" style={{ fontFamily: 'Times New Roman', letterSpacing: '0.02em' }}>Metro Shoes</div>
-              <div className="text-white font-bold text-3xl" style={{ fontFamily: 'Times New Roman', letterSpacing: '0.02em' }}>Mochi Shoes</div>
-              <div className="text-white font-bold text-3xl" style={{ fontFamily: 'Times New Roman', letterSpacing: '0.02em' }}>Armaf India</div>
-              <div className="text-white font-bold text-3xl" style={{ fontFamily: 'Times New Roman', letterSpacing: '0.02em' }}>NueGo Bus</div>
-              <div className="text-white font-bold text-3xl" style={{ fontFamily: 'Times New Roman', letterSpacing: '0.02em' }}>GRT Jewellers</div>
-              <div className="text-white font-bold text-3xl" style={{ fontFamily: 'Times New Roman', letterSpacing: '0.02em' }}>Simpolo</div>
-            </div>
+            {device.isSupportedDevice && device.isPortrait ? (
+              <div className="flex flex-col items-center gap-2">
+                {clientLogos.map((company, idx) => (
+                  <div
+                    key={company}
+                    className="text-white font-bold text-3xl"
+                    style={{ fontFamily: 'Times New Roman', letterSpacing: '0.02em' }}
+                  >
+                    {company}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="flex flex-wrap justify-center gap-8">
+                {clientLogos.map((company, idx) => (
+                  <div
+                    key={company}
+                    className="text-white font-bold text-3xl"
+                    style={{ fontFamily: 'Times New Roman', letterSpacing: '0.02em' }}
+                  >
+                    {company}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -603,8 +620,10 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       <img
                         src="/images/Analyze-Final-3.png"
                         alt="analyze final"
-                        className="h-[600px] w-[900px] min-w-[900px] rounded-xl shadow-2xl object-contain"
-                        style={isSeeItInActionLaptop ? { marginLeft: '-80px' } : {}}
+                        className="h-[600px] rounded-xl shadow-2xl object-contain"
+                        style={isSeeItInActionLaptop 
+                          ? { marginLeft: '-80px', width: '600px', minWidth: '600px' }
+                          : { width: '900px', minWidth: '900px' }}
                       />
                     </div>
                   </div>
@@ -669,7 +688,10 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                         <img
                           src="/images/Visualize-Final.jpg"
                           alt="Visualize section image"
-                          className="w-[850px] max-w-none h-[485px] scale-120 -ml-[110px] object-contain object-center shadow-lg"
+                          className="h-[485px] scale-120 -ml-[110px] object-contain object-center shadow-lg"
+                          style={isSeeItInActionLaptop 
+                            ? { width: '790px', maxWidth: '600px', marginLeft: '5px' }
+                            : { width: '850px', maxWidth: 'none' }}
                         />
                       </div>
                     </div>
@@ -768,8 +790,10 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                       <img
                         src="/images/ctr_heatmap.png"
                         alt="Improve section image"
-                        className="w-[850px] min-w-[850px] max-w-none h-[450px] rounded-xl shadow-2xl "
-                        style={isSeeItInActionLaptop ? { marginLeft: '-80px' } : {}} 
+                        className="h-[450px] rounded-xl shadow-2xl"
+                        style={isSeeItInActionLaptop 
+                          ? { width: '500px', minWidth: '500px' }
+                          : { width: '850px', minWidth: '850px' }}
                       />
                     </div>
                   </div>
