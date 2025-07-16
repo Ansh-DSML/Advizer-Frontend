@@ -683,17 +683,61 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                 <div className="max-w-7xl mx-auto px-6">
                   <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[300px]">
                     {/* Analytics Dashboard - Left Side */}
-                    <div className="flex items-center justify-start order-2 lg:order-1 overflow-visible">
-                      <div className="relative overflow-visible">
-                        <img
-                          src="/images/Visualize-Final.jpg"
-                          alt="Visualize section image"
-                          className="h-[485px] scale-120 -ml-[110px] object-contain object-center shadow-lg"
-                          style={isSeeItInActionLaptop 
-                            ? { width: '790px', maxWidth: '600px', marginLeft: '5px' }
-                            : { width: '850px', maxWidth: 'none' }}
-                        />
-                      </div>
+                    <div className="flex items-center justify-start order-2 lg:order-1 overflow-visible relative">
+                      <img
+                        src="/images/Visualize-Final.jpg"
+                        alt="Visualize section image"
+                        className="h-[485px] scale-120 -ml-[110px] object-contain object-center shadow-lg"
+                        style={isSeeItInActionLaptop 
+                          ? { width: '790px', maxWidth: '600px', marginLeft: '5px' }
+                          : { width: '850px', maxWidth: 'none' }}
+                      />
+                      {/* Glow lines for Visualize section, positioned like Analyze section */}
+                      <span
+                        ref={verticalLine3Ref}
+                        className={`hidden lg:block travelling-vertical-glow-line-3${verticalLine3Glowed ? " glow-animate" : ""}`}
+                        style={{
+                          position: 'absolute',
+                          right: '-81.2%',
+                          top: '74%',
+                          width: '2px',
+                          height: '33.7%',
+                          background: 'white',
+                          opacity: 0.8,
+                          borderRadius: '2px',
+                          zIndex: 2,
+                        }}
+                      />
+                      <span
+                        ref={horizontalLine3Ref}
+                        className={`hidden lg:block travelling-horizontal-glow-line-3${horizontalLine3Glowed ? " glow-animate" : ""}`}
+                        style={{
+                          position: 'absolute',
+                          left: '10.4%',
+                          top: '107.3%',
+                          width: '171%',
+                          height: '2px',
+                          background: 'white',
+                          opacity: 0.8,
+                          borderRadius: '1px',
+                          zIndex: 2,
+                        }}
+                      />
+                      <span
+                        ref={verticalLine4Ref}
+                        className={`hidden lg:block travelling-vertical-glow-line-4${verticalLine4Glowed ? " glow-animate" : ""}`}
+                        style={{
+                          position: 'absolute',
+                          left: '10.4%',
+                          top: '107%',
+                          width: '2px',
+                          height: '36%',
+                          background: 'white',
+                          opacity: 0.8,
+                          borderRadius: '2px',
+                          zIndex: 2,
+                        }}
+                      />
                     </div>
                     {/* Text Content - Right Side */}
                     <div className="flex flex-col justify-center space-y-8 order-1 lg:order-2 ml-32 items-end">
@@ -707,57 +751,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                           <span className="text-white">visual reports</span>
                         </h3>
                         <p className="text-base text-[#A1A1AA] leading-relaxed font-light max-w-lg">
-                           <span className="relative inline-block">Digestible dashboards that any team member can understand. 
-                            <span
-                              ref={verticalLine3Ref}
-                              className={`hidden lg:block travelling-vertical-glow-line-3${verticalLine3Glowed ? " glow-animate" : ""}`}
-                              style={{
-                                position: 'absolute',
-                                left: '60%',
-                                top: '170%',
-                                transform: 'translateX(-50%)',
-                                width: '2px',
-                                height:  isSeeItInActionLaptop ? '232%' :'645%',
-                                background: 'white',
-                                opacity: 0.8,
-                                borderRadius: '2px',
-                                zIndex: 2,
-                              }}
-                            />
-                            {/* Horizontal line at the bottom of the vertical line, turning left */}
-                            <span
-                              ref={horizontalLine3Ref}
-                              className={`hidden lg:block travelling-horizontal-glow-line-3${horizontalLine3Glowed ? " glow-animate" : ""}`}
-                              style={{
-                                position: 'absolute',
-                                left: '60.5%',
-                                top: isSeeItInActionLaptop ? '395%' : '810%',
-                                transform: 'translateX(-100%)',
-                                width: '220%',
-                                height: '2px',
-                                background: 'white',
-                                opacity: 0.8,
-                                borderRadius: '1px',
-                                zIndex: 2,
-                              }}
-                            />
-                            {/* Vertical line at the left end of the horizontal line, turning down */}
-                            <span
-                              ref={verticalLine4Ref}
-                              className={`hidden lg:block travelling-vertical-glow-line-4${verticalLine4Glowed ? " glow-animate" : ""}`}
-                              style={{
-                                position: 'absolute',
-                                left: '-159.5%',
-                                top: isSeeItInActionLaptop ? '395%' : '810%',
-                                width: '2px',
-                                height: isSeeItInActionLaptop ? '232%':'700%',
-                                background: 'white',
-                                opacity: 0.8,
-                                borderRadius: '2px',
-                                zIndex: 2,
-                              }}
-                            />
-                          </span> 
+                          Digestible dashboards that any team member can understand.
                         </p>
                       </div>
                     </div>
