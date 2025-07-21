@@ -622,8 +622,8 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                         alt="analyze final"
                         className="h-[600px] rounded-xl shadow-2xl object-contain"
                         style={isSeeItInActionLaptop 
-                          ? { marginLeft: '-80px', width: '600px', minWidth: '600px' }
-                          : { width: '900px', minWidth: '900px' }}
+                          ? { marginRight: '210px', width: '850px', minWidth: '850px' }
+                          : { width: '900px', minWidth: '900px', marginRight: '150px' }}
                       />
                     </div>
                   </div>
@@ -689,7 +689,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                         alt="Visualize section image"
                         className="h-[485px] scale-120 -ml-[110px] object-contain object-center shadow-lg"
                         style={isSeeItInActionLaptop 
-                          ? { width: '790px', maxWidth: '600px', marginLeft: '5px' }
+                          ? { width: '800px', minWidth: '800px', marginLeft: '1px' }
                           : { width: '850px', maxWidth: 'none' }}
                       />
                       {/* Glow lines for Visualize section, positioned like Analyze section */}
@@ -764,7 +764,10 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                 <div className="max-w-7xl mx-auto px-6">
                   <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[500px]">
                     {/* Text Content - Left Side */}
-                    <div className="flex flex-col justify-center space-y-8 pl-0 -ml-12">
+                    <div
+                      className="flex flex-col justify-center space-y-8 pl-0 -ml-12"
+                      style={isSeeItInActionLaptop ? { marginLeft: '20px' } : {}}
+                    >
                       <div className="space-y-6">
                         <button className="text-[#A3FFA3] text-base font-medium px-0 py-0 hover:text-[#B3FFB3] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none">
                           Improve
@@ -786,8 +789,8 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                         alt="Improve section image"
                         className="h-[450px] rounded-xl shadow-2xl"
                         style={isSeeItInActionLaptop 
-                          ? { width: '500px', minWidth: '500px' }
-                          : { width: '850px', minWidth: '850px' }}
+                          ? { width: '600px', minWidth: '600px', marginRight: '50px'}
+                          : { width: '700px', minWidth: '700px' , marginRight: '20px'}}
                       />
                     </div>
                   </div>
