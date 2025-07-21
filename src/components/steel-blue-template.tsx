@@ -602,7 +602,10 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                 <div className="max-w-7xl mx-auto px-6">
                   <div className="grid lg:grid-cols-2 gap-8 items-center min-h-[400px]">
                     {/* Analyze Text Content - Left */}
-                    <div className="flex flex-col justify-center h-full space-y-8 pl-0 -ml-10 text-left items-center -mt-32">
+                    <div
+                      className="flex flex-col justify-center h-full space-y-8 pl-0 -ml-10 text-left items-center -mt-32"
+                      style={isSeeItInActionLaptop ? { marginLeft: '20px' } : {}}
+                    >
                       <div className="space-y-6 w-full flex flex-col items-start">
                         <button className="text-[#A3A3FF] text-base font-medium px-0 py-0 hover:text-[#B3B3FF] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none">
                           Analyze
@@ -766,7 +769,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                     {/* Text Content - Left Side */}
                     <div
                       className="flex flex-col justify-center space-y-8 pl-0 -ml-12"
-                      style={isSeeItInActionLaptop ? { marginLeft: '20px' } : {}}
+                      style={isSeeItInActionLaptop ? { marginLeft: '30px', marginTop: '90px' } : {}}
                     >
                       <div className="space-y-6">
                         <button className="text-[#A3FFA3] text-base font-medium px-0 py-0 hover:text-[#B3FFB3] transition-colors duration-200 hover:underline underline-offset-4 bg-transparent border-none">
