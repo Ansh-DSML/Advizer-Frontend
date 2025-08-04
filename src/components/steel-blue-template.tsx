@@ -819,6 +819,47 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl mb-6 tracking-tight font-clash">
               <span className="sentence-gradient">
+                Stop Guessing. Build Winning Ads with AI.
+              </span>
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-400 max-w-full mx-auto leading-relaxed font-light px-4">
+              Our AI pinpoints which creative elements drive results, turning complex performance data into clear, actionable briefs for your next winning campaign.
+            </p>
+            
+            {/* Demo Video */}
+            <div className="max-w-4xl mx-auto mt-12">
+              <video
+                className="w-full rounded-2xl shadow-2xl"
+                controls
+                preload="metadata"
+                crossOrigin="anonymous"
+                playsInline
+                loop
+              >
+                <source src="/images/Advizer-Demo.mp4" type="video/mp4" />
+                <source src="/images/Advizer-Demo.mp4" type="video/mp4; codecs='avc1.42E01E, mp4a.40.2'" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* FAQ Section */}
+      <div
+        className={`pt-0 pb-8 bg-black${device.isSupportedDevice && !device.isPortrait ? ' mt-40' : ''}${device.isSupportedDevice && device.isPortrait ? ' mt-32' : ''}`}
+        style={{
+          marginTop: device.isSupportedDevice && !device.isPortrait
+            ? '10rem'
+            : device.isSupportedDevice && device.isPortrait
+              ? '8rem'
+              : '-98px'
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl mb-6 tracking-tight font-clash">
+              <span className="sentence-gradient">
                 Frequently Asked <span className="animate-gentle-pulse">Questions</span>
               </span>
             </h2>
