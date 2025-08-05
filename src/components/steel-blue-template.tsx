@@ -237,6 +237,106 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-black">
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Advize",
+            "description": "AI-powered creative analytics platform for Meta advertising campaigns",
+            "url": "https://advize.com",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "featureList": [
+              "Creative Analytics",
+              "Media Dashboard", 
+              "Creative Mix Analysis",
+              "AI-Powered Insights",
+              "Performance Tracking",
+              "ROI Optimization"
+            ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "reviewCount": "150"
+            }
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Advize",
+            "url": "https://advize.com",
+            "logo": "https://advize.com/logo.png",
+            "sameAs": [
+              "https://twitter.com/advize",
+              "https://linkedin.com/company/advize"
+            ]
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Which ad formats does Advize analyse?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Advize ingests Meta image, video and carousel creatives—including boosted posts—across every campaign objective."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How often are metrics and tags refreshed?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We pull fresh performance data and run the tagging pipeline once every 24 hours, so insights stay current without manual effort."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What creative elements does the AI recognise?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Over 50 taxonomies cover visuals (colour palette, setting, subject), messaging (hook style, benefit) and motion cues."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How accurate is the tag classification?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Models are trained on thousands of annotated ads and validated against confidence benchmarks for precision and recall."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can Advize handle multiple ad accounts?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes—connect unlimited accounts and use filters to compare brands, campaigns or regions side-by-side."
+                }
+              }
+            ]
+          })
+        }}
+      />
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-20">
         <div className="text-center">
@@ -817,49 +917,9 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 px-6">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 tracking-tight font-clash leading-relaxed px-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 tracking-tight font-clash leading-[1.3] px-4 pb-2">
               <span className="sentence-gradient">
-                Stop Guessing. Build Winning Ads with AI.
-              </span>
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-400 max-w-full mx-auto leading-relaxed font-light px-4">
-              Our AI pinpoints which creative elements drive results, turning complex performance data into clear, actionable briefs for your next winning campaign.
-            </p>
-            
-            {/* Demo Video */}
-            <div className="max-w-4xl mx-auto mt-12">
-              <video
-                className="w-full rounded-2xl shadow-2xl"
-                controls
-                preload="metadata"
-                playsInline
-                loop
-                autoPlay
-              >
-                <source src="/images/Advizer-Demo.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* FAQ Section */}
-      <div
-        className={`pt-0 pb-8 bg-black${device.isSupportedDevice && !device.isPortrait ? ' mt-40' : ''}${device.isSupportedDevice && device.isPortrait ? ' mt-32' : ''}`}
-        style={{
-          marginTop: device.isSupportedDevice && !device.isPortrait
-            ? '5rem'
-            : device.isSupportedDevice && device.isPortrait
-              ? '4rem'
-              : '4rem'
-        }}
-      >
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16 px-6">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 tracking-tight font-clash leading-relaxed px-4">
-              <span className="sentence-gradient">
-                Stop Guessing. Build Winning Ads with AI.
+                Stop the Noise. Create Ads That Win.
               </span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-400 max-w-full mx-auto leading-relaxed font-light px-4">
