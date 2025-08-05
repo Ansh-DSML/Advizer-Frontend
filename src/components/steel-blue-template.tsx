@@ -816,8 +816,8 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
         }}
       >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl mb-6 tracking-tight font-clash">
+          <div className="text-center mb-16 px-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 tracking-tight font-clash leading-relaxed px-4">
               <span className="sentence-gradient">
                 Stop Guessing. Build Winning Ads with AI.
               </span>
@@ -832,12 +832,11 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                 className="w-full rounded-2xl shadow-2xl"
                 controls
                 preload="metadata"
-                crossOrigin="anonymous"
                 playsInline
                 loop
+                autoPlay
               >
                 <source src="/images/Advizer-Demo.mp4" type="video/mp4" />
-                <source src="/images/Advizer-Demo.mp4" type="video/mp4; codecs='avc1.42E01E, mp4a.40.2'" />
                 Your browser does not support the video tag.
               </video>
             </div>
@@ -850,15 +849,15 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
         className={`pt-0 pb-8 bg-black${device.isSupportedDevice && !device.isPortrait ? ' mt-40' : ''}${device.isSupportedDevice && device.isPortrait ? ' mt-32' : ''}`}
         style={{
           marginTop: device.isSupportedDevice && !device.isPortrait
-            ? '10rem'
+            ? '5rem'
             : device.isSupportedDevice && device.isPortrait
-              ? '8rem'
-              : '-98px'
+              ? '4rem'
+              : '4rem'
         }}
       >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl mb-6 tracking-tight font-clash">
+          <div className="text-center mb-16 px-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 tracking-tight font-clash leading-relaxed px-4">
               <span className="sentence-gradient">
                 Frequently Asked <span className="animate-gentle-pulse">Questions</span>
               </span>
