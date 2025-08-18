@@ -38,12 +38,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
 
 
   const clientLogos = [
-    "Metro Shoes",
-    "Mochi Shoes",
-    "Armaf India",
-    "NueGo Bus",
-    "GRT Jewellers",
-    "Simpolo"
+    { src: "/Logo-Images/Metro-shoes.jpg", alt: "Metro Shoes" },
+    { src: "/Logo-Images/Mochi-shoes.jpg", alt: "Mochi Shoes" },
+    { src: "/Logo-Images/Armaf.jpg", alt: "Armaf India" },
+    { src: "/Logo-Images/NeuGo.jpg", alt: "NueGo Bus" },
+    { src: "/Logo-Images/GRT.jpg", alt: "GRT Jewellers" },
+    { src: "/Logo-Images/simpolo.jpg", alt: "Simpolo" },
+    { src: "/Logo-Images/Kumari.jpg", alt: "Kumari" }
   ]
 
   const features = [
@@ -381,33 +382,34 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
           </div>
         </div>
 
-        <div className="-mt-2 overflow-hidden rounded-3xl py-3 bg-black">
+        <div
+          className="-mt-2 overflow-hidden rounded-3xl py-3 bg-black"
+          style={
+            device.isSupportedDevice
+              ? { width: '100vw', marginLeft: 'calc(50% - 50vw)', marginRight: 'calc(50% - 50vw)' }
+              : undefined
+          }
+        >
           <div className="client-logos-container" style={{ background: 'black', padding: '16px 0' }}>
-            {device.isSupportedDevice && device.isPortrait ? (
-              <div className="flex flex-col items-center gap-2">
-                {clientLogos.map((company, idx) => (
-                  <div
-                    key={company}
-                    className="text-white font-bold text-3xl"
-                    style={{ fontFamily: 'Times New Roman', letterSpacing: '0.02em' }}
-                  >
-                    {company}
-                  </div>
+            <div className="client-logos-marquee overflow-hidden">
+              <div
+                className="client-logos-track"
+                style={{
+                  animationDuration: device.isSupportedDevice
+                    ? (device.isPortrait ? '7s' : '9s')
+                    : '20s',
+                }}
+              >
+                {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, idx) => (
+                  <img
+                    key={`logo-${idx}-${logo.src}`}
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="client-logo"
+                  />
                 ))}
               </div>
-            ) : (
-              <div className="flex flex-wrap justify-center gap-8">
-                {clientLogos.map((company, idx) => (
-                  <div
-                    key={company}
-                    className="text-white font-bold text-3xl"
-                    style={{ fontFamily: 'Times New Roman', letterSpacing: '0.02em' }}
-                  >
-                    {company}
-                  </div>
-                ))}
-              </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
@@ -1123,6 +1125,34 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
         display: flex;
         animation: scrollElastic 30s linear infinite;
         gap: 0;
+      }
+
+      /* New marquee styles for continuous single-line scrolling */
+      .client-logos-marquee {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .client-logos-track {
+        display: flex;
+        align-items: center;
+        gap: 3rem; /* spacing between logos */
+        white-space: nowrap;
+        will-change: transform;
+        animation: marquee-left 20s linear infinite;
+      }
+
+      .client-logo {
+        height: 130px; /* increased uniform height across all logos */
+        width: 500px;  /* width scales with height to keep aspect ratio */
+        object-fit: contain;
+        filter: none;
+      }
+
+      @keyframes marquee-left {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-33.3333%, 0, 0); }
       }
 
       @keyframes scrollElastic {
