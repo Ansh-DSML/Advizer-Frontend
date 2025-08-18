@@ -400,7 +400,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                     : '20s',
                 }}
               >
-                {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, idx) => (
+                {[...clientLogos, ...clientLogos].map((logo, idx) => (
                   <img
                     key={`logo-${idx}-${logo.src}`}
                     src={logo.src}
@@ -723,7 +723,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
                     {/* Analyze-Last image - Right */} 
                     <div className="flex justify-center items-center -ml-10">
                       <img
-                        src="/images/Analyze-Final-3.png"
+                        src="/images/Analyze-Canvas.jpg"
                         alt="analyze final"
                         className="h-[600px] rounded-xl shadow-2xl object-contain"
                         style={isSeeItInActionLaptop 
@@ -1152,7 +1152,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
 
       @keyframes marquee-left {
         0% { transform: translate3d(0, 0, 0); }
-        100% { transform: translate3d(-33.3333%, 0, 0); }
+        100% { transform: translate3d(-50%, 0, 0); }
       }
 
       @keyframes scrollElastic {
