@@ -1144,8 +1144,8 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
       }
 
       .client-logo {
-        height: 130px; /* increased uniform height across all logos */
-        width: 500px;  /* width scales with height to keep aspect ratio */
+        height: 130px; /* keep uniform height */
+        width: 220px;  /* set uniform width across all logos */
         object-fit: contain;
         filter: none;
       }
