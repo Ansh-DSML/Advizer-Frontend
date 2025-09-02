@@ -17,6 +17,7 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
   const [typewriterText, setTypewriterText] = useState("")
   const [showCursor, setShowCursor] = useState(true)
   const [isPageLoaded, setIsPageLoaded] = useState(false)
+  const [logoSetRepeats, setLogoSetRepeats] = useState(2)
   const lastScrollY = useRef(0)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const observerRef = useRef<IntersectionObserver | null>(null)
@@ -32,6 +33,8 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
   const [horizontalLine3Glowed, setHorizontalLine3Glowed] = useState(false)
   const verticalLine4Ref = useRef(null)
   const [verticalLine4Glowed, setVerticalLine4Glowed] = useState(false)
+  const marqueeTrackRef = useRef<HTMLDivElement>(null)
+  const marqueeSetRef = useRef<HTMLDivElement>(null)
   const device = useSupportedDeviceSize()
   const isSeeItInActionLaptop = useSeeItInActionLaptopSize(); 
 
@@ -150,6 +153,31 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
     }
     return () => observer.disconnect()
   }, [])
+
+  // Ensure marquee scrolls full width of one set for a seamless loop
+  useEffect(() => {
+    const updateMarquee = () => {
+      const setEl = marqueeSetRef.current
+      const trackEl = marqueeTrackRef.current
+      if (!setEl || !trackEl) return
+      const setWidth = setEl.scrollWidth
+      const viewportWidth = window.innerWidth
+      const requiredRepeats = Math.max(2, Math.ceil(viewportWidth / setWidth) + 1)
+      setLogoSetRepeats(requiredRepeats)
+      const speedPxPerSec = device.isSupportedDevice ? (device.isPortrait ? 60 : 80) : 100
+      const durationSec = Math.max(16, setWidth / speedPxPerSec)
+      trackEl.style.setProperty('--marquee-distance', `${setWidth}px`)
+      trackEl.style.setProperty('--marquee-duration', `${durationSec}s`)
+    }
+
+    updateMarquee()
+    window.addEventListener('resize', updateMarquee)
+    window.addEventListener('orientationchange', updateMarquee)
+    return () => {
+      window.removeEventListener('resize', updateMarquee)
+      window.removeEventListener('orientationchange', updateMarquee)
+    }
+  }, [device.isSupportedDevice, device.isPortrait, clientLogos.length])
 
   useEffect(() => {
     const observer = new window.IntersectionObserver(
@@ -394,19 +422,29 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
             <div className="client-logos-marquee overflow-hidden">
               <div
                 className="client-logos-track"
-                style={{
-                  animationDuration: device.isSupportedDevice
-                    ? (device.isPortrait ? '7s' : '9s')
-                    : '20s',
-                }}
+                ref={marqueeTrackRef}
               >
-                {[...clientLogos, ...clientLogos].map((logo, idx) => (
-                  <img
-                    key={`logo-${idx}-${logo.src}`}
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="client-logo"
-                  />
+                <div className="client-logos-set" ref={marqueeSetRef}>
+                  {clientLogos.map((logo, idx) => (
+                    <img
+                      key={`set1-${idx}-${logo.src}`}
+                      src={logo.src}
+                      alt={logo.alt}
+                      className="client-logo"
+                    />
+                  ))}
+                </div>
+                {Array.from({ length: logoSetRepeats - 1 }).map((_, rIdx) => (
+                  <div className="client-logos-set" aria-hidden="true" key={`repeat-${rIdx}`}>
+                    {clientLogos.map((logo, idx) => (
+                      <img
+                        key={`set${rIdx + 2}-${idx}-${logo.src}`}
+                        src={logo.src}
+                        alt={logo.alt}
+                        className="client-logo"
+                      />
+                    ))}
+                  </div>
                 ))}
               </div>
             </div>
@@ -1137,10 +1175,18 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
       .client-logos-track {
         display: flex;
         align-items: center;
-        gap: 3rem; /* spacing between logos */
+        gap: 0;
         white-space: nowrap;
         will-change: transform;
-        animation: marquee-left 20s linear infinite;
+        animation: marquee-left var(--marquee-duration, 20s) linear infinite;
+      }
+
+      .client-logos-set {
+        display: inline-flex;
+        align-items: center;
+        gap: 3rem;
+        flex: 0 0 auto;
+        min-width: max-content;
       }
 
       .client-logo {
@@ -1148,11 +1194,13 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
         width: 220px;  /* set uniform width across all logos */
         object-fit: contain;
         filter: none;
+        flex: 0 0 auto;
+        display: block;
       }
 
       @keyframes marquee-left {
         0% { transform: translate3d(0, 0, 0); }
-        100% { transform: translate3d(-50%, 0, 0); }
+        100% { transform: translate3d(calc(-1 * var(--marquee-distance, 50%)), 0, 0); }
       }
 
       @keyframes scrollElastic {
