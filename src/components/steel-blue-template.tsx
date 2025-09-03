@@ -164,8 +164,8 @@ export default function SteelBlueTemplate({ onLoginClick }: SteelBlueTemplatePro
       const viewportWidth = window.innerWidth
       const requiredRepeats = Math.max(2, Math.ceil(viewportWidth / setWidth) + 1)
       setLogoSetRepeats(requiredRepeats)
-      const speedPxPerSec = device.isSupportedDevice ? (device.isPortrait ? 60 : 80) : 100
-      const durationSec = Math.max(16, setWidth / speedPxPerSec)
+      const speedPxPerSec = device.isSupportedDevice ? (device.isPortrait ? 150 : 120) : 120
+      const durationSec = Math.max(8, setWidth / speedPxPerSec)
       trackEl.style.setProperty('--marquee-distance', `${setWidth}px`)
       trackEl.style.setProperty('--marquee-duration', `${durationSec}s`)
     }
